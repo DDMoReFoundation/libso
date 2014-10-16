@@ -42,6 +42,12 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 public class PharmMLRef
     extends PharmMLRootType
 {
+	
+	public PharmMLRef(){}
+	
+	public PharmMLRef(String name){
+		this.name = name;
+	}
 
     @XmlAttribute(name = "name")
     protected String name;
