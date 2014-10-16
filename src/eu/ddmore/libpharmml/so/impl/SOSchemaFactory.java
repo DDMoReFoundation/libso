@@ -9,8 +9,9 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import org.xml.sax.SAXException;
-
 import org.apache.xerces.util.XMLCatalogResolver;
+
+import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory;
 
 
 public class SOSchemaFactory {
@@ -34,8 +35,10 @@ public class SOSchemaFactory {
 	 */
 	public Schema createSOSchema(SOVersion version){
 		try {
+			// merging SO and PharmML catalogs
 			URL url = getClass().getResource(version.getCatalogLocation());
-			String[] catalogs = { url.toExternalForm() };
+			URL url_pharmml = PharmMLSchemaFactory.class.getResource(version.getCorrespondingPharmMLVersion().getCatalogLocation());
+			String[] catalogs = { url.toExternalForm(), url_pharmml.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
 			resolver.setCatalogList(catalogs);
 			String val = resolver.resolveSystem(SO_URI); 
