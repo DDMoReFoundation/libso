@@ -19,5 +19,29 @@ public class StandardisedOutput extends PharmMLRootType {
 	
 	@XmlAttribute(name = "metadataFile",required = false)
 	protected String metadataFile;
+
+	public String getWrittenVersion() {
+		return writtenVersion;
+	}
+
+	public void setWrittenVersion(String writtenVersion) {
+		this.writtenVersion = writtenVersion;
+	}
+
+	public String getImplementedBy() {
+		return implementedBy;
+	}
+
+	public void setImplementedBy(String implementedBy) {
+		this.implementedBy = implementedBy;
+	}
+
+	public String getMetadataFile() {
+		return metadataFile;
+	}
+
+	public void setMetadataFile(String metadataFile) {
+		this.metadataFile = metadataFile;
+	}
 	
 }

@@ -17,7 +17,7 @@ public class SOSchemaFactory {
 	private static SOSchemaFactory anInstance = null;
 
 //	private static final String DEFINITIONS_XML_CATALOG_XML = Messages.getString("MarshallerImpl.xmlCatalogLocation"); //$NON-NLS-1$
-	private static final String SO_URI = Messages.getString("MarshallerImpl.SOURI");
+	private static final String SO_URI = Messages.getString("SOMarshaller.SOURI");
 	
 	
 	public static SOSchemaFactory getInstance(){

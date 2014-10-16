@@ -20,12 +20,12 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
-import eu.ddmore.libpharmml.impl.LoggerWrapper;
+import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.so.dom.SOElement;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
-	private static final String CONTEXT_NAME = Messages.getString("MarshallerImpl.contextDefn"); //$NON-NLS-1$
+	private static final String CONTEXT_NAME = Messages.getString("SOMarshaller.contextDefn"); //$NON-NLS-1$
 	private IErrorHandler errorHandler;
 	
 	public SOMarshaller(){
@@ -115,7 +115,7 @@ public class SOMarshaller {
 			int event = sReader.next();
 			switch(event){
 			case XMLStreamConstants.START_ELEMENT:
-				if("PharmML".equals(sReader.getLocalName())){
+				if("SO".equals(sReader.getLocalName())){
 					version = sReader.getAttributeValue(null,"writtenVersion");
 				}
 			}
