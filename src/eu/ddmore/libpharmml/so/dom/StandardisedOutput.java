@@ -12,6 +12,27 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
+/**
+ * A type defining the SO. This is the root element of any standardised output document.
+ *
+ * <pre>
+ * &lt;complexType name="SOType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *       &lt;sequence>
+ *         &lt;element name="PharmMLRef" type="{http://www.pharmml.org/2013/03/StandardisedOutput}PharmMLRefType"/>
+ *         &lt;element name="SOBlock" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOBlockType" maxOccurs="unbounded"/>
+ *       &lt;/sequence>
+ *       &lt;attribute name="writtenVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="implementedBy" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="metadataFile" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ *
+ *
+ */
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "SO")
 @XmlType(propOrder = {
