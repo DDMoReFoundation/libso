@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
 
 
 /**
@@ -31,6 +32,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
+ *         &lt;element name="ToolSettings" type="{http://www.pharmml.org/2013/08/Dataset}ImportDataType" minOccurs="0"/>
  *         &lt;element name="RawResults" type="{http://www.pharmml.org/2013/03/StandardisedOutput}RawResultsType" minOccurs="0"/>
  *         &lt;element name="Estimation" type="{http://www.pharmml.org/2013/03/StandardisedOutput}EstimationType" minOccurs="0"/>
  *       &lt;/sequence>
@@ -44,6 +46,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SOBlockType", propOrder = {
+    "toolSettings",
     "rawResults",
     "estimation"
 })
@@ -51,6 +54,8 @@ public class SOBlock
     extends PharmMLRootType
 {
 
+    @XmlElement(name = "ToolSettings")
+    protected ImportDataType toolSettings;
     @XmlElement(name = "RawResults")
     protected RawResults rawResults;
     @XmlElement(name = "Estimation")
@@ -58,14 +63,29 @@ public class SOBlock
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
-    
+
     /**
-     * Empty constructor
+     * Gets the value of the toolSettings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ImportDataType }
+     *     
      */
-    public SOBlock(){}
-    
-    public SOBlock(String blkId){
-    	this.blkId = blkId;
+    public ImportDataType getToolSettings() {
+        return toolSettings;
+    }
+
+    /**
+     * Sets the value of the toolSettings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ImportDataType }
+     *     
+     */
+    public void setToolSettings(ImportDataType value) {
+        this.toolSettings = value;
     }
 
     /**

@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 
 
 /**
@@ -70,7 +71,7 @@ public class Estimation
     @XmlElement(name = "Residuals")
     protected Residuals residuals;
     @XmlElement(name = "Predictions")
-    protected Predictions predictions;
+    protected DataSetType predictions;
     @XmlElement(name = "Likelihood")
     protected Likelihood likelihood;
     @XmlElement(name = "TargetToolMessages")
@@ -201,10 +202,10 @@ public class Estimation
      * 
      * @return
      *     possible object is
-     *     {@link Predictions }
+     *     {@link DataSetType }
      *     
      */
-    public Predictions getPredictions() {
+    public DataSetType getPredictions() {
         return predictions;
     }
 
@@ -213,10 +214,10 @@ public class Estimation
      * 
      * @param value
      *     allowed object is
-     *     {@link Predictions }
+     *     {@link DataSetType }
      *     
      */
-    public void setPredictions(Predictions value) {
+    public void setPredictions(DataSetType value) {
         this.predictions = value;
     }
 

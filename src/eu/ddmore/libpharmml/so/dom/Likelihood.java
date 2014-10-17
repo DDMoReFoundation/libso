@@ -59,8 +59,6 @@ public class Likelihood
     protected RealValueType logLikelihood;
     @XmlElement(name = "Deviance")
     protected RealValueType deviance;
-    @XmlElement(name = "OFV")
-    protected RealValueType ofv;
     @XmlElement(name = "IndividualContribToLL")
     protected DataSetType individualContribToLL;
     @XmlElement(name = "InformationCriteria")
@@ -112,30 +110,6 @@ public class Likelihood
      */
     public void setDeviance(RealValueType value) {
         this.deviance = value;
-    }
-
-    /**
-     * Gets the value of the ofv property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValueType }
-     *     
-     */
-    public RealValueType getOFV() {
-        return ofv;
-    }
-
-    /**
-     * Sets the value of the ofv property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValueType }
-     *     
-     */
-    public void setOFV(RealValueType value) {
-        this.ofv = value;
     }
 
     /**

@@ -56,7 +56,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *                 &lt;sequence>
  *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
  *                   &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *                   &lt;element name="QuantilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -69,7 +69,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *                 &lt;sequence>
  *                   &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
  *                   &lt;element name="ParameterDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *                   &lt;element name="QuantilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -198,7 +198,7 @@ public class PrecisionPopulationEstimates
     @XmlType(name = "", propOrder = {
         "standardDeviationPosterior",
         "posteriorDistribution",
-        "quantilesCI"
+        "percentilesCI"
     })
     public static class Bayesian
         extends PharmMLRootType
@@ -208,8 +208,8 @@ public class PrecisionPopulationEstimates
         protected DataSetType standardDeviationPosterior;
         @XmlElement(name = "PosteriorDistribution")
         protected SOTableDistrib posteriorDistribution;
-        @XmlElement(name = "QuantilesCI")
-        protected DataSetType quantilesCI;
+        @XmlElement(name = "PercentilesCI")
+        protected DataSetType percentilesCI;
 
         /**
          * Gets the value of the standardDeviationPosterior property.
@@ -260,27 +260,27 @@ public class PrecisionPopulationEstimates
         }
 
         /**
-         * Gets the value of the quantilesCI property.
+         * Gets the value of the percentilesCI property.
          * 
          * @return
          *     possible object is
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getQuantilesCI() {
-            return quantilesCI;
+        public DataSetType getPercentilesCI() {
+            return percentilesCI;
         }
 
         /**
-         * Sets the value of the quantilesCI property.
+         * Sets the value of the percentilesCI property.
          * 
          * @param value
          *     allowed object is
          *     {@link DataSetType }
          *     
          */
-        public void setQuantilesCI(DataSetType value) {
-            this.quantilesCI = value;
+        public void setPercentilesCI(DataSetType value) {
+            this.percentilesCI = value;
         }
 
     }
@@ -298,7 +298,7 @@ public class PrecisionPopulationEstimates
      *       &lt;sequence>
      *         &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
      *         &lt;element name="ParameterDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
-     *         &lt;element name="QuantilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -311,7 +311,7 @@ public class PrecisionPopulationEstimates
     @XmlType(name = "", propOrder = {
         "standardDeviation",
         "parameterDistribution",
-        "quantilesCI"
+        "percentilesCI"
     })
     public static class Bootstrap
         extends PharmMLRootType
@@ -321,8 +321,8 @@ public class PrecisionPopulationEstimates
         protected DataSetType standardDeviation;
         @XmlElement(name = "ParameterDistribution")
         protected SOTableDistrib parameterDistribution;
-        @XmlElement(name = "QuantilesCI")
-        protected DataSetType quantilesCI;
+        @XmlElement(name = "PercentilesCI")
+        protected DataSetType percentilesCI;
 
         /**
          * Gets the value of the standardDeviation property.
@@ -373,27 +373,27 @@ public class PrecisionPopulationEstimates
         }
 
         /**
-         * Gets the value of the quantilesCI property.
+         * Gets the value of the percentilesCI property.
          * 
          * @return
          *     possible object is
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getQuantilesCI() {
-            return quantilesCI;
+        public DataSetType getPercentilesCI() {
+            return percentilesCI;
         }
 
         /**
-         * Sets the value of the quantilesCI property.
+         * Sets the value of the percentilesCI property.
          * 
          * @param value
          *     allowed object is
          *     {@link DataSetType }
          *     
          */
-        public void setQuantilesCI(DataSetType value) {
-            this.quantilesCI = value;
+        public void setPercentilesCI(DataSetType value) {
+            this.percentilesCI = value;
         }
 
     }
