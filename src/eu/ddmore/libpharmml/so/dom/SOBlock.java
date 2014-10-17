@@ -58,6 +58,15 @@ public class SOBlock
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
+    
+    /**
+     * Empty constructor
+     */
+    public SOBlock(){}
+    
+    public SOBlock(String blkId){
+    	this.blkId = blkId;
+    }
 
     /**
      * Gets the value of the rawResults property.
@@ -130,5 +139,26 @@ public class SOBlock
     public void setBlkId(String value) {
         this.blkId = value;
     }
+    
+    /**
+     * Creates a new empty {@link RawResults} rawResults element, adds it to the current object and returns it.
+     * @return The created {@link RawResults} object.
+     */
+    public RawResults createRawResults(){
+            RawResults el = new RawResults();
+            this.rawResults = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link Estimation} estimation element, adds it to the current object and returns it.
+     * @return The created {@link Estimation} object.
+     */
+    public Estimation createEstimation(){
+            Estimation el = new Estimation();
+            this.estimation = el;
+            return el;
+    }
+
 
 }
