@@ -243,12 +243,322 @@ public class SOTableDistrib
         this.dataSet = value;
     }
     
+    /**
+     * 
+     * @return
+     *     possible object is
+     *     {@link DiracDeltaDistribution }
+     *     {@link ExponentialDistribution }
+     *     {@link ParetoDistribution }
+     *     {@link LogNormalDistribution }
+     *     {@link LaplaceDistribution }
+     *     {@link InverseGammaDistribution }
+     *     {@link BetaDistribution }
+     *     {@link UniformDistribution }
+     *     {@link NormalDistribution }
+     *     {@link ChiSquareDistribution }
+     *     {@link WeibullDistribution }
+     *     {@link LogisticDistribution }
+     *     {@link CauchyDistribution }
+     *     {@link FDistribution }
+     *     {@link ContinuousUnivariateMixtureModel }
+     *     {@link GammaDistribution }
+     *     {@link StudentTDistribution }
+     *     {@link NormalInverseGammaDistribution }
+     *     {@link MultivariateStudentTDistribution }
+     *     {@link ContinuousMultivariateMixtureModel }
+     *     {@link DirichletDistribution }
+     *     {@link MultivariateNormalDistribution }
+     */
     public AbstractDistributionType getDistribution(){
     	return distribution;
     }
     public void setDistribution(StudentTDistribution distribution){
     	this.distribution = distribution;
     }
-    //TODO: all other possible distributions
+    public void setDistribution(WeibullDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(DiracDeltaDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(FDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(ContinuousUnivariateMixtureModel distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(LaplaceDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(UniformDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(CauchyDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(ChiSquareDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(NormalDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(InverseGammaDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(LogNormalDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(BetaDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(ParetoDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(ExponentialDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(LogisticDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(GammaDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(NormalInverseGammaDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(ContinuousMultivariateMixtureModel distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(MultivariateNormalDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(MultivariateStudentTDistribution distribution){
+    	this.distribution = distribution;
+    }
+    public void setDistribution(DirichletDistribution distribution){
+    	this.distribution = distribution;
+    }
+    
+    /**
+    * Creates a new {@link DiracDeltaDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                      
+    */                                                                                                   
+    public DiracDeltaDistribution createDiracDeltaDistribution(){                                        
+        DiracDeltaDistribution distrib = new DiracDeltaDistribution();                                   
+        setDistribution(distrib);                                                                        
+        return distrib;                                                                                  
+    }                                                                                                    
+
+    /**
+    * Creates a new {@link ExponentialDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                       
+    */                                                                                                    
+    public ExponentialDistribution createExponentialDistribution(){                                       
+        ExponentialDistribution distrib = new ExponentialDistribution();                                  
+        setDistribution(distrib);                                                                         
+        return distrib;                                                                                   
+    }                                                                                                     
+
+    /**
+    * Creates a new {@link ParetoDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                  
+    */                                                                                               
+    public ParetoDistribution createParetoDistribution(){                                            
+        ParetoDistribution distrib = new ParetoDistribution();                                       
+        setDistribution(distrib);                                                                    
+        return distrib;                                                                              
+    }                                                                                                
+
+    /**
+    * Creates a new {@link LogNormalDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                     
+    */                                                                                                  
+    public LogNormalDistribution createLogNormalDistribution(){                                         
+        LogNormalDistribution distrib = new LogNormalDistribution();                                    
+        setDistribution(distrib);                                                                       
+        return distrib;                                                                                 
+    }                                                                                                   
+
+    /**
+    * Creates a new {@link LaplaceDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                   
+    */                                                                                                
+    public LaplaceDistribution createLaplaceDistribution(){                                           
+        LaplaceDistribution distrib = new LaplaceDistribution();                                      
+        setDistribution(distrib);                                                                     
+        return distrib;                                                                               
+    }                                                                                                 
+
+    /**
+    * Creates a new {@link InverseGammaDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                        
+    */                                                                                                     
+    public InverseGammaDistribution createInverseGammaDistribution(){                                      
+        InverseGammaDistribution distrib = new InverseGammaDistribution();                                 
+        setDistribution(distrib);                                                                          
+        return distrib;                                                                                    
+    }                                                                                                      
+
+    /**
+    * Creates a new {@link BetaDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                
+    */                                                                                             
+    public BetaDistribution createBetaDistribution(){                                              
+        BetaDistribution distrib = new BetaDistribution();                                         
+        setDistribution(distrib);                                                                  
+        return distrib;                                                                            
+    }                                                                                              
+
+    /**
+    * Creates a new {@link UniformDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                   
+    */                                                                                                
+    public UniformDistribution createUniformDistribution(){                                           
+        UniformDistribution distrib = new UniformDistribution();                                      
+        setDistribution(distrib);                                                                     
+        return distrib;                                                                               
+    }                                                                                                 
+
+    /**
+    * Creates a new {@link NormalDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                  
+    */                                                                                               
+    public NormalDistribution createNormalDistribution(){                                            
+        NormalDistribution distrib = new NormalDistribution();                                       
+        setDistribution(distrib);                                                                    
+        return distrib;                                                                              
+    }                                                                                                
+
+    /**
+    * Creates a new {@link ChiSquareDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                     
+    */                                                                                                  
+    public ChiSquareDistribution createChiSquareDistribution(){                                         
+        ChiSquareDistribution distrib = new ChiSquareDistribution();                                    
+        setDistribution(distrib);                                                                       
+        return distrib;                                                                                 
+    }                                                                                                   
+
+    /**
+    * Creates a new {@link WeibullDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                   
+    */                                                                                                
+    public WeibullDistribution createWeibullDistribution(){                                           
+        WeibullDistribution distrib = new WeibullDistribution();                                      
+        setDistribution(distrib);                                                                     
+        return distrib;                                                                               
+    }                                                                                                 
+
+    /**
+    * Creates a new {@link LogisticDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                    
+    */                                                                                                 
+    public LogisticDistribution createLogisticDistribution(){                                          
+        LogisticDistribution distrib = new LogisticDistribution();                                     
+        setDistribution(distrib);                                                                      
+        return distrib;                                                                                
+    }                                                                                                  
+
+    /**
+    * Creates a new {@link CauchyDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                  
+    */                                                                                               
+    public CauchyDistribution createCauchyDistribution(){                                            
+        CauchyDistribution distrib = new CauchyDistribution();                                       
+        setDistribution(distrib);                                                                    
+        return distrib;                                                                              
+    }                                                                                                
+
+    /**
+    * Creates a new {@link FDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                             
+    */                                                                                          
+    public FDistribution createFDistribution(){                                                 
+        FDistribution distrib = new FDistribution();                                            
+        setDistribution(distrib);                                                               
+        return distrib;                                                                         
+    }                                                                                           
+
+    /**
+    * Creates a new {@link ContinuousUnivariateMixtureModel} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                                
+    */                                                                                                             
+    public ContinuousUnivariateMixtureModel createContinuousUnivariateMixtureModel(){                              
+        ContinuousUnivariateMixtureModel distrib = new ContinuousUnivariateMixtureModel();                         
+        setDistribution(distrib);                                                                                  
+        return distrib;                                                                                            
+    }                                                                                                              
+
+    /**
+    * Creates a new {@link GammaDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                 
+    */                                                                                              
+    public GammaDistribution createGammaDistribution(){                                             
+        GammaDistribution distrib = new GammaDistribution();                                        
+        setDistribution(distrib);                                                                   
+        return distrib;                                                                             
+    }                                                                                               
+
+    /**
+    * Creates a new {@link StudentTDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.                                                                    
+    */                                                                                                 
+    public StudentTDistribution createStudentTDistribution(){                                          
+        StudentTDistribution distrib = new StudentTDistribution();                                     
+        setDistribution(distrib);                                                                      
+        return distrib;                                                                                
+    }                                                                                                  
+
+    /**
+    * Creates a new {@link NormalInverseGammaDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.
+    */
+    public NormalInverseGammaDistribution createNormalInverseGammaDistribution(){
+        NormalInverseGammaDistribution distrib = new NormalInverseGammaDistribution();
+        setDistribution(distrib);
+        return distrib;
+    }
+
+    /**
+    * Creates a new {@link MultivariateStudentTDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.
+    */
+    public MultivariateStudentTDistribution createMultivariateStudentTDistribution(){
+        MultivariateStudentTDistribution distrib = new MultivariateStudentTDistribution();
+        setDistribution(distrib);
+        return distrib;
+    }
+
+    /**
+    * Creates a new {@link ContinuousMultivariateMixtureModel} element, adds it to the current object and returns it.
+    * @return The new distribution.
+    */
+    public ContinuousMultivariateMixtureModel createContinuousMultivariateMixtureModel(){
+        ContinuousMultivariateMixtureModel distrib = new ContinuousMultivariateMixtureModel();
+        setDistribution(distrib);
+        return distrib;
+    }
+
+    /**
+    * Creates a new {@link DirichletDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.
+    */
+    public DirichletDistribution createDirichletDistribution(){
+        DirichletDistribution distrib = new DirichletDistribution();
+        setDistribution(distrib);
+        return distrib;
+    }
+
+    /**
+    * Creates a new {@link MultivariateNormalDistribution} element, adds it to the current object and returns it.
+    * @return The new distribution.
+    */
+    public MultivariateNormalDistribution createMultivariateNormalDistribution(){
+        MultivariateNormalDistribution distrib = new MultivariateNormalDistribution();
+        setDistribution(distrib);
+        return distrib;
+    }
+
 
 }
