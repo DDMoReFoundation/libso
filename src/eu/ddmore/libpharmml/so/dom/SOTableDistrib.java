@@ -13,12 +13,16 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousMultivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
+import eu.ddmore.libpharmml.dom.uncertml.AbstractDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.BetaDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.CauchyDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.ChiSquareDistribution;
@@ -72,16 +76,52 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
     "abstractContinuousMultivariateDistribution",
     "dataSet"
 })
+@XmlJavaTypeAdapter(SOTableDistrib.Adapter.class)
 public class SOTableDistrib
     extends PharmMLRootType
 {
 
     @XmlElementRef(name = "AbstractContinuousUnivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
-    protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> abstractContinuousUnivariateDistribution;
+    protected JAXBElement<? extends AbstractContinuousUnivariateDistributionType> jaxb_abstractContinuousUnivariateDistribution;
     @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
-    protected JAXBElement<? extends AbstractContinuousMultivariateDistributionType> abstractContinuousMultivariateDistribution;
+    protected JAXBElement<? extends AbstractContinuousMultivariateDistributionType> jaxb_abstractContinuousMultivariateDistribution;
     @XmlElement(name = "DataSet")
     protected DataSetType dataSet;
+    
+    @XmlTransient
+    protected AbstractDistributionType distribution;
+    
+    protected static class Adapter extends XmlAdapter<SOTableDistrib, SOTableDistrib>{
+
+		@Override
+		public SOTableDistrib unmarshal(SOTableDistrib v) throws Exception {
+			if(v.jaxb_abstractContinuousUnivariateDistribution != null){
+				v.distribution = v.jaxb_abstractContinuousUnivariateDistribution.getValue();
+			} else if(v.jaxb_abstractContinuousMultivariateDistribution != null){
+				v.distribution = v.jaxb_abstractContinuousMultivariateDistribution.getValue();
+			}
+			return v;
+		}
+
+		@Override
+		public SOTableDistrib marshal(SOTableDistrib v) throws Exception {
+			if(v != null){
+				if(v.distribution != null){
+					if(v.distribution instanceof AbstractContinuousUnivariateDistributionType){
+						v.jaxb_abstractContinuousUnivariateDistribution = 
+								SOObjectFactory.createContinuousUnivariateDistribution((AbstractContinuousUnivariateDistributionType) v.distribution);
+						v.jaxb_abstractContinuousMultivariateDistribution = null;
+					} else if(v.distribution instanceof AbstractContinuousMultivariateDistributionType){
+						v.jaxb_abstractContinuousUnivariateDistribution = null;
+						v.jaxb_abstractContinuousMultivariateDistribution = 
+								SOObjectFactory.createContinuousMultivariateDistributionType((AbstractContinuousMultivariateDistributionType) v.distribution);
+					}
+				}
+			}
+			return v;
+		}
+    	
+    }
 
     /**
      * 
@@ -110,9 +150,9 @@ public class SOTableDistrib
      *     {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}
      *     
      */
-    public JAXBElement<? extends AbstractContinuousUnivariateDistributionType> getAbstractContinuousUnivariateDistribution() {
-        return abstractContinuousUnivariateDistribution;
-    }
+//    public JAXBElement<? extends AbstractContinuousUnivariateDistributionType> getAbstractContinuousUnivariateDistribution() {
+//        return abstractContinuousUnivariateDistribution;
+//    }
 
     /**
      * Sets the value of the abstractContinuousUnivariateDistribution property.
@@ -139,9 +179,9 @@ public class SOTableDistrib
      *     {@link JAXBElement }{@code <}{@link StudentTDistribution }{@code >}
      *     
      */
-    public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
-        this.abstractContinuousUnivariateDistribution = value;
-    }
+//    public void setAbstractContinuousUnivariateDistribution(JAXBElement<? extends AbstractContinuousUnivariateDistributionType> value) {
+//        this.abstractContinuousUnivariateDistribution = value;
+//    }
 
     /**
      * 
@@ -158,9 +198,9 @@ public class SOTableDistrib
      *     {@link JAXBElement }{@code <}{@link AbstractContinuousMultivariateDistributionType }{@code >}
      *     
      */
-    public JAXBElement<? extends AbstractContinuousMultivariateDistributionType> getAbstractContinuousMultivariateDistribution() {
-        return abstractContinuousMultivariateDistribution;
-    }
+//    public JAXBElement<? extends AbstractContinuousMultivariateDistributionType> getAbstractContinuousMultivariateDistribution() {
+//        return abstractContinuousMultivariateDistribution;
+//    }
 
     /**
      * Sets the value of the abstractContinuousMultivariateDistribution property.
@@ -175,9 +215,9 @@ public class SOTableDistrib
      *     {@link JAXBElement }{@code <}{@link AbstractContinuousMultivariateDistributionType }{@code >}
      *     
      */
-    public void setAbstractContinuousMultivariateDistribution(JAXBElement<? extends AbstractContinuousMultivariateDistributionType> value) {
-        this.abstractContinuousMultivariateDistribution = value;
-    }
+//    public void setAbstractContinuousMultivariateDistribution(JAXBElement<? extends AbstractContinuousMultivariateDistributionType> value) {
+//        this.abstractContinuousMultivariateDistribution = value;
+//    }
 
     /**
      * Gets the value of the dataSet property.
@@ -202,5 +242,13 @@ public class SOTableDistrib
     public void setDataSet(DataSetType value) {
         this.dataSet = value;
     }
+    
+    public AbstractDistributionType getDistribution(){
+    	return distribution;
+    }
+    public void setDistribution(StudentTDistribution distribution){
+    	this.distribution = distribution;
+    }
+    //TODO: all other possible distributions
 
 }
