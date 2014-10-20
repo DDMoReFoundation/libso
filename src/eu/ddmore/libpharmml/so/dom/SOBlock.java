@@ -161,13 +161,23 @@ public class SOBlock
     }
     
     /**
+     * Creates a new empty {@link ImportDataType} toolSettings element, adds it to the current object and returns it.
+     * @return The created {@link ImportDataType} object.
+     */
+    public ImportDataType createToolSettings(){
+    	ImportDataType el = new ImportDataType();
+    	this.toolSettings = el;
+    	return el;
+    }
+
+    /**
      * Creates a new empty {@link RawResults} rawResults element, adds it to the current object and returns it.
      * @return The created {@link RawResults} object.
      */
     public RawResults createRawResults(){
-            RawResults el = new RawResults();
-            this.rawResults = el;
-            return el;
+    	RawResults el = new RawResults();
+    	this.rawResults = el;
+    	return el;
     }
 
     /**
@@ -175,9 +185,9 @@ public class SOBlock
      * @return The created {@link Estimation} object.
      */
     public Estimation createEstimation(){
-            Estimation el = new Estimation();
-            this.estimation = el;
-            return el;
+    	Estimation el = new Estimation();
+    	this.estimation = el;
+    	return el;
     }
 
 

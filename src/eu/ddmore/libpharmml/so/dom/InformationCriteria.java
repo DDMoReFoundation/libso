@@ -128,5 +128,69 @@ public class InformationCriteria
     public void setDIC(RealValueType value) {
         this.dic = value;
     }
+    
+    /**
+     * Creates a new empty {@link RealValueType} aic element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createAic(){
+    	RealValueType el = new RealValueType();
+    	this.aic = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link RealValueType} aic element, adds it to the current object and returns it.
+     * @param value The real value of the element.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createAic(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.aic = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link RealValueType} bic element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createBic(){
+    	RealValueType el = new RealValueType();
+    	this.bic = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link RealValueType} bic element, adds it to the current object and returns it.
+     * @param value The real value of the element.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createBic(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.bic = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link RealValueType} dic element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createDic(){
+    	RealValueType el = new RealValueType();
+    	this.dic = el;
+    	return el;
+    }
+    /**
+     * Creates a new empty {@link RealValueType} dic element, adds it to the current object and returns it.
+     * @param value The real value of the element.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createDic(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.dic = el;
+    	return el;
+    }
+
 
 }

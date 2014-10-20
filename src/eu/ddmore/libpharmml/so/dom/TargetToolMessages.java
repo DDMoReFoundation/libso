@@ -242,5 +242,135 @@ public class TargetToolMessages
     public void setIterationNumber(RealValueType value) {
         this.iterationNumber = value;
     }
+    
+    /**
+     * Creates a new empty {@link StringValueType} termination element, adds it to the current object and returns it.
+     * @return The created {@link StringValueType} object.
+     */
+    public StringValueType createTermination(){
+    	StringValueType el = new StringValueType();
+    	this.termination = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link StringValueType} termination element, adds it to the current object and returns it.
+     * @return The created {@link StringValueType} object.
+     */
+    public StringValueType createTermination(String value){
+    	StringValueType el = new StringValueType();
+    	el.setValue(value);
+    	this.termination = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link StringValueType} warnings element, adds it to the current object and returns it.
+     * @return The created {@link StringValueType} object.
+     */
+    public StringValueType createWarnings(){
+    	StringValueType el = new StringValueType();
+    	this.warnings = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link StringValueType} warnings element, adds it to the current object and returns it.
+     * @return The created {@link StringValueType} object.
+     */
+    public StringValueType createWarnings(String value){
+    	StringValueType el = new StringValueType();
+    	el.setValue(value);
+    	this.warnings = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link StringValueType} errors element, adds it to the current object and returns it.
+     * @return The created {@link StringValueType} object.
+     */
+    public StringValueType createErrors(){
+    	StringValueType el = new StringValueType();
+    	this.errors = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link StringValueType} errors element, adds it to the current object and returns it.
+     * @return The created {@link StringValueType} object.
+     */
+    public StringValueType createErrors(String value){
+    	StringValueType el = new StringValueType();
+    	el.setValue(value);
+    	this.errors = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link RealValueType} elapsedTime element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createElapsedTime(){
+    	RealValueType el = new RealValueType();
+    	this.elapsedTime = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link RealValueType} elapsedTime element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createElapsedTime(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.elapsedTime = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link ImportDataType} outputFilePath element, adds it to the current object and returns it.
+     * @return The created {@link ImportDataType} object.
+     */
+    public ImportDataType createOutputFilePath(){
+    	ImportDataType el = new ImportDataType();
+    	this.outputFilePath = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new {@link RealValueType} chainsNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createChainsNumber(){
+    	RealValueType el = new RealValueType();
+    	this.chainsNumber = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link RealValueType} chainsNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createChainsNumber(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.chainsNumber = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link RealValueType} iterationNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createIterationNumber(){
+    	RealValueType el = new RealValueType();
+    	this.iterationNumber = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link RealValueType} iterationNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createIterationNumber(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.iterationNumber = el;
+    	return el;
+    }
 
 }

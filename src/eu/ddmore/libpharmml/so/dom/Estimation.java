@@ -268,5 +268,86 @@ public class Estimation
     public void setTargetToolMessages(TargetToolMessages value) {
         this.targetToolMessages = value;
     }
+    
+    /**
+     * Creates a new empty {@link PopulationEstimates} populationEstimates element, adds it to the current object and returns it.
+     * @return The created {@link PopulationEstimates} object.
+     */
+    public PopulationEstimates createPopulationEstimates(){
+    	PopulationEstimates el = new PopulationEstimates();
+    	this.populationEstimates = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link PrecisionPopulationEstimates} precisionPopulationEstimates element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionPopulationEstimates} object.
+     */
+    public PrecisionPopulationEstimates createPrecisionPopulationEstimates(){
+    	PrecisionPopulationEstimates el = new PrecisionPopulationEstimates();
+    	this.precisionPopulationEstimates = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link IndividualEstimates} individualEstimates element, adds it to the current object and returns it.
+     * @return The created {@link IndividualEstimates} object.
+     */
+    public IndividualEstimates createIndividualEstimates(){
+    	IndividualEstimates el = new IndividualEstimates();
+    	this.individualEstimates = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link PrecisionIndividualEstimates} precisionIndividualEstimates element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionIndividualEstimates} object.
+     */
+    public PrecisionIndividualEstimates createPrecisionIndividualEstimates(){
+    	PrecisionIndividualEstimates el = new PrecisionIndividualEstimates();
+    	this.precisionIndividualEstimates = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link Residuals} residuals element, adds it to the current object and returns it.
+     * @return The created {@link Residuals} object.
+     */
+    public Residuals createResiduals(){
+    	Residuals el = new Residuals();
+    	this.residuals = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} predictions element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createPredictions(){
+    	DataSetType el = new DataSetType();
+    	this.predictions = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link Likelihood} likelihood element, adds it to the current object and returns it.
+     * @return The created {@link Likelihood} object.
+     */
+    public Likelihood createLikelihood(){
+    	Likelihood el = new Likelihood();
+    	this.likelihood = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link TargetToolMessages} targetToolMessages element, adds it to the current object and returns it.
+     * @return The created {@link TargetToolMessages} object.
+     */
+    public TargetToolMessages createTargetToolMessages(){
+    	TargetToolMessages el = new TargetToolMessages();
+    	this.targetToolMessages = el;
+    	return el;
+    }
+
 
 }

@@ -223,7 +223,59 @@ public class PopulationEstimates
         public void setPosteriorMode(DataSetType value) {
             this.posteriorMode = value;
         }
+        
+        /**
+         * Creates a new empty {@link DataSetType} posteriorMean element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createPosteriorMean(){
+        	DataSetType el = new DataSetType();
+        	this.posteriorMean = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} posteriorMedian element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createPosteriorMedian(){
+        	DataSetType el = new DataSetType();
+        	this.posteriorMedian = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} posteriorMode element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createPosteriorMode(){
+        	DataSetType el = new DataSetType();
+        	this.posteriorMode = el;
+        	return el;
+        }
+
 
     }
+    
+    /**
+     * Creates a new empty {@link DataSetType} mle element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createMle(){
+    	DataSetType el = new DataSetType();
+    	this.mle = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link PopulationEstimates.Bayesian} bayesian element, adds it to the current object and returns it.
+     * @return The created {@link PopulationEstimates.Bayesian} object.
+     */
+    public PopulationEstimates.Bayesian createBayesian(){
+    	PopulationEstimates.Bayesian el = new PopulationEstimates.Bayesian();
+    	this.bayesian = el;
+    	return el;
+    }
+
 
 }

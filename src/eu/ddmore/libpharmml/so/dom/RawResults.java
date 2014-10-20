@@ -74,11 +74,22 @@ public class RawResults
      * 
      * 
      */
-    public List<ImportDataType> getRawFile() {
+    public List<ImportDataType> getListOfRawFile() {
         if (rawFile == null) {
             rawFile = new ArrayList<ImportDataType>();
         }
         return this.rawFile;
     }
+    
+    /**
+     * Creates a new empty {@link ImportDataType} rawFile element, adds it to the current object and returns it.
+     * @return The created {@link ImportDataType} object.
+     */
+    public ImportDataType createRawFile(){
+    	ImportDataType el = new ImportDataType();
+    	getListOfRawFile().add(el);
+    	return el;
+    }
+
 
 }

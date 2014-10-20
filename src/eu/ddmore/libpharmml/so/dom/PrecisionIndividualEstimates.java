@@ -71,5 +71,16 @@ public class PrecisionIndividualEstimates
     public void setPosteriorDistributionIndividualEstimates(SOTableDistrib value) {
         this.posteriorDistributionIndividualEstimates = value;
     }
+    
+    /**
+     * Creates a new empty {@link SOTableDistrib} posteriorDistributionIndividualEstimates element, adds it to the current object and returns it.
+     * @return The created {@link SOTableDistrib} object.
+     */
+    public SOTableDistrib createPosteriorDistributionIndividualEstimates(){
+    	SOTableDistrib el = new SOTableDistrib();
+    	this.posteriorDistributionIndividualEstimates = el;
+    	return el;
+    }
+
 
 }

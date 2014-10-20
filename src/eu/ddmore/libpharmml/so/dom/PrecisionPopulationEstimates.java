@@ -282,6 +282,37 @@ public class PrecisionPopulationEstimates
         public void setPercentilesCI(DataSetType value) {
             this.percentilesCI = value;
         }
+        
+        /**
+         * Creates a new empty {@link DataSetType} standardDeviationPosterior element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createStandardDeviationPosterior(){
+        	DataSetType el = new DataSetType();
+        	this.standardDeviationPosterior = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link SOTableDistrib} posteriorDistribution element, adds it to the current object and returns it.
+         * @return The created {@link SOTableDistrib} object.
+         */
+        public SOTableDistrib createPosteriorDistribution(){
+        	SOTableDistrib el = new SOTableDistrib();
+        	this.posteriorDistribution = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} percentilesCI element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createPercentilesCI(){
+        	DataSetType el = new DataSetType();
+        	this.percentilesCI = el;
+        	return el;
+        }
+
 
     }
 
@@ -395,6 +426,37 @@ public class PrecisionPopulationEstimates
         public void setPercentilesCI(DataSetType value) {
             this.percentilesCI = value;
         }
+        
+        /**
+         * Creates a new empty {@link DataSetType} standardDeviation element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createStandardDeviation(){
+        	DataSetType el = new DataSetType();
+        	this.standardDeviation = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link SOTableDistrib} parameterDistribution element, adds it to the current object and returns it.
+         * @return The created {@link SOTableDistrib} object.
+         */
+        public SOTableDistrib createParameterDistribution(){
+        	SOTableDistrib el = new SOTableDistrib();
+        	this.parameterDistribution = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} percentilesCI element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createPercentilesCI(){
+        	DataSetType el = new DataSetType();
+        	this.percentilesCI = el;
+        	return el;
+        }
+
 
     }
 
@@ -592,7 +654,99 @@ public class PrecisionPopulationEstimates
         public void setAsymptoticCI(DataSetType value) {
             this.asymptoticCI = value;
         }
+        
+        /**
+         * Creates a new empty {@link SOMatrix} fim element, adds it to the current object and returns it.
+         * @return The created {@link SOMatrix} object.
+         */
+        public SOMatrix createFim(){
+        	SOMatrix el = new SOMatrix();
+        	this.fim = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link SOMatrix} covarianceMatrix element, adds it to the current object and returns it.
+         * @return The created {@link SOMatrix} object.
+         */
+        public SOMatrix createCovarianceMatrix(){
+        	SOMatrix el = new SOMatrix();
+        	this.covarianceMatrix = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link SOMatrix} correlationMatrix element, adds it to the current object and returns it.
+         * @return The created {@link SOMatrix} object.
+         */
+        public SOMatrix createCorrelationMatrix(){
+        	SOMatrix el = new SOMatrix();
+        	this.correlationMatrix = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} standardError element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createStandardError(){
+        	DataSetType el = new DataSetType();
+        	this.standardError = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} relativeStandardError element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createRelativeStandardError(){
+        	DataSetType el = new DataSetType();
+        	this.relativeStandardError = el;
+        	return el;
+        }
+
+        /**
+         * Creates a new empty {@link DataSetType} asymptoticCI element, adds it to the current object and returns it.
+         * @return The created {@link DataSetType} object.
+         */
+        public DataSetType createAsymptoticCI(){
+        	DataSetType el = new DataSetType();
+        	this.asymptoticCI = el;
+        	return el;
+        }
+
 
     }
+    
+    /**
+     * Creates a new empty {@link PrecisionPopulationEstimates.MLE} mle element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionPopulationEstimates.MLE} object.
+     */
+    public PrecisionPopulationEstimates.MLE createMle(){
+    	PrecisionPopulationEstimates.MLE el = new PrecisionPopulationEstimates.MLE();
+    	this.mle = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link PrecisionPopulationEstimates.Bayesian} bayesian element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionPopulationEstimates.Bayesian} object.
+     */
+    public PrecisionPopulationEstimates.Bayesian createBayesian(){
+    	PrecisionPopulationEstimates.Bayesian el = new PrecisionPopulationEstimates.Bayesian();
+    	this.bayesian = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link PrecisionPopulationEstimates.Bootstrap} bootstrap element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionPopulationEstimates.Bootstrap} object.
+     */
+    public PrecisionPopulationEstimates.Bootstrap createBootstrap(){
+    	PrecisionPopulationEstimates.Bootstrap el = new PrecisionPopulationEstimates.Bootstrap();
+    	this.bootstrap = el;
+    	return el;
+    }
+
 
 }

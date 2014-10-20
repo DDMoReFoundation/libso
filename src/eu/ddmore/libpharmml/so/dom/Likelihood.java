@@ -158,5 +158,68 @@ public class Likelihood
     public void setInformationCriteria(InformationCriteria value) {
         this.informationCriteria = value;
     }
+    
+    /**
+     * Creates a new empty {@link RealValueType} logLikelihood element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createLogLikelihood(){
+    	RealValueType el = new RealValueType();
+    	this.logLikelihood = el;
+    	return el;
+    }
+    /**
+     * Creates a new {@link RealValueType} logLikelihood element, adds it to the current object and returns it.
+     * @param value The real value of the element.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createLogLikelihood(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.logLikelihood = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link RealValueType} deviance element, adds it to the current object and returns it.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createDeviance(){
+    	RealValueType el = new RealValueType();
+    	this.deviance = el;
+    	return el;
+    }
+    /**
+     * Creates a new empty {@link RealValueType} deviance element, adds it to the current object and returns it.
+     * @param value The real value of the element.
+     * @return The created {@link RealValueType} object.
+     */
+    public RealValueType createDeviance(double value){
+    	RealValueType el = new RealValueType();
+    	el.setValue(value);
+    	this.deviance = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} individualContribToLL element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createIndividualContribToLL(){
+    	DataSetType el = new DataSetType();
+    	this.individualContribToLL = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link InformationCriteria} informationCriteria element, adds it to the current object and returns it.
+     * @return The created {@link InformationCriteria} object.
+     */
+    public InformationCriteria createInformationCriteria(){
+    	InformationCriteria el = new InformationCriteria();
+    	this.informationCriteria = el;
+    	return el;
+    }
+
 
 }

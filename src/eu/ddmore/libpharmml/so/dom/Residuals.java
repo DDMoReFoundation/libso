@@ -240,5 +240,76 @@ public class Residuals
     public void setNPDE(DataSetType value) {
         this.npde = value;
     }
+    
+    /**
+     * Creates a new empty {@link DataSetType} res element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createRes(){
+    	DataSetType el = new DataSetType();
+    	this.res = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} ires element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createIres(){
+    	DataSetType el = new DataSetType();
+    	this.ires = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} wres element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createWres(){
+    	DataSetType el = new DataSetType();
+    	this.wres = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} cwres element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createCwres(){
+    	DataSetType el = new DataSetType();
+    	this.cwres = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} iwres element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createIwres(){
+    	DataSetType el = new DataSetType();
+    	this.iwres = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} pd element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createPd(){
+    	DataSetType el = new DataSetType();
+    	this.pd = el;
+    	return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSetType} npde element, adds it to the current object and returns it.
+     * @return The created {@link DataSetType} object.
+     */
+    public DataSetType createNpde(){
+    	DataSetType el = new DataSetType();
+    	this.npde = el;
+    	return el;
+    }
+
 
 }
