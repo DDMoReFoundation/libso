@@ -20,6 +20,7 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.so.dom.SOElement;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
@@ -81,8 +82,8 @@ public class SOMarshaller {
 			Listener listener = new Listener() {
 				@Override
 				public void beforeUnmarshal(Object target, Object parent) {
-					if(target instanceof SOElement){
-//						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion);
+					if(target instanceof PharmMLElement){
+						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion.getCorrespondingPharmMLVersion());
 					}
 				}
 			};
