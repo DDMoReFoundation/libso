@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 
 
@@ -56,6 +57,31 @@ public class InformationCriteria
     protected RealValueType bic;
     @XmlElement(name = "DIC")
     protected RealValueType dic;
+    
+    /**
+     * Empty constructor
+     */
+    public InformationCriteria(){}
+    
+    /**
+     * Creates new information criteria with the specified values. 
+     * All the parameters of this constructor are nullable, so no
+     * element will be created for a null criterion.
+     * @param aic Akaike information criterion.
+     * @param bic Bayesian information criterion.
+     * @param dic Deviance information criterion.
+     */
+    public InformationCriteria(Double aic, Double bic, Double dic){
+    	if(aic != null){
+    		this.aic = new RealValue(aic);
+    	}
+    	if(bic != null){
+    		this.bic = new RealValue(bic);
+    	}
+    	if(dic != null){
+    		this.dic = new RealValue(dic);
+    	}
+    }
 
     /**
      * Gets the value of the aic property.
