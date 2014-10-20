@@ -72,8 +72,8 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SOTableDistribType", propOrder = {
-    "abstractContinuousUnivariateDistribution",
-    "abstractContinuousMultivariateDistribution",
+    "jaxb_abstractContinuousUnivariateDistribution",
+    "jaxb_abstractContinuousMultivariateDistribution",
     "dataSet"
 })
 @XmlJavaTypeAdapter(SOTableDistrib.Adapter.class)

@@ -47,7 +47,6 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
 @XmlType(name = "LikelihoodType", propOrder = {
     "logLikelihood",
     "deviance",
-    "ofv",
     "individualContribToLL",
     "informationCriteria"
 })
