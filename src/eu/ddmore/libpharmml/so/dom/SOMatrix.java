@@ -13,12 +13,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
- * Type defining the natrix with estimation results.
+ * Type defining the matrix with estimation results. This class acts as a wrapper
+ * for the PharmML {@link Matrix} class.
  * 
  * <p>Java class for SOMatrixType complex type.
  * 
@@ -47,7 +49,7 @@ public class SOMatrix
 {
 
     @XmlElement(name = "Matrix", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected MatrixType matrix;
+    protected Matrix matrix;
 
     /**
      * Matrix for results storage.
@@ -57,7 +59,7 @@ public class SOMatrix
      *     {@link MatrixType }
      *     
      */
-    public MatrixType getMatrix() {
+    public Matrix getMatrix() {
         return matrix;
     }
 
@@ -69,8 +71,18 @@ public class SOMatrix
      *     {@link MatrixType }
      *     
      */
-    public void setMatrix(MatrixType value) {
+    public void setMatrix(Matrix value) {
         this.matrix = value;
+    }
+    
+    /**
+     * Creates a new {@link Matrix} element and returns it.
+     * @return The created matrix object.
+     */
+    public Matrix createMatrix(){
+    	Matrix nMatrix = new Matrix();
+    	this.matrix = nMatrix;
+    	return nMatrix;
     }
 
 }
