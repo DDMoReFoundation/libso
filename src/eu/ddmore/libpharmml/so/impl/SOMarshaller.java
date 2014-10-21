@@ -22,7 +22,6 @@ import javax.xml.validation.Schema;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
-import eu.ddmore.libpharmml.so.dom.SOElement;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
