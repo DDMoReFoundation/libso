@@ -8,7 +8,7 @@ import eu.ddmore.libpharmml.impl.ValidationReportFactory;
 import eu.ddmore.libpharmml.so.StandardisedOutputResource;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
-public class libSO {
+public class LibSO {
 
 	private SOMarshaller marshaller;
 	private SOValidator validator;

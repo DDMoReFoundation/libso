@@ -2,7 +2,7 @@ package eu.ddmore.libpharmml.so;
 
 import eu.ddmore.libpharmml.so.impl.SOMarshaller;
 import eu.ddmore.libpharmml.so.impl.SOValidator;
-import eu.ddmore.libpharmml.so.impl.libSO;
+import eu.ddmore.libpharmml.so.impl.LibSO;
 
 public class SOFactory {
 
@@ -24,8 +24,8 @@ public class SOFactory {
 	 * be ready to use and set with an appropriate marshaller and validator.
 	 * @return the new instance of the API.
 	 */
-	public libSO createLibSO(){
-		libSO retVal = new libSO();
+	public LibSO createLibSO(){
+		LibSO retVal = new LibSO();
 		retVal.setMarshaller(new SOMarshaller());
 		retVal.setValidator(new SOValidator());
 		return retVal;
