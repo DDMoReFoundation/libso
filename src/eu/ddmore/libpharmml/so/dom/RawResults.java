@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
+import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
 
 
 /**
@@ -87,6 +88,25 @@ public class RawResults
      */
     public ImportDataType createRawFile(){
     	ImportDataType el = new ImportDataType();
+    	getListOfRawFile().add(el);
+    	return el;
+    }
+    
+    /**
+     * Creates a new {@link ImportDataType} raw file with all the required parameters, adds
+     * it to the current object and returns it.
+     * @param oid
+     * @param path Relative path to data file.
+     * @param format The file format. (eg. CSV).
+     * @param delimiter
+     * @return The created {@link ImportDataType} object.
+     */
+    public ImportDataType createRawFile(String oid, String path, String format, Delimiter delimiter){
+    	ImportDataType el = new ImportDataType();
+    	el.setOid(oid);
+    	el.setPath(path);
+    	el.setFormat(format);
+    	el.setDelimiter(delimiter);
     	getListOfRawFile().add(el);
     	return el;
     }
