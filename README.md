@@ -76,6 +76,11 @@ version: 0.1-b1
 		StandardisedOutputResource soResource = libSO.createDom(SOVersion.DEFAULT);
 
 
+### Creating SO resource
+
+		StandardisedOutputResource soResource = libSO.createDom(SOVersion.DEFAULT);
+
+
 ### Starting populating the SO
 
 		StandardisedOutput so = soResource.getDom();
@@ -86,6 +91,11 @@ version: 0.1-b1
 
 		so.createPharmMLRef("pharmml_model.xml");
 
+		
+### Adding a reference to the PharmML model
+
+		so.createPharmMLRef("pharmml_model.xml");
+	
 
 ### Creating a SOBlock that will contain the results
 
@@ -104,6 +114,11 @@ version: 0.1-b1
 		}
 
 
+### Saving the file
+
+		libSO.save(new FileOutputStream("/homes/florent/tmp/so_out.xml"), soResource);
+
+		
 ### Saving the file
 
 		libSO.save(new FileOutputStream("/homes/florent/tmp/so_out.xml"), soResource);
