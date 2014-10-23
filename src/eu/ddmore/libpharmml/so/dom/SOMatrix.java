@@ -30,13 +30,18 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
 /**
- * Type defining the natrix with estimation results.
+ * Type defining the matrix with estimation results. This object acts as a wrapper
+ * to a common matrix object. Data is available through the enclosed matrix and not
+ * through this SOMatrix object.
  * 
  * <p>Java class for SOMatrixType complex type.
  * 
@@ -65,17 +70,18 @@ public class SOMatrix
 {
 
     @XmlElement(name = "Matrix", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
-    protected MatrixType matrix;
+    @XmlJavaTypeAdapter(SOMatrix.MatrixAdapter.class)
+    protected Matrix matrix;
 
     /**
-     * Matrix for results storage.
+     * Returns the actual matrix that contains the results.
      * 
      * @return
      *     possible object is
      *     {@link MatrixType }
      *     
      */
-    public MatrixType getMatrix() {
+    public Matrix getMatrix() {
         return matrix;
     }
 
@@ -87,8 +93,52 @@ public class SOMatrix
      *     {@link MatrixType }
      *     
      */
-    public void setMatrix(MatrixType value) {
+    public void setMatrix(Matrix value) {
         this.matrix = value;
+    }
+    
+    /**
+     * Creates a new {@link Matrix} object, addis it the current SOMatrix and returns it.
+     * @param type Type of the matrix. See {@link Matrix} documentation.
+     * @return The {@link Matrix} object.
+     */
+    public Matrix createMatrix(Matrix.Type type){
+    	Matrix matrix = new Matrix();
+    	matrix.setMatrixType(type);
+    	this.matrix = matrix;
+    	return matrix;
+    }
+    
+    public static class MatrixAdapter extends XmlAdapter<MatrixType, Matrix>{
+
+		@Override
+		public Matrix unmarshal(MatrixType v) throws Exception {
+			Matrix matrix;
+			if(v != null){
+				matrix = new Matrix();
+				matrix.setColumnNames(v.getColumnNames());
+				matrix.setDescription(v.getDescription());
+				matrix.setDiagDefault(v.getDiagDefault());
+				matrix.setId(v.getId());
+				matrix.setMatrixType(v.getMatrixType());
+				matrix.setNumbCols(v.getNumbCols());
+				matrix.setNumbRows(v.getNumbRows());
+				matrix.setOffDiagDefault(v.getOffDiagDefault());
+				matrix.setRowNames(v.getRowNames());
+				matrix.setSymbId(v.getSymbId());
+				matrix.setUnmarshalVersion(v.getUnmarshalVersion());
+				matrix.getListOfMatrixElements().addAll(v.getListOfMatrixElements());
+			} else {
+				matrix = null;
+			}
+			return matrix;
+		}
+
+		@Override
+		public MatrixType marshal(Matrix v) throws Exception {
+			return v;
+		}
+    	
     }
 
 }
