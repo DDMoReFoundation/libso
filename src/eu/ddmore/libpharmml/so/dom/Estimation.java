@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -89,7 +89,7 @@ public class Estimation
     @XmlElement(name = "Residuals")
     protected Residuals residuals;
     @XmlElement(name = "Predictions")
-    protected DataSetType predictions;
+    protected DataSet predictions;
     @XmlElement(name = "Likelihood")
     protected Likelihood likelihood;
     @XmlElement(name = "TargetToolMessages")
@@ -223,7 +223,7 @@ public class Estimation
      *     {@link DataSetType }
      *     
      */
-    public DataSetType getPredictions() {
+    public DataSet getPredictions() {
         return predictions;
     }
 
@@ -235,7 +235,7 @@ public class Estimation
      *     {@link DataSetType }
      *     
      */
-    public void setPredictions(DataSetType value) {
+    public void setPredictions(DataSet value) {
         this.predictions = value;
     }
 
@@ -341,8 +341,8 @@ public class Estimation
      * Creates a new empty {@link DataSetType} predictions element, adds it to the current object and returns it.
      * @return The created {@link DataSetType} object.
      */
-    public DataSetType createPredictions(){
-    	DataSetType el = new DataSetType();
+    public DataSet createPredictions(){
+    	DataSet el = new DataSet();
     	this.predictions = el;
     	return el;
     }

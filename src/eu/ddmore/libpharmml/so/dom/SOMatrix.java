@@ -34,7 +34,6 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
-import eu.ddmore.libpharmml.dom.commontypes.MatrixType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 
 
@@ -43,12 +42,12 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * to a common matrix object. Data is available through the enclosed matrix and not
  * through this SOMatrix object.
  * 
- * <p>Java class for SOMatrixType complex type.
+ * <p>Java class for SOMatrix complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SOMatrixType">
+ * &lt;complexType name="SOMatrix">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
@@ -62,7 +61,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SOMatrixType", propOrder = {
+@XmlType(name = "SOMatrix", propOrder = {
     "matrix"
 })
 public class SOMatrix
@@ -78,7 +77,7 @@ public class SOMatrix
      * 
      * @return
      *     possible object is
-     *     {@link MatrixType }
+     *     {@link Matrix }
      *     
      */
     public Matrix getMatrix() {
@@ -90,7 +89,7 @@ public class SOMatrix
      * 
      * @param value
      *     allowed object is
-     *     {@link MatrixType }
+     *     {@link Matrix }
      *     
      */
     public void setMatrix(Matrix value) {
@@ -109,10 +108,10 @@ public class SOMatrix
     	return matrix;
     }
     
-    public static class MatrixAdapter extends XmlAdapter<MatrixType, Matrix>{
+    public static class MatrixAdapter extends XmlAdapter<Matrix, Matrix>{
 
 		@Override
-		public Matrix unmarshal(MatrixType v) throws Exception {
+		public Matrix unmarshal(Matrix v) throws Exception {
 			Matrix matrix;
 			if(v != null){
 				matrix = new Matrix();
@@ -135,7 +134,7 @@ public class SOMatrix
 		}
 
 		@Override
-		public MatrixType marshal(Matrix v) throws Exception {
+		public Matrix marshal(Matrix v) throws Exception {
 			return v;
 		}
     	

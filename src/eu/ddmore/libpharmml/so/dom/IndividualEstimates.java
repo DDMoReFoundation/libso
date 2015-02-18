@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -99,7 +99,7 @@ public class IndividualEstimates
     @XmlElement(name = "RandomEffects")
     protected IndividualEstimates.RandomEffects randomEffects;
     @XmlElement(name = "EtaShrinkage")
-    protected DataSetType etaShrinkage;
+    protected DataSet etaShrinkage;
 
     /**
      * Gets the value of the estimates property.
@@ -157,7 +157,7 @@ public class IndividualEstimates
      *     {@link DataSetType }
      *     
      */
-    public DataSetType getEtaShrinkage() {
+    public DataSet getEtaShrinkage() {
         return etaShrinkage;
     }
 
@@ -169,7 +169,7 @@ public class IndividualEstimates
      *     {@link DataSetType }
      *     
      */
-    public void setEtaShrinkage(DataSetType value) {
+    public void setEtaShrinkage(DataSet value) {
         this.etaShrinkage = value;
     }
 
@@ -208,13 +208,13 @@ public class IndividualEstimates
     {
 
         @XmlElement(name = "Mean")
-        protected DataSetType mean;
+        protected DataSet mean;
         @XmlElement(name = "Median")
-        protected DataSetType median;
+        protected DataSet median;
         @XmlElement(name = "Mode")
-        protected DataSetType mode;
+        protected DataSet mode;
         @XmlElement(name = "Samples")
-        protected DataSetType samples;
+        protected DataSet samples;
 
         /**
          * Gets the value of the mean property.
@@ -224,7 +224,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getMean() {
+        public DataSet getMean() {
             return mean;
         }
 
@@ -236,7 +236,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public void setMean(DataSetType value) {
+        public void setMean(DataSet value) {
             this.mean = value;
         }
 
@@ -248,7 +248,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getMedian() {
+        public DataSet getMedian() {
             return median;
         }
 
@@ -260,7 +260,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public void setMedian(DataSetType value) {
+        public void setMedian(DataSet value) {
             this.median = value;
         }
 
@@ -272,7 +272,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getMode() {
+        public DataSet getMode() {
             return mode;
         }
 
@@ -281,10 +281,10 @@ public class IndividualEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setMode(DataSetType value) {
+        public void setMode(DataSet value) {
             this.mode = value;
         }
 
@@ -293,10 +293,10 @@ public class IndividualEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getSamples() {
+        public DataSet getSamples() {
             return samples;
         }
 
@@ -305,49 +305,49 @@ public class IndividualEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setSamples(DataSetType value) {
+        public void setSamples(DataSet value) {
             this.samples = value;
         }
         
         /**
-         * Creates a new empty {@link DataSetType} mean element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} mean element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createMean(){
-        	DataSetType el = new DataSetType();
+        public DataSet createMean(){
+        	DataSet el = new DataSet();
         	this.mean = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} median element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} median element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createMedian(){
-        	DataSetType el = new DataSetType();
+        public DataSet createMedian(){
+        	DataSet el = new DataSet();
         	this.median = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} mode element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} mode element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createMode(){
-        	DataSetType el = new DataSetType();
+        public DataSet createMode(){
+        	DataSet el = new DataSet();
         	this.mode = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} samples element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} samples element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createSamples(){
-        	DataSetType el = new DataSetType();
+        public DataSet createSamples(){
+        	DataSet el = new DataSet();
         	this.samples = el;
         	return el;
         }
@@ -390,23 +390,23 @@ public class IndividualEstimates
     {
 
         @XmlElement(name = "EffectMean")
-        protected DataSetType effectMean;
+        protected DataSet effectMean;
         @XmlElement(name = "EffectMedian")
-        protected DataSetType effectMedian;
+        protected DataSet effectMedian;
         @XmlElement(name = "EffectMode")
-        protected DataSetType effectMode;
+        protected DataSet effectMode;
         @XmlElement(name = "Samples")
-        protected DataSetType samples;
+        protected DataSet samples;
 
         /**
          * Gets the value of the effectMean property.
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getEffectMean() {
+        public DataSet getEffectMean() {
             return effectMean;
         }
 
@@ -415,10 +415,10 @@ public class IndividualEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setEffectMean(DataSetType value) {
+        public void setEffectMean(DataSet value) {
             this.effectMean = value;
         }
 
@@ -430,7 +430,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getEffectMedian() {
+        public DataSet getEffectMedian() {
             return effectMedian;
         }
 
@@ -442,7 +442,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public void setEffectMedian(DataSetType value) {
+        public void setEffectMedian(DataSet value) {
             this.effectMedian = value;
         }
 
@@ -454,7 +454,7 @@ public class IndividualEstimates
          *     {@link DataSetType }
          *     
          */
-        public DataSetType getEffectMode() {
+        public DataSet getEffectMode() {
             return effectMode;
         }
 
@@ -463,10 +463,10 @@ public class IndividualEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setEffectMode(DataSetType value) {
+        public void setEffectMode(DataSet value) {
             this.effectMode = value;
         }
 
@@ -475,10 +475,10 @@ public class IndividualEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getSamples() {
+        public DataSet getSamples() {
             return samples;
         }
 
@@ -487,49 +487,49 @@ public class IndividualEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setSamples(DataSetType value) {
+        public void setSamples(DataSet value) {
             this.samples = value;
         }
         
         /**
-         * Creates a new empty {@link DataSetType} effectMean element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} effectMean element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createEffectMean(){
-        	DataSetType el = new DataSetType();
+        public DataSet createEffectMean(){
+        	DataSet el = new DataSet();
         	this.effectMean = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} effectMedian element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} effectMedian element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createEffectMedian(){
-        	DataSetType el = new DataSetType();
+        public DataSet createEffectMedian(){
+        	DataSet el = new DataSet();
         	this.effectMedian = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} effectMode element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} effectMode element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createEffectMode(){
-        	DataSetType el = new DataSetType();
+        public DataSet createEffectMode(){
+        	DataSet el = new DataSet();
         	this.effectMode = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} samples element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} samples element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createSamples(){
-        	DataSetType el = new DataSetType();
+        public DataSet createSamples(){
+        	DataSet el = new DataSet();
         	this.samples = el;
         	return el;
         }
@@ -558,11 +558,11 @@ public class IndividualEstimates
     }
 
     /**
-     * Creates a new empty {@link DataSetType} etaShrinkage element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} etaShrinkage element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createEtaShrinkage(){
-    	DataSetType el = new DataSetType();
+    public DataSet createEtaShrinkage(){
+    	DataSet el = new DataSet();
     	this.etaShrinkage = el;
     	return el;
     }

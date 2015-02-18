@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -59,9 +59,9 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *                   &lt;element name="FIM" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
  *                   &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
  *                   &lt;element name="CorrelationMatrix" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
- *                   &lt;element name="StandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="StandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *                   &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *                   &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -72,9 +72,9 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *             &lt;complexContent>
  *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *                 &lt;sequence>
- *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
  *                   &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -85,9 +85,9 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *             &lt;complexContent>
  *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *                 &lt;sequence>
- *                   &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
  *                   &lt;element name="ParameterDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -201,9 +201,9 @@ public class PrecisionPopulationEstimates
      *   &lt;complexContent>
      *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
      *       &lt;sequence>
-     *         &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
      *         &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
-     *         &lt;element name="QuantilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="QuantilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -223,21 +223,21 @@ public class PrecisionPopulationEstimates
     {
 
         @XmlElement(name = "StandardDeviationPosterior")
-        protected DataSetType standardDeviationPosterior;
+        protected DataSet standardDeviationPosterior;
         @XmlElement(name = "PosteriorDistribution")
         protected SOTableDistrib posteriorDistribution;
         @XmlElement(name = "PercentilesCI")
-        protected DataSetType percentilesCI;
+        protected DataSet percentilesCI;
 
         /**
          * Gets the value of the standardDeviationPosterior property.
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getStandardDeviationPosterior() {
+        public DataSet getStandardDeviationPosterior() {
             return standardDeviationPosterior;
         }
 
@@ -246,10 +246,10 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setStandardDeviationPosterior(DataSetType value) {
+        public void setStandardDeviationPosterior(DataSet value) {
             this.standardDeviationPosterior = value;
         }
 
@@ -282,10 +282,10 @@ public class PrecisionPopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getPercentilesCI() {
+        public DataSet getPercentilesCI() {
             return percentilesCI;
         }
 
@@ -294,19 +294,19 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setPercentilesCI(DataSetType value) {
+        public void setPercentilesCI(DataSet value) {
             this.percentilesCI = value;
         }
         
         /**
-         * Creates a new empty {@link DataSetType} standardDeviationPosterior element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} standardDeviationPosterior element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createStandardDeviationPosterior(){
-        	DataSetType el = new DataSetType();
+        public DataSet createStandardDeviationPosterior(){
+        	DataSet el = new DataSet();
         	this.standardDeviationPosterior = el;
         	return el;
         }
@@ -322,11 +322,11 @@ public class PrecisionPopulationEstimates
         }
 
         /**
-         * Creates a new empty {@link DataSetType} percentilesCI element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} percentilesCI element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createPercentilesCI(){
-        	DataSetType el = new DataSetType();
+        public DataSet createPercentilesCI(){
+        	DataSet el = new DataSet();
         	this.percentilesCI = el;
         	return el;
         }
@@ -345,9 +345,9 @@ public class PrecisionPopulationEstimates
      *   &lt;complexContent>
      *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
      *       &lt;sequence>
-     *         &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
      *         &lt;element name="ParameterDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
-     *         &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -367,21 +367,21 @@ public class PrecisionPopulationEstimates
     {
 
         @XmlElement(name = "StandardDeviation")
-        protected DataSetType standardDeviation;
+        protected DataSet standardDeviation;
         @XmlElement(name = "ParameterDistribution")
         protected SOTableDistrib parameterDistribution;
         @XmlElement(name = "PercentilesCI")
-        protected DataSetType percentilesCI;
+        protected DataSet percentilesCI;
 
         /**
          * Gets the value of the standardDeviation property.
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getStandardDeviation() {
+        public DataSet getStandardDeviation() {
             return standardDeviation;
         }
 
@@ -390,10 +390,10 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setStandardDeviation(DataSetType value) {
+        public void setStandardDeviation(DataSet value) {
             this.standardDeviation = value;
         }
 
@@ -426,10 +426,10 @@ public class PrecisionPopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getPercentilesCI() {
+        public DataSet getPercentilesCI() {
             return percentilesCI;
         }
 
@@ -438,19 +438,19 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setPercentilesCI(DataSetType value) {
+        public void setPercentilesCI(DataSet value) {
             this.percentilesCI = value;
         }
         
         /**
-         * Creates a new empty {@link DataSetType} standardDeviation element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} standardDeviation element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createStandardDeviation(){
-        	DataSetType el = new DataSetType();
+        public DataSet createStandardDeviation(){
+        	DataSet el = new DataSet();
         	this.standardDeviation = el;
         	return el;
         }
@@ -466,11 +466,11 @@ public class PrecisionPopulationEstimates
         }
 
         /**
-         * Creates a new empty {@link DataSetType} percentilesCI element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} percentilesCI element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createPercentilesCI(){
-        	DataSetType el = new DataSetType();
+        public DataSet createPercentilesCI(){
+        	DataSet el = new DataSet();
         	this.percentilesCI = el;
         	return el;
         }
@@ -492,9 +492,9 @@ public class PrecisionPopulationEstimates
      *         &lt;element name="FIM" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
      *         &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
      *         &lt;element name="CorrelationMatrix" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
-     *         &lt;element name="StandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="StandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+     *         &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+     *         &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -523,11 +523,11 @@ public class PrecisionPopulationEstimates
         @XmlElement(name = "CorrelationMatrix")
         protected SOMatrix correlationMatrix;
         @XmlElement(name = "StandardError")
-        protected DataSetType standardError;
+        protected DataSet standardError;
         @XmlElement(name = "RelativeStandardError")
-        protected DataSetType relativeStandardError;
+        protected DataSet relativeStandardError;
         @XmlElement(name = "AsymptoticCI")
-        protected DataSetType asymptoticCI;
+        protected DataSet asymptoticCI;
 
         /**
          * Gets the value of the fim property.
@@ -606,10 +606,10 @@ public class PrecisionPopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getStandardError() {
+        public DataSet getStandardError() {
             return standardError;
         }
 
@@ -618,10 +618,10 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setStandardError(DataSetType value) {
+        public void setStandardError(DataSet value) {
             this.standardError = value;
         }
 
@@ -630,10 +630,10 @@ public class PrecisionPopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getRelativeStandardError() {
+        public DataSet getRelativeStandardError() {
             return relativeStandardError;
         }
 
@@ -642,10 +642,10 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setRelativeStandardError(DataSetType value) {
+        public void setRelativeStandardError(DataSet value) {
             this.relativeStandardError = value;
         }
 
@@ -654,10 +654,10 @@ public class PrecisionPopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getAsymptoticCI() {
+        public DataSet getAsymptoticCI() {
             return asymptoticCI;
         }
 
@@ -666,10 +666,10 @@ public class PrecisionPopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setAsymptoticCI(DataSetType value) {
+        public void setAsymptoticCI(DataSet value) {
             this.asymptoticCI = value;
         }
         
@@ -704,31 +704,31 @@ public class PrecisionPopulationEstimates
         }
 
         /**
-         * Creates a new empty {@link DataSetType} standardError element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} standardError element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createStandardError(){
-        	DataSetType el = new DataSetType();
+        public DataSet createStandardError(){
+        	DataSet el = new DataSet();
         	this.standardError = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} relativeStandardError element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} relativeStandardError element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createRelativeStandardError(){
-        	DataSetType el = new DataSetType();
+        public DataSet createRelativeStandardError(){
+        	DataSet el = new DataSet();
         	this.relativeStandardError = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} asymptoticCI element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} asymptoticCI element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createAsymptoticCI(){
-        	DataSetType el = new DataSetType();
+        public DataSet createAsymptoticCI(){
+        	DataSet el = new DataSet();
         	this.asymptoticCI = el;
         	return el;
         }

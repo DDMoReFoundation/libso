@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -47,13 +47,13 @@ import eu.ddmore.libpharmml.dom.dataset.DataSetType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="RES" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="IRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="WRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="CWRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="IWRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="PD" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="NPDE" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *         &lt;element name="RES" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="IRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="WRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="CWRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="IWRES" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="PD" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="NPDE" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -77,29 +77,29 @@ public class Residuals
 {
 
     @XmlElement(name = "RES")
-    protected DataSetType res;
+    protected DataSet res;
     @XmlElement(name = "IRES")
-    protected DataSetType ires;
+    protected DataSet ires;
     @XmlElement(name = "WRES")
-    protected DataSetType wres;
+    protected DataSet wres;
     @XmlElement(name = "CWRES")
-    protected DataSetType cwres;
+    protected DataSet cwres;
     @XmlElement(name = "IWRES")
-    protected DataSetType iwres;
+    protected DataSet iwres;
     @XmlElement(name = "PD")
-    protected DataSetType pd;
+    protected DataSet pd;
     @XmlElement(name = "NPDE")
-    protected DataSetType npde;
+    protected DataSet npde;
 
     /**
      * Gets the value of the res property.
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getRES() {
+    public DataSet getRES() {
         return res;
     }
 
@@ -108,10 +108,10 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setRES(DataSetType value) {
+    public void setRES(DataSet value) {
         this.res = value;
     }
 
@@ -120,10 +120,10 @@ public class Residuals
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getIRES() {
+    public DataSet getIRES() {
         return ires;
     }
 
@@ -132,10 +132,10 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setIRES(DataSetType value) {
+    public void setIRES(DataSet value) {
         this.ires = value;
     }
 
@@ -144,10 +144,10 @@ public class Residuals
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getWRES() {
+    public DataSet getWRES() {
         return wres;
     }
 
@@ -156,10 +156,10 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setWRES(DataSetType value) {
+    public void setWRES(DataSet value) {
         this.wres = value;
     }
 
@@ -168,10 +168,10 @@ public class Residuals
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getCWRES() {
+    public DataSet getCWRES() {
         return cwres;
     }
 
@@ -180,10 +180,10 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setCWRES(DataSetType value) {
+    public void setCWRES(DataSet value) {
         this.cwres = value;
     }
 
@@ -192,10 +192,10 @@ public class Residuals
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getIWRES() {
+    public DataSet getIWRES() {
         return iwres;
     }
 
@@ -204,10 +204,10 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setIWRES(DataSetType value) {
+    public void setIWRES(DataSet value) {
         this.iwres = value;
     }
 
@@ -216,10 +216,10 @@ public class Residuals
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getPD() {
+    public DataSet getPD() {
         return pd;
     }
 
@@ -228,10 +228,10 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setPD(DataSetType value) {
+    public void setPD(DataSet value) {
         this.pd = value;
     }
 
@@ -240,10 +240,10 @@ public class Residuals
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getNPDE() {
+    public DataSet getNPDE() {
         return npde;
     }
 
@@ -252,79 +252,79 @@ public class Residuals
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setNPDE(DataSetType value) {
+    public void setNPDE(DataSet value) {
         this.npde = value;
     }
     
     /**
-     * Creates a new empty {@link DataSetType} res element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} res element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createRes(){
-    	DataSetType el = new DataSetType();
+    public DataSet createRes(){
+    	DataSet el = new DataSet();
     	this.res = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link DataSetType} ires element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} ires element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createIres(){
-    	DataSetType el = new DataSetType();
+    public DataSet createIres(){
+    	DataSet el = new DataSet();
     	this.ires = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link DataSetType} wres element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} wres element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createWres(){
-    	DataSetType el = new DataSetType();
+    public DataSet createWres(){
+    	DataSet el = new DataSet();
     	this.wres = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link DataSetType} cwres element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} cwres element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createCwres(){
-    	DataSetType el = new DataSetType();
+    public DataSet createCwres(){
+    	DataSet el = new DataSet();
     	this.cwres = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link DataSetType} iwres element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} iwres element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createIwres(){
-    	DataSetType el = new DataSetType();
+    public DataSet createIwres(){
+    	DataSet el = new DataSet();
     	this.iwres = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link DataSetType} pd element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} pd element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createPd(){
-    	DataSetType el = new DataSetType();
+    public DataSet createPd(){
+    	DataSet el = new DataSet();
     	this.pd = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link DataSetType} npde element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} npde element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createNpde(){
-    	DataSetType el = new DataSetType();
+    public DataSet createNpde(){
+    	DataSet el = new DataSet();
     	this.npde = el;
     	return el;
     }

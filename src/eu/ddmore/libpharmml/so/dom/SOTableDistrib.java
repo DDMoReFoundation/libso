@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousMultivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractContinuousUnivariateDistributionType;
 import eu.ddmore.libpharmml.dom.uncertml.AbstractDistributionType;
@@ -79,7 +79,7 @@ import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
  *       &lt;choice>
  *         &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousUnivariateDistribution"/>
  *         &lt;element ref="{http://www.uncertml.org/3.0}AbstractContinuousMultivariateDistribution"/>
- *         &lt;element name="DataSet" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType"/>
+ *         &lt;element name="DataSet" type="{http://www.pharmml.org/2013/08/Dataset}DataSet"/>
  *       &lt;/choice>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -104,7 +104,7 @@ public class SOTableDistrib
     @XmlElementRef(name = "AbstractContinuousMultivariateDistribution", namespace = "http://www.uncertml.org/3.0", type = JAXBElement.class, required = false)
     protected JAXBElement<? extends AbstractContinuousMultivariateDistributionType> jaxb_abstractContinuousMultivariateDistribution;
     @XmlElement(name = "DataSet")
-    protected DataSetType dataSet;
+    protected DataSet dataSet;
     
     @XmlTransient
     protected AbstractDistributionType distribution;
@@ -242,10 +242,10 @@ public class SOTableDistrib
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getDataSet() {
+    public DataSet getDataSet() {
         return dataSet;
     }
 
@@ -254,10 +254,10 @@ public class SOTableDistrib
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setDataSet(DataSetType value) {
+    public void setDataSet(DataSet value) {
         this.dataSet = value;
     }
     

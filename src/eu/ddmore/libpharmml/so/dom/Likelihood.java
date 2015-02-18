@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -73,11 +73,11 @@ public class Likelihood
 {
 
     @XmlElement(name = "LogLikelihood")
-    protected RealValueType logLikelihood;
+    protected RealValue logLikelihood;
     @XmlElement(name = "Deviance")
-    protected RealValueType deviance;
+    protected RealValue deviance;
     @XmlElement(name = "IndividualContribToLL")
-    protected DataSetType individualContribToLL;
+    protected DataSet individualContribToLL;
     @XmlElement(name = "InformationCriteria")
     protected InformationCriteria informationCriteria;
 
@@ -86,10 +86,10 @@ public class Likelihood
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getLogLikelihood() {
+    public RealValue getLogLikelihood() {
         return logLikelihood;
     }
 
@@ -98,10 +98,10 @@ public class Likelihood
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setLogLikelihood(RealValueType value) {
+    public void setLogLikelihood(RealValue value) {
         this.logLikelihood = value;
     }
 
@@ -110,10 +110,10 @@ public class Likelihood
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getDeviance() {
+    public RealValue getDeviance() {
         return deviance;
     }
 
@@ -122,10 +122,10 @@ public class Likelihood
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setDeviance(RealValueType value) {
+    public void setDeviance(RealValue value) {
         this.deviance = value;
     }
 
@@ -137,7 +137,7 @@ public class Likelihood
      *     {@link DataSetType }
      *     
      */
-    public DataSetType getIndividualContribToLL() {
+    public DataSet getIndividualContribToLL() {
         return individualContribToLL;
     }
 
@@ -149,7 +149,7 @@ public class Likelihood
      *     {@link DataSetType }
      *     
      */
-    public void setIndividualContribToLL(DataSetType value) {
+    public void setIndividualContribToLL(DataSet value) {
         this.individualContribToLL = value;
     }
 
@@ -178,42 +178,42 @@ public class Likelihood
     }
     
     /**
-     * Creates a new empty {@link RealValueType} logLikelihood element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} logLikelihood element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createLogLikelihood(){
-    	RealValueType el = new RealValueType();
+    public RealValue createLogLikelihood(){
+    	RealValue el = new RealValue();
     	this.logLikelihood = el;
     	return el;
     }
     /**
-     * Creates a new {@link RealValueType} logLikelihood element, adds it to the current object and returns it.
+     * Creates a new {@link RealValue} logLikelihood element, adds it to the current object and returns it.
      * @param value The real value of the element.
-     * @return The created {@link RealValueType} object.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createLogLikelihood(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createLogLikelihood(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.logLikelihood = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link RealValueType} deviance element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} deviance element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createDeviance(){
-    	RealValueType el = new RealValueType();
+    public RealValue createDeviance(){
+    	RealValue el = new RealValue();
     	this.deviance = el;
     	return el;
     }
     /**
-     * Creates a new empty {@link RealValueType} deviance element, adds it to the current object and returns it.
+     * Creates a new empty {@link RealValue} deviance element, adds it to the current object and returns it.
      * @param value The real value of the element.
-     * @return The created {@link RealValueType} object.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createDeviance(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createDeviance(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.deviance = el;
     	return el;
@@ -223,8 +223,8 @@ public class Likelihood
      * Creates a new empty {@link DataSetType} individualContribToLL element, adds it to the current object and returns it.
      * @return The created {@link DataSetType} object.
      */
-    public DataSetType createIndividualContribToLL(){
-    	DataSetType el = new DataSetType();
+    public DataSet createIndividualContribToLL(){
+    	DataSet el = new DataSet();
     	this.individualContribToLL = el;
     	return el;
     }

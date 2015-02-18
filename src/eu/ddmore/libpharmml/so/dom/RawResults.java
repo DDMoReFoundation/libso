@@ -35,8 +35,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
-import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
+import eu.ddmore.libpharmml.dom.dataset.ImportData;
+import eu.ddmore.libpharmml.dom.dataset.ImportData.Delimiter;
 
 
 /**
@@ -51,7 +51,7 @@ import eu.ddmore.libpharmml.dom.dataset.ImportDataType.Delimiter;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="RawFile" type="{http://www.pharmml.org/2013/08/Dataset}ImportDataType" maxOccurs="unbounded"/>
+ *         &lt;element name="RawFile" type="{http://www.pharmml.org/2013/08/Dataset}ImportData" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -69,7 +69,7 @@ public class RawResults
 {
 
     @XmlElement(name = "RawFile", required = true)
-    protected List<ImportDataType> rawFile;
+    protected List<ImportData> rawFile;
 
     /**
      * Gets the value of the rawFile property.
@@ -89,38 +89,38 @@ public class RawResults
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ImportDataType }
+     * {@link ImportData }
      * 
      * 
      */
-    public List<ImportDataType> getListOfRawFile() {
+    public List<ImportData> getListOfRawFile() {
         if (rawFile == null) {
-            rawFile = new ArrayList<ImportDataType>();
+            rawFile = new ArrayList<ImportData>();
         }
         return this.rawFile;
     }
     
     /**
-     * Creates a new empty {@link ImportDataType} rawFile element, adds it to the current object and returns it.
-     * @return The created {@link ImportDataType} object.
+     * Creates a new empty {@link ImportData} rawFile element, adds it to the current object and returns it.
+     * @return The created {@link ImportData} object.
      */
-    public ImportDataType createRawFile(){
-    	ImportDataType el = new ImportDataType();
+    public ImportData createRawFile(){
+    	ImportData el = new ImportData();
     	getListOfRawFile().add(el);
     	return el;
     }
     
     /**
-     * Creates a new {@link ImportDataType} raw file with all the required parameters, adds
+     * Creates a new {@link ImportData} raw file with all the required parameters, adds
      * it to the current object and returns it.
      * @param oid
      * @param path Relative path to data file.
      * @param format The file format. (eg. CSV).
      * @param delimiter
-     * @return The created {@link ImportDataType} object.
+     * @return The created {@link ImportData} object.
      */
-    public ImportDataType createRawFile(String oid, String path, String format, Delimiter delimiter){
-    	ImportDataType el = new ImportDataType();
+    public ImportData createRawFile(String oid, String path, String format, Delimiter delimiter){
+    	ImportData el = new ImportData();
     	el.setOid(oid);
     	el.setPath(path);
     	el.setFormat(format);

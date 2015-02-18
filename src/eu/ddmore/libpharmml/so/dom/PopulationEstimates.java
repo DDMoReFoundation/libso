@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSetType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
@@ -79,7 +79,7 @@ public class PopulationEstimates
 {
 
     @XmlElement(name = "MLE")
-    protected DataSetType mle;
+    protected DataSet mle;
     @XmlElement(name = "Bayesian")
     protected PopulationEstimates.Bayesian bayesian;
 
@@ -88,10 +88,10 @@ public class PopulationEstimates
      * 
      * @return
      *     possible object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public DataSetType getMLE() {
+    public DataSet getMLE() {
         return mle;
     }
 
@@ -100,10 +100,10 @@ public class PopulationEstimates
      * 
      * @param value
      *     allowed object is
-     *     {@link DataSetType }
+     *     {@link DataSet }
      *     
      */
-    public void setMLE(DataSetType value) {
+    public void setMLE(DataSet value) {
         this.mle = value;
     }
 
@@ -164,21 +164,21 @@ public class PopulationEstimates
     {
 
         @XmlElement(name = "PosteriorMean")
-        protected DataSetType posteriorMean;
+        protected DataSet posteriorMean;
         @XmlElement(name = "PosteriorMedian")
-        protected DataSetType posteriorMedian;
+        protected DataSet posteriorMedian;
         @XmlElement(name = "PosteriorMode")
-        protected DataSetType posteriorMode;
+        protected DataSet posteriorMode;
 
         /**
          * Gets the value of the posteriorMean property.
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getPosteriorMean() {
+        public DataSet getPosteriorMean() {
             return posteriorMean;
         }
 
@@ -187,10 +187,10 @@ public class PopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setPosteriorMean(DataSetType value) {
+        public void setPosteriorMean(DataSet value) {
             this.posteriorMean = value;
         }
 
@@ -199,10 +199,10 @@ public class PopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getPosteriorMedian() {
+        public DataSet getPosteriorMedian() {
             return posteriorMedian;
         }
 
@@ -211,10 +211,10 @@ public class PopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setPosteriorMedian(DataSetType value) {
+        public void setPosteriorMedian(DataSet value) {
             this.posteriorMedian = value;
         }
 
@@ -223,10 +223,10 @@ public class PopulationEstimates
          * 
          * @return
          *     possible object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public DataSetType getPosteriorMode() {
+        public DataSet getPosteriorMode() {
             return posteriorMode;
         }
 
@@ -235,39 +235,39 @@ public class PopulationEstimates
          * 
          * @param value
          *     allowed object is
-         *     {@link DataSetType }
+         *     {@link DataSet }
          *     
          */
-        public void setPosteriorMode(DataSetType value) {
+        public void setPosteriorMode(DataSet value) {
             this.posteriorMode = value;
         }
         
         /**
-         * Creates a new empty {@link DataSetType} posteriorMean element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} posteriorMean element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createPosteriorMean(){
-        	DataSetType el = new DataSetType();
+        public DataSet createPosteriorMean(){
+        	DataSet el = new DataSet();
         	this.posteriorMean = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} posteriorMedian element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} posteriorMedian element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createPosteriorMedian(){
-        	DataSetType el = new DataSetType();
+        public DataSet createPosteriorMedian(){
+        	DataSet el = new DataSet();
         	this.posteriorMedian = el;
         	return el;
         }
 
         /**
-         * Creates a new empty {@link DataSetType} posteriorMode element, adds it to the current object and returns it.
-         * @return The created {@link DataSetType} object.
+         * Creates a new empty {@link DataSet} posteriorMode element, adds it to the current object and returns it.
+         * @return The created {@link DataSet} object.
          */
-        public DataSetType createPosteriorMode(){
-        	DataSetType el = new DataSetType();
+        public DataSet createPosteriorMode(){
+        	DataSet el = new DataSet();
         	this.posteriorMode = el;
         	return el;
         }
@@ -276,11 +276,11 @@ public class PopulationEstimates
     }
     
     /**
-     * Creates a new empty {@link DataSetType} mle element, adds it to the current object and returns it.
-     * @return The created {@link DataSetType} object.
+     * Creates a new empty {@link DataSet} mle element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
      */
-    public DataSetType createMle(){
-    	DataSetType el = new DataSetType();
+    public DataSet createMle(){
+    	DataSet el = new DataSet();
     	this.mle = el;
     	return el;
     }

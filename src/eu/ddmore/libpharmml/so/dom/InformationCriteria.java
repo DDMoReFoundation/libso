@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
 
 
 /**
@@ -70,11 +69,11 @@ public class InformationCriteria
 {
 
     @XmlElement(name = "AIC")
-    protected RealValueType aic;
+    protected RealValue aic;
     @XmlElement(name = "BIC")
-    protected RealValueType bic;
+    protected RealValue bic;
     @XmlElement(name = "DIC")
-    protected RealValueType dic;
+    protected RealValue dic;
     
     /**
      * Empty constructor
@@ -106,10 +105,10 @@ public class InformationCriteria
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getAIC() {
+    public RealValue getAIC() {
         return aic;
     }
 
@@ -118,10 +117,10 @@ public class InformationCriteria
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setAIC(RealValueType value) {
+    public void setAIC(RealValue value) {
         this.aic = value;
     }
 
@@ -133,7 +132,7 @@ public class InformationCriteria
      *     {@link RealValueType }
      *     
      */
-    public RealValueType getBIC() {
+    public RealValue getBIC() {
         return bic;
     }
 
@@ -145,7 +144,7 @@ public class InformationCriteria
      *     {@link RealValueType }
      *     
      */
-    public void setBIC(RealValueType value) {
+    public void setBIC(RealValue value) {
         this.bic = value;
     }
 
@@ -157,7 +156,7 @@ public class InformationCriteria
      *     {@link RealValueType }
      *     
      */
-    public RealValueType getDIC() {
+    public RealValue getDIC() {
         return dic;
     }
 
@@ -169,68 +168,68 @@ public class InformationCriteria
      *     {@link RealValueType }
      *     
      */
-    public void setDIC(RealValueType value) {
+    public void setDIC(RealValue value) {
         this.dic = value;
     }
     
     /**
-     * Creates a new empty {@link RealValueType} aic element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} aic element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createAic(){
-    	RealValueType el = new RealValueType();
+    public RealValue createAic(){
+    	RealValue el = new RealValue();
     	this.aic = el;
     	return el;
     }
     /**
-     * Creates a new {@link RealValueType} aic element, adds it to the current object and returns it.
+     * Creates a new {@link RealValue} aic element, adds it to the current object and returns it.
      * @param value The real value of the element.
-     * @return The created {@link RealValueType} object.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createAic(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createAic(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.aic = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link RealValueType} bic element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} bic element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createBic(){
-    	RealValueType el = new RealValueType();
+    public RealValue createBic(){
+    	RealValue el = new RealValue();
     	this.bic = el;
     	return el;
     }
     /**
-     * Creates a new {@link RealValueType} bic element, adds it to the current object and returns it.
+     * Creates a new {@link RealValue} bic element, adds it to the current object and returns it.
      * @param value The real value of the element.
-     * @return The created {@link RealValueType} object.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createBic(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createBic(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.bic = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link RealValueType} dic element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} dic element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createDic(){
-    	RealValueType el = new RealValueType();
+    public RealValue createDic(){
+    	RealValue el = new RealValue();
     	this.dic = el;
     	return el;
     }
     /**
-     * Creates a new empty {@link RealValueType} dic element, adds it to the current object and returns it.
+     * Creates a new empty {@link RealValue} dic element, adds it to the current object and returns it.
      * @param value The real value of the element.
-     * @return The created {@link RealValueType} object.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createDic(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createDic(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.dic = el;
     	return el;

@@ -32,9 +32,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.commontypes.RealValueType;
-import eu.ddmore.libpharmml.dom.commontypes.StringValueType;
-import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.StringValue;
+import eu.ddmore.libpharmml.dom.dataset.ImportData;
 
 
 /**
@@ -49,13 +49,13 @@ import eu.ddmore.libpharmml.dom.dataset.ImportDataType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="Termination" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValueType" minOccurs="0"/>
- *         &lt;element name="Warnings" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValueType" minOccurs="0"/>
- *         &lt;element name="Errors" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValueType" minOccurs="0"/>
- *         &lt;element name="ElapsedTime" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="OutputFilePath" type="{http://www.pharmml.org/2013/08/Dataset}ImportDataType" minOccurs="0"/>
- *         &lt;element name="ChainsNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="IterationNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
+ *         &lt;element name="Termination" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
+ *         &lt;element name="Warnings" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
+ *         &lt;element name="Errors" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
+ *         &lt;element name="ElapsedTime" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
+ *         &lt;element name="OutputFilePath" type="{http://www.pharmml.org/2013/08/Dataset}ImportData" minOccurs="0"/>
+ *         &lt;element name="ChainsNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
+ *         &lt;element name="IterationNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -79,29 +79,29 @@ public class TargetToolMessages
 {
 
     @XmlElement(name = "Termination")
-    protected StringValueType termination;
+    protected StringValue termination;
     @XmlElement(name = "Warnings")
-    protected StringValueType warnings;
+    protected StringValue warnings;
     @XmlElement(name = "Errors")
-    protected StringValueType errors;
+    protected StringValue errors;
     @XmlElement(name = "ElapsedTime")
-    protected RealValueType elapsedTime;
+    protected RealValue elapsedTime;
     @XmlElement(name = "OutputFilePath")
-    protected ImportDataType outputFilePath;
+    protected ImportData outputFilePath;
     @XmlElement(name = "ChainsNumber")
-    protected RealValueType chainsNumber;
+    protected RealValue chainsNumber;
     @XmlElement(name = "IterationNumber")
-    protected RealValueType iterationNumber;
+    protected RealValue iterationNumber;
 
     /**
      * Gets the value of the termination property.
      * 
      * @return
      *     possible object is
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     
      */
-    public StringValueType getTermination() {
+    public StringValue getTermination() {
         return termination;
     }
 
@@ -110,10 +110,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     
      */
-    public void setTermination(StringValueType value) {
+    public void setTermination(StringValue value) {
         this.termination = value;
     }
 
@@ -122,10 +122,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     
      */
-    public StringValueType getWarnings() {
+    public StringValue getWarnings() {
         return warnings;
     }
 
@@ -134,10 +134,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     
      */
-    public void setWarnings(StringValueType value) {
+    public void setWarnings(StringValue value) {
         this.warnings = value;
     }
 
@@ -146,10 +146,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     
      */
-    public StringValueType getErrors() {
+    public StringValue getErrors() {
         return errors;
     }
 
@@ -158,10 +158,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link StringValueType }
+     *     {@link StringValue }
      *     
      */
-    public void setErrors(StringValueType value) {
+    public void setErrors(StringValue value) {
         this.errors = value;
     }
 
@@ -170,10 +170,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getElapsedTime() {
+    public RealValue getElapsedTime() {
         return elapsedTime;
     }
 
@@ -182,10 +182,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setElapsedTime(RealValueType value) {
+    public void setElapsedTime(RealValue value) {
         this.elapsedTime = value;
     }
 
@@ -194,10 +194,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link ImportDataType }
+     *     {@link ImportData }
      *     
      */
-    public ImportDataType getOutputFilePath() {
+    public ImportData getOutputFilePath() {
         return outputFilePath;
     }
 
@@ -206,10 +206,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportDataType }
+     *     {@link ImportData }
      *     
      */
-    public void setOutputFilePath(ImportDataType value) {
+    public void setOutputFilePath(ImportData value) {
         this.outputFilePath = value;
     }
 
@@ -218,10 +218,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getChainsNumber() {
+    public RealValue getChainsNumber() {
         return chainsNumber;
     }
 
@@ -230,10 +230,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setChainsNumber(RealValueType value) {
+    public void setChainsNumber(RealValue value) {
         this.chainsNumber = value;
     }
 
@@ -242,10 +242,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public RealValueType getIterationNumber() {
+    public RealValue getIterationNumber() {
         return iterationNumber;
     }
 
@@ -254,138 +254,138 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link RealValueType }
+     *     {@link RealValue }
      *     
      */
-    public void setIterationNumber(RealValueType value) {
+    public void setIterationNumber(RealValue value) {
         this.iterationNumber = value;
     }
     
     /**
-     * Creates a new empty {@link StringValueType} termination element, adds it to the current object and returns it.
-     * @return The created {@link StringValueType} object.
+     * Creates a new empty {@link StringValue} termination element, adds it to the current object and returns it.
+     * @return The created {@link StringValue} object.
      */
-    public StringValueType createTermination(){
-    	StringValueType el = new StringValueType();
+    public StringValue createTermination(){
+    	StringValue el = new StringValue();
     	this.termination = el;
     	return el;
     }
     /**
-     * Creates a new {@link StringValueType} termination element, adds it to the current object and returns it.
-     * @return The created {@link StringValueType} object.
+     * Creates a new {@link StringValue} termination element, adds it to the current object and returns it.
+     * @return The created {@link StringValue} object.
      */
-    public StringValueType createTermination(String value){
-    	StringValueType el = new StringValueType();
+    public StringValue createTermination(String value){
+    	StringValue el = new StringValue();
     	el.setValue(value);
     	this.termination = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link StringValueType} warnings element, adds it to the current object and returns it.
-     * @return The created {@link StringValueType} object.
+     * Creates a new empty {@link StringValue} warnings element, adds it to the current object and returns it.
+     * @return The created {@link StringValue} object.
      */
-    public StringValueType createWarnings(){
-    	StringValueType el = new StringValueType();
+    public StringValue createWarnings(){
+    	StringValue el = new StringValue();
     	this.warnings = el;
     	return el;
     }
     /**
-     * Creates a new {@link StringValueType} warnings element, adds it to the current object and returns it.
-     * @return The created {@link StringValueType} object.
+     * Creates a new {@link StringValue} warnings element, adds it to the current object and returns it.
+     * @return The created {@link StringValue} object.
      */
-    public StringValueType createWarnings(String value){
-    	StringValueType el = new StringValueType();
+    public StringValue createWarnings(String value){
+    	StringValue el = new StringValue();
     	el.setValue(value);
     	this.warnings = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link StringValueType} errors element, adds it to the current object and returns it.
-     * @return The created {@link StringValueType} object.
+     * Creates a new empty {@link StringValue} errors element, adds it to the current object and returns it.
+     * @return The created {@link StringValue} object.
      */
-    public StringValueType createErrors(){
-    	StringValueType el = new StringValueType();
+    public StringValue createErrors(){
+    	StringValue el = new StringValue();
     	this.errors = el;
     	return el;
     }
     /**
-     * Creates a new {@link StringValueType} errors element, adds it to the current object and returns it.
-     * @return The created {@link StringValueType} object.
+     * Creates a new {@link StringValue} errors element, adds it to the current object and returns it.
+     * @return The created {@link StringValue} object.
      */
-    public StringValueType createErrors(String value){
-    	StringValueType el = new StringValueType();
+    public StringValue createErrors(String value){
+    	StringValue el = new StringValue();
     	el.setValue(value);
     	this.errors = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link RealValueType} elapsedTime element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} elapsedTime element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createElapsedTime(){
-    	RealValueType el = new RealValueType();
+    public RealValue createElapsedTime(){
+    	RealValue el = new RealValue();
     	this.elapsedTime = el;
     	return el;
     }
     /**
-     * Creates a new {@link RealValueType} elapsedTime element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new {@link RealValue} elapsedTime element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createElapsedTime(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createElapsedTime(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.elapsedTime = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link ImportDataType} outputFilePath element, adds it to the current object and returns it.
-     * @return The created {@link ImportDataType} object.
+     * Creates a new empty {@link ImportData} outputFilePath element, adds it to the current object and returns it.
+     * @return The created {@link ImportData} object.
      */
-    public ImportDataType createOutputFilePath(){
-    	ImportDataType el = new ImportDataType();
+    public ImportData createOutputFilePath(){
+    	ImportData el = new ImportData();
     	this.outputFilePath = el;
     	return el;
     }
 
     /**
-     * Creates a new {@link RealValueType} chainsNumber element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new {@link RealValue} chainsNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createChainsNumber(){
-    	RealValueType el = new RealValueType();
+    public RealValue createChainsNumber(){
+    	RealValue el = new RealValue();
     	this.chainsNumber = el;
     	return el;
     }
     /**
-     * Creates a new {@link RealValueType} chainsNumber element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new {@link RealValue} chainsNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createChainsNumber(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createChainsNumber(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.chainsNumber = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link RealValueType} iterationNumber element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new empty {@link RealValue} iterationNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createIterationNumber(){
-    	RealValueType el = new RealValueType();
+    public RealValue createIterationNumber(){
+    	RealValue el = new RealValue();
     	this.iterationNumber = el;
     	return el;
     }
     /**
-     * Creates a new {@link RealValueType} iterationNumber element, adds it to the current object and returns it.
-     * @return The created {@link RealValueType} object.
+     * Creates a new {@link RealValue} iterationNumber element, adds it to the current object and returns it.
+     * @return The created {@link RealValue} object.
      */
-    public RealValueType createIterationNumber(double value){
-    	RealValueType el = new RealValueType();
+    public RealValue createIterationNumber(double value){
+    	RealValue el = new RealValue();
     	el.setValue(value);
     	this.iterationNumber = el;
     	return el;
