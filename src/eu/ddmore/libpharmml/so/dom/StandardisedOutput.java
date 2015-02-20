@@ -55,11 +55,17 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 @XmlRootElement(name = "SO")
 @XmlType(propOrder = {
 	    "pharmMLRef",
+	    "toolSettings",
+	    "rawResults",
+	    "taskInformation",
+	    "estimation",
+	    "modelDiagnostic",
+	    "simulation",
 	    "soBlock"
 	})
-public class StandardisedOutput extends PharmMLRootType {
+public class StandardisedOutput extends AbstractSOBlock {
 	
-	@XmlElement(name = "PharmMLRef", required = true)
+	@XmlElement(name = "PharmMLRef")
     protected PharmMLRef pharmMLRef;
     @XmlElement(name = "SOBlock", required = true)
     protected List<SOBlock> soBlock;

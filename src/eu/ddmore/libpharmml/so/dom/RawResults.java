@@ -29,9 +29,12 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -47,21 +50,25 @@ import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RawResultsType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element name="RawFile" type="{http://www.pharmml.org/2013/08/Dataset}ExternalFile" maxOccurs="unbounded"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RawResultsType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *       &lt;choice maxOccurs="unbounded"&gt;
+ *         &lt;sequence&gt;
+ *           &lt;element name="DataFile" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *           &lt;element name="GraphicsFile" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/choice&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RawResultsType", propOrder = {
+	"dataFilesAndGraphicsFiles",
     "rawFile"
 })
 public class RawResults
@@ -69,7 +76,44 @@ public class RawResults
 {
 
     @XmlElement(name = "RawFile", required = true)
+    @Deprecated
     protected List<ExternalFile> rawFile;
+    
+    @XmlElementRefs({
+        @XmlElementRef(name = "DataFile", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "GraphicsFile", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<ExternalFile>> dataFilesAndGraphicsFiles;
+
+    /**
+     * Gets the value of the dataFilesAndGraphicsFiles property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the dataFilesAndGraphicsFiles property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getDataFilesAndGraphicsFiles().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}
+     * {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}
+     * 
+     * 
+     */
+    public List<JAXBElement<ExternalFile>> getDataFilesAndGraphicsFiles() {
+        if (dataFilesAndGraphicsFiles == null) {
+            dataFilesAndGraphicsFiles = new ArrayList<JAXBElement<ExternalFile>>();
+        }
+        return this.dataFilesAndGraphicsFiles;
+    }
 
     /**
      * Gets the value of the rawFile property.
@@ -91,8 +135,9 @@ public class RawResults
      * Objects of the following type(s) are allowed in the list
      * {@link ExternalFile }
      * 
-     * 
+     * @deprecated Since SO 0.1. Use {@link #getDataFilesAndGraphicsFiles()}.
      */
+    @Deprecated
     public List<ExternalFile> getListOfRawFile() {
         if (rawFile == null) {
             rawFile = new ArrayList<ExternalFile>();
@@ -104,6 +149,7 @@ public class RawResults
      * Creates a new empty {@link ExternalFile} rawFile element, adds it to the current object and returns it.
      * @return The created {@link ExternalFile} object.
      */
+    @Deprecated
     public ExternalFile createRawFile(){
     	ExternalFile el = new ExternalFile();
     	getListOfRawFile().add(el);
@@ -119,6 +165,7 @@ public class RawResults
      * @param delimiter
      * @return The created {@link ExternalFile} object.
      */
+    @Deprecated
     public ExternalFile createRawFile(String oid, String path, String format, Delimiter delimiter){
     	ExternalFile el = new ExternalFile();
     	el.setOid(oid);

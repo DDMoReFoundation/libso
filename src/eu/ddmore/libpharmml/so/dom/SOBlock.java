@@ -29,13 +29,9 @@ package eu.ddmore.libpharmml.so.dom;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 
 
 /**
@@ -66,93 +62,18 @@ import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 @XmlType(name = "SOBlockType", propOrder = {
     "toolSettings",
     "rawResults",
-    "estimation"
+    "taskInformation",
+    "estimation",
+    "modelDiagnostic",
+    "simulation"
 })
 public class SOBlock
-    extends PharmMLRootType
+    extends AbstractSOBlock
 {
 
-    @XmlElement(name = "ToolSettings")
-    protected ExternalFile toolSettings;
-    @XmlElement(name = "RawResults")
-    protected RawResults rawResults;
-    @XmlElement(name = "Estimation")
-    protected Estimation estimation;
     @XmlAttribute(name = "blkId", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String blkId;
-
-    /**
-     * Gets the value of the toolSettings property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalFile }
-     *     
-     */
-    public ExternalFile getToolSettings() {
-        return toolSettings;
-    }
-
-    /**
-     * Sets the value of the toolSettings property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalFile }
-     *     
-     */
-    public void setToolSettings(ExternalFile value) {
-        this.toolSettings = value;
-    }
-
-    /**
-     * Gets the value of the rawResults property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RawResults }
-     *     
-     */
-    public RawResults getRawResults() {
-        return rawResults;
-    }
-
-    /**
-     * Sets the value of the rawResults property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RawResults }
-     *     
-     */
-    public void setRawResults(RawResults value) {
-        this.rawResults = value;
-    }
-
-    /**
-     * Gets the value of the estimation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Estimation }
-     *     
-     */
-    public Estimation getEstimation() {
-        return estimation;
-    }
-
-    /**
-     * Sets the value of the estimation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Estimation }
-     *     
-     */
-    public void setEstimation(Estimation value) {
-        this.estimation = value;
-    }
 
     /**
      * Gets the value of the blkId property.
@@ -176,36 +97,6 @@ public class SOBlock
      */
     public void setBlkId(String value) {
         this.blkId = value;
-    }
-    
-    /**
-     * Creates a new empty {@link ExternalFile} toolSettings element, adds it to the current object and returns it.
-     * @return The created {@link ExternalFile} object.
-     */
-    public ExternalFile createToolSettings(){
-    	ExternalFile el = new ExternalFile();
-    	this.toolSettings = el;
-    	return el;
-    }
-
-    /**
-     * Creates a new empty {@link RawResults} rawResults element, adds it to the current object and returns it.
-     * @return The created {@link RawResults} object.
-     */
-    public RawResults createRawResults(){
-    	RawResults el = new RawResults();
-    	this.rawResults = el;
-    	return el;
-    }
-
-    /**
-     * Creates a new empty {@link Estimation} estimation element, adds it to the current object and returns it.
-     * @return The created {@link Estimation} object.
-     */
-    public Estimation createEstimation(){
-    	Estimation el = new Estimation();
-    	this.estimation = el;
-    	return el;
     }
 
 
