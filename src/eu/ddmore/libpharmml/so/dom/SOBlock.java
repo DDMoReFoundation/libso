@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ImportData;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 
 
 /**
@@ -50,7 +50,7 @@ import eu.ddmore.libpharmml.dom.dataset.ImportData;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="ToolSettings" type="{http://www.pharmml.org/2013/08/Dataset}ImportData" minOccurs="0"/>
+ *         &lt;element name="ToolSettings" type="{http://www.pharmml.org/2013/08/Dataset}ExternalFile" minOccurs="0"/>
  *         &lt;element name="RawResults" type="{http://www.pharmml.org/2013/03/StandardisedOutput}RawResultsType" minOccurs="0"/>
  *         &lt;element name="Estimation" type="{http://www.pharmml.org/2013/03/StandardisedOutput}EstimationType" minOccurs="0"/>
  *       &lt;/sequence>
@@ -73,7 +73,7 @@ public class SOBlock
 {
 
     @XmlElement(name = "ToolSettings")
-    protected ImportData toolSettings;
+    protected ExternalFile toolSettings;
     @XmlElement(name = "RawResults")
     protected RawResults rawResults;
     @XmlElement(name = "Estimation")
@@ -87,10 +87,10 @@ public class SOBlock
      * 
      * @return
      *     possible object is
-     *     {@link ImportData }
+     *     {@link ExternalFile }
      *     
      */
-    public ImportData getToolSettings() {
+    public ExternalFile getToolSettings() {
         return toolSettings;
     }
 
@@ -99,10 +99,10 @@ public class SOBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportData }
+     *     {@link ExternalFile }
      *     
      */
-    public void setToolSettings(ImportData value) {
+    public void setToolSettings(ExternalFile value) {
         this.toolSettings = value;
     }
 
@@ -179,11 +179,11 @@ public class SOBlock
     }
     
     /**
-     * Creates a new empty {@link ImportData} toolSettings element, adds it to the current object and returns it.
-     * @return The created {@link ImportData} object.
+     * Creates a new empty {@link ExternalFile} toolSettings element, adds it to the current object and returns it.
+     * @return The created {@link ExternalFile} object.
      */
-    public ImportData createToolSettings(){
-    	ImportData el = new ImportData();
+    public ExternalFile createToolSettings(){
+    	ExternalFile el = new ExternalFile();
     	this.toolSettings = el;
     	return el;
     }

@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
-import eu.ddmore.libpharmml.dom.dataset.ImportData;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 
 
 /**
@@ -53,7 +53,7 @@ import eu.ddmore.libpharmml.dom.dataset.ImportData;
  *         &lt;element name="Warnings" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
  *         &lt;element name="Errors" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
  *         &lt;element name="ElapsedTime" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
- *         &lt;element name="OutputFilePath" type="{http://www.pharmml.org/2013/08/Dataset}ImportData" minOccurs="0"/>
+ *         &lt;element name="OutputFilePath" type="{http://www.pharmml.org/2013/08/Dataset}ExternalFile" minOccurs="0"/>
  *         &lt;element name="ChainsNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
  *         &lt;element name="IterationNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
  *       &lt;/sequence>
@@ -87,7 +87,7 @@ public class TargetToolMessages
     @XmlElement(name = "ElapsedTime")
     protected RealValue elapsedTime;
     @XmlElement(name = "OutputFilePath")
-    protected ImportData outputFilePath;
+    protected ExternalFile outputFilePath;
     @XmlElement(name = "ChainsNumber")
     protected RealValue chainsNumber;
     @XmlElement(name = "IterationNumber")
@@ -194,10 +194,10 @@ public class TargetToolMessages
      * 
      * @return
      *     possible object is
-     *     {@link ImportData }
+     *     {@link ExternalFile }
      *     
      */
-    public ImportData getOutputFilePath() {
+    public ExternalFile getOutputFilePath() {
         return outputFilePath;
     }
 
@@ -206,10 +206,10 @@ public class TargetToolMessages
      * 
      * @param value
      *     allowed object is
-     *     {@link ImportData }
+     *     {@link ExternalFile }
      *     
      */
-    public void setOutputFilePath(ImportData value) {
+    public void setOutputFilePath(ExternalFile value) {
         this.outputFilePath = value;
     }
 
@@ -342,11 +342,11 @@ public class TargetToolMessages
     }
 
     /**
-     * Creates a new empty {@link ImportData} outputFilePath element, adds it to the current object and returns it.
-     * @return The created {@link ImportData} object.
+     * Creates a new empty {@link ExternalFile} outputFilePath element, adds it to the current object and returns it.
+     * @return The created {@link ExternalFile} object.
      */
-    public ImportData createOutputFilePath(){
-    	ImportData el = new ImportData();
+    public ExternalFile createOutputFilePath(){
+    	ExternalFile el = new ExternalFile();
     	this.outputFilePath = el;
     	return el;
     }
