@@ -22,7 +22,8 @@ import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 public enum SOVersion {
 	
-	v0_0("0.0","SOMarshaller.xmlCatalogLocation.0.0",PharmMLVersion.V0_4);
+	v0_0("0.0","SOMarshaller.xmlCatalogLocation.0.0",PharmMLVersion.V0_4),
+	v0_1("0.1","SOMarshaller.xmlCatalogLocation.0.1",PharmMLVersion.V0_6);
 	
 	public static final SOVersion DEFAULT = v0_0;
 	
@@ -44,6 +45,8 @@ public enum SOVersion {
 	public static SOVersion getEnum(String version) {
 		if(version.equals("0.0")){
 			return SOVersion.v0_0;
+		} else if (version.equals("0.1")) {
+			return SOVersion.v0_1;
 		} else {
 			return null;
 		}
