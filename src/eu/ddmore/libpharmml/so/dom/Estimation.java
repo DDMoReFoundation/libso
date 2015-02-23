@@ -68,6 +68,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "populationEstimates",
     "precisionPopulationEstimates",
     "individualEstimates",
+    "precisionIndividualEstimates_old",
     "precisionIndividualEstimates",
     "residuals",
     "predictions",
@@ -84,8 +85,12 @@ public class Estimation
     protected PrecisionPopulationEstimates precisionPopulationEstimates;
     @XmlElement(name = "IndividualEstimates")
     protected IndividualEstimates individualEstimates;
+    
     @XmlElement(name = "PrecisionIndividualEstimates")
-    protected PrecisionIndividualEstimates precisionIndividualEstimates;
+    protected PrecisionIndividualEstimates precisionIndividualEstimates_old; // SO 0.0
+    @XmlElement(name = "PrecisionIndividualEstimates")
+    protected SOTableDistrib precisionIndividualEstimates;
+    
     @XmlElement(name = "Residuals")
     protected Residuals residuals;
     @XmlElement(name = "Predictions")
@@ -172,10 +177,10 @@ public class Estimation
      * 
      * @return
      *     possible object is
-     *     {@link PrecisionIndividualEstimates }
+     *     {@link SOTableDistrib }
      *     
      */
-    public PrecisionIndividualEstimates getPrecisionIndividualEstimates() {
+    public SOTableDistrib getPrecisionIndividualEstimates() {
         return precisionIndividualEstimates;
     }
 
@@ -184,10 +189,10 @@ public class Estimation
      * 
      * @param value
      *     allowed object is
-     *     {@link PrecisionIndividualEstimates }
+     *     {@link SOTableDistrib }
      *     
      */
-    public void setPrecisionIndividualEstimates(PrecisionIndividualEstimates value) {
+    public void setPrecisionIndividualEstimates(SOTableDistrib value) {
         this.precisionIndividualEstimates = value;
     }
 
@@ -318,11 +323,11 @@ public class Estimation
     }
 
     /**
-     * Creates a new empty {@link PrecisionIndividualEstimates} precisionIndividualEstimates element, adds it to the current object and returns it.
-     * @return The created {@link PrecisionIndividualEstimates} object.
+     * Creates a new empty {@link SOTableDistrib} precisionIndividualEstimates element, adds it to the current object and returns it.
+     * @return The created {@link SOTableDistrib} object.
      */
-    public PrecisionIndividualEstimates createPrecisionIndividualEstimates(){
-    	PrecisionIndividualEstimates el = new PrecisionIndividualEstimates();
+    public SOTableDistrib createPrecisionIndividualEstimates(){
+    	SOTableDistrib el = new SOTableDistrib();
     	this.precisionIndividualEstimates = el;
     	return el;
     }
@@ -366,6 +371,5 @@ public class Estimation
     	this.targetToolMessages = el;
     	return el;
     }
-
-
+    
 }
