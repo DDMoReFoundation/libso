@@ -36,7 +36,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 
 
 /**
- * Type defining the estimation part of the SO.
+ * Type defining the estimation section of the SO.
  * 
  * <p>Java class for EstimationType complex type.
  * 
