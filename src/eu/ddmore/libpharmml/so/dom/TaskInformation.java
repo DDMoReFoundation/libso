@@ -57,7 +57,7 @@ public class TaskInformation
 {
 
     @XmlElement(name = "Message")
-    protected List<MessageType> messages;
+    protected List<Message> messages;
     @XmlElement(name = "OutputFilePath")
     protected ExternalFile outputFilePath;
     @XmlElement(name = "RunTime")
@@ -85,13 +85,13 @@ public class TaskInformation
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link MessageType }
+     * {@link Message }
      * 
      * 
      */
-    public List<MessageType> getMessages() {
+    public List<Message> getMessages() {
         if (messages == null) {
-            messages = new ArrayList<MessageType>();
+            messages = new ArrayList<Message>();
         }
         return this.messages;
     }
