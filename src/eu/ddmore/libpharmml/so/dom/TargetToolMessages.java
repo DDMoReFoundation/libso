@@ -26,9 +26,13 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -45,220 +49,79 @@ import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TargetToolMessagesType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element name="Termination" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
- *         &lt;element name="Warnings" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
- *         &lt;element name="Errors" type="{http://www.pharmml.org/2013/03/CommonTypes}StringValue" minOccurs="0"/>
- *         &lt;element name="ElapsedTime" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
- *         &lt;element name="OutputFilePath" type="{http://www.pharmml.org/2013/08/Dataset}ExternalFile" minOccurs="0"/>
- *         &lt;element name="ChainsNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
- *         &lt;element name="IterationNumber" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValue" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="TargetToolMessagesType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *       &lt;choice maxOccurs="unbounded"&gt;
+ *         &lt;sequence&gt;
+ *           &lt;element name="Termination" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}StringValueType" minOccurs="0"/&gt;
+ *           &lt;element name="Warnings" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}StringValueType" minOccurs="0"/&gt;
+ *           &lt;element name="Errors" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}StringValueType" minOccurs="0"/&gt;
+ *           &lt;element name="ElapsedTime" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
+ *           &lt;element name="OutputFilePath" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" minOccurs="0"/&gt;
+ *           &lt;element name="ChainsNumber" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
+ *           &lt;element name="IterationNumber" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/choice&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TargetToolMessagesType", propOrder = {
-    "termination",
-    "warnings",
-    "errors",
-    "elapsedTime",
-    "outputFilePath",
-    "chainsNumber",
-    "iterationNumber"
+    "content"
 })
 public class TargetToolMessages
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Termination")
-    protected StringValue termination;
-    @XmlElement(name = "Warnings")
-    protected StringValue warnings;
-    @XmlElement(name = "Errors")
-    protected StringValue errors;
-    @XmlElement(name = "ElapsedTime")
-    protected RealValue elapsedTime;
-    @XmlElement(name = "OutputFilePath")
-    protected ExternalFile outputFilePath;
-    @XmlElement(name = "ChainsNumber")
-    protected RealValue chainsNumber;
-    @XmlElement(name = "IterationNumber")
-    protected RealValue iterationNumber;
+	@XmlElementRefs({
+        @XmlElementRef(name = "IterationNumber", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ElapsedTime", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "OutputFilePath", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Errors", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Warnings", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ChainsNumber", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Termination", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> content;
 
     /**
-     * Gets the value of the termination property.
+     * Gets the value of the content property.
      * 
-     * @return
-     *     possible object is
-     *     {@link StringValue }
-     *     
-     */
-    public StringValue getTermination() {
-        return termination;
-    }
-
-    /**
-     * Sets the value of the termination property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the terminationsAndWarningsAndErrors property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link StringValue }
-     *     
-     */
-    public void setTermination(StringValue value) {
-        this.termination = value;
-    }
-
-    /**
-     * Gets the value of the warnings property.
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getContent().add(newItem);
+     * </pre>
      * 
-     * @return
-     *     possible object is
-     *     {@link StringValue }
-     *     
-     */
-    public StringValue getWarnings() {
-        return warnings;
-    }
-
-    /**
-     * Sets the value of the warnings property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link StringValue }
-     *     
-     */
-    public void setWarnings(StringValue value) {
-        this.warnings = value;
-    }
-
-    /**
-     * Gets the value of the errors property.
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link StringValueType }{@code >}
      * 
-     * @return
-     *     possible object is
-     *     {@link StringValue }
-     *     
-     */
-    public StringValue getErrors() {
-        return errors;
-    }
-
-    /**
-     * Sets the value of the errors property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link StringValue }
-     *     
      */
-    public void setErrors(StringValue value) {
-        this.errors = value;
-    }
-
-    /**
-     * Gets the value of the elapsedTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValue }
-     *     
-     */
-    public RealValue getElapsedTime() {
-        return elapsedTime;
-    }
-
-    /**
-     * Sets the value of the elapsedTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValue }
-     *     
-     */
-    public void setElapsedTime(RealValue value) {
-        this.elapsedTime = value;
-    }
-
-    /**
-     * Gets the value of the outputFilePath property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalFile }
-     *     
-     */
-    public ExternalFile getOutputFilePath() {
-        return outputFilePath;
-    }
-
-    /**
-     * Sets the value of the outputFilePath property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalFile }
-     *     
-     */
-    public void setOutputFilePath(ExternalFile value) {
-        this.outputFilePath = value;
-    }
-
-    /**
-     * Gets the value of the chainsNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValue }
-     *     
-     */
-    public RealValue getChainsNumber() {
-        return chainsNumber;
-    }
-
-    /**
-     * Sets the value of the chainsNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValue }
-     *     
-     */
-    public void setChainsNumber(RealValue value) {
-        this.chainsNumber = value;
-    }
-
-    /**
-     * Gets the value of the iterationNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValue }
-     *     
-     */
-    public RealValue getIterationNumber() {
-        return iterationNumber;
-    }
-
-    /**
-     * Sets the value of the iterationNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValue }
-     *     
-     */
-    public void setIterationNumber(RealValue value) {
-        this.iterationNumber = value;
+    public List<JAXBElement<?>> getContent() {
+        if (content == null) {
+            content = new ArrayList<JAXBElement<?>>();
+        }
+        return this.content;
     }
     
     /**
@@ -267,7 +130,7 @@ public class TargetToolMessages
      */
     public StringValue createTermination(){
     	StringValue el = new StringValue();
-    	this.termination = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesTermination(el));
     	return el;
     }
     /**
@@ -275,9 +138,8 @@ public class TargetToolMessages
      * @return The created {@link StringValue} object.
      */
     public StringValue createTermination(String value){
-    	StringValue el = new StringValue();
+    	StringValue el = createTermination();
     	el.setValue(value);
-    	this.termination = el;
     	return el;
     }
 
@@ -287,7 +149,7 @@ public class TargetToolMessages
      */
     public StringValue createWarnings(){
     	StringValue el = new StringValue();
-    	this.warnings = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesWarnings(el));
     	return el;
     }
     /**
@@ -295,9 +157,8 @@ public class TargetToolMessages
      * @return The created {@link StringValue} object.
      */
     public StringValue createWarnings(String value){
-    	StringValue el = new StringValue();
+    	StringValue el = createWarnings();
     	el.setValue(value);
-    	this.warnings = el;
     	return el;
     }
 
@@ -307,7 +168,7 @@ public class TargetToolMessages
      */
     public StringValue createErrors(){
     	StringValue el = new StringValue();
-    	this.errors = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesErrors(el));
     	return el;
     }
     /**
@@ -315,9 +176,8 @@ public class TargetToolMessages
      * @return The created {@link StringValue} object.
      */
     public StringValue createErrors(String value){
-    	StringValue el = new StringValue();
+    	StringValue el = createErrors();
     	el.setValue(value);
-    	this.errors = el;
     	return el;
     }
 
@@ -327,7 +187,7 @@ public class TargetToolMessages
      */
     public RealValue createElapsedTime(){
     	RealValue el = new RealValue();
-    	this.elapsedTime = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesElapsedTime(el));
     	return el;
     }
     /**
@@ -335,9 +195,8 @@ public class TargetToolMessages
      * @return The created {@link RealValue} object.
      */
     public RealValue createElapsedTime(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createElapsedTime();
     	el.setValue(value);
-    	this.elapsedTime = el;
     	return el;
     }
 
@@ -347,7 +206,7 @@ public class TargetToolMessages
      */
     public ExternalFile createOutputFilePath(){
     	ExternalFile el = new ExternalFile();
-    	this.outputFilePath = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesOutputFilePath(el));
     	return el;
     }
 
@@ -357,7 +216,7 @@ public class TargetToolMessages
      */
     public RealValue createChainsNumber(){
     	RealValue el = new RealValue();
-    	this.chainsNumber = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesChainsNumber(el));
     	return el;
     }
     /**
@@ -365,9 +224,8 @@ public class TargetToolMessages
      * @return The created {@link RealValue} object.
      */
     public RealValue createChainsNumber(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createChainsNumber();
     	el.setValue(value);
-    	this.chainsNumber = el;
     	return el;
     }
 
@@ -377,7 +235,7 @@ public class TargetToolMessages
      */
     public RealValue createIterationNumber(){
     	RealValue el = new RealValue();
-    	this.iterationNumber = el;
+    	getContent().add(new ObjectFactory().createTargetToolMessagesIterationNumber(el));
     	return el;
     }
     /**
@@ -385,9 +243,8 @@ public class TargetToolMessages
      * @return The created {@link RealValue} object.
      */
     public RealValue createIterationNumber(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createIterationNumber();
     	el.setValue(value);
-    	this.iterationNumber = el;
     	return el;
     }
 

@@ -26,9 +26,15 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -47,56 +53,49 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PrecisionPopulationEstimatesType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element name="MLE" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *                 &lt;sequence>
- *                   &lt;element name="FIM" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
- *                   &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
- *                   &lt;element name="CorrelationMatrix" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOMatrixType" minOccurs="0"/>
- *                   &lt;element name="StandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                   &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                   &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                 &lt;/sequence>
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="Bayesian" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *                 &lt;sequence>
- *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                   &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                 &lt;/sequence>
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="Bootstrap" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *                 &lt;sequence>
- *                   &lt;element name="StandardDeviation" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                   &lt;element name="ParameterDistribution" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/2013/08/Dataset}DataSet" minOccurs="0"/>
- *                 &lt;/sequence>
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="PrecisionPopulationEstimatesType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="MLE" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *                 &lt;choice maxOccurs="unbounded"&gt;
+ *                   &lt;sequence&gt;
+ *                     &lt;element name="FIM" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOMatrixType" minOccurs="0"/&gt;
+ *                     &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOMatrixType" minOccurs="0"/&gt;
+ *                     &lt;element name="CorrelationMatrix" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOMatrixType" minOccurs="0"/&gt;
+ *                     &lt;element name="StandardError" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *                     &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *                     &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *                   &lt;/sequence&gt;
+ *                 &lt;/choice&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="Bayesian" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *                   &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOTableDistribType" minOccurs="0"/&gt;
+ *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *                 &lt;/sequence&gt;
+ *               &lt;/extension&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="Bootstrap" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
+ *         &lt;element name="LLP" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
+ *         &lt;element name="SIR" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
+ *         &lt;element name="MultiDimLLP" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -105,7 +104,10 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 @XmlType(name = "PrecisionPopulationEstimatesType", propOrder = {
     "mle",
     "bayesian",
-    "bootstrap"
+    "bootstrap",
+    "llp",
+    "sir",
+    "multiDimLLP"
 })
 public class PrecisionPopulationEstimates
     extends PharmMLRootType
@@ -116,7 +118,13 @@ public class PrecisionPopulationEstimates
     @XmlElement(name = "Bayesian")
     protected PrecisionPopulationEstimates.Bayesian bayesian;
     @XmlElement(name = "Bootstrap")
-    protected PrecisionPopulationEstimates.Bootstrap bootstrap;
+    protected PrecisionEstimatesPercentile bootstrap;
+    @XmlElement(name = "LLP")
+    protected PrecisionEstimatesPercentile llp;
+    @XmlElement(name = "SIR")
+    protected PrecisionEstimatesPercentile sir;
+    @XmlElement(name = "MultiDimLLP")
+    protected PrecisionEstimatesPercentile multiDimLLP;
 
     /**
      * Gets the value of the mle property.
@@ -171,10 +179,10 @@ public class PrecisionPopulationEstimates
      * 
      * @return
      *     possible object is
-     *     {@link PrecisionPopulationEstimatesType.Bootstrap }
+     *     {@link PrecisionEstimatesPercentile }
      *     
      */
-    public PrecisionPopulationEstimates.Bootstrap getBootstrap() {
+    public PrecisionEstimatesPercentile getBootstrap() {
         return bootstrap;
     }
 
@@ -186,7 +194,7 @@ public class PrecisionPopulationEstimates
      *     {@link PrecisionPopulationEstimatesType.Bootstrap }
      *     
      */
-    public void setBootstrap(PrecisionPopulationEstimates.Bootstrap value) {
+    public void setBootstrap(PrecisionEstimatesPercentile value) {
         this.bootstrap = value;
     }
 
@@ -362,6 +370,7 @@ public class PrecisionPopulationEstimates
         "parameterDistribution",
         "percentilesCI"
     })
+    @Deprecated
     public static class Bootstrap
         extends PharmMLRootType
     {
@@ -505,172 +514,72 @@ public class PrecisionPopulationEstimates
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "fim",
-        "covarianceMatrix",
-        "correlationMatrix",
-        "standardError",
-        "relativeStandardError",
-        "asymptoticCI"
+        "content"
     })
     public static class MLE
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "FIM")
-        protected SOMatrix fim;
-        @XmlElement(name = "CovarianceMatrix")
-        protected SOMatrix covarianceMatrix;
-        @XmlElement(name = "CorrelationMatrix")
-        protected SOMatrix correlationMatrix;
-        @XmlElement(name = "StandardError")
-        protected DataSet standardError;
-        @XmlElement(name = "RelativeStandardError")
-        protected DataSet relativeStandardError;
-        @XmlElement(name = "AsymptoticCI")
-        protected DataSet asymptoticCI;
+//        @XmlElement(name = "FIM")
+//        protected SOMatrix fim;
+//        @XmlElement(name = "CovarianceMatrix")
+//        protected SOMatrix covarianceMatrix;
+//        @XmlElement(name = "CorrelationMatrix")
+//        protected SOMatrix correlationMatrix;
+//        @XmlElement(name = "StandardError")
+//        protected DataSet standardError;
+//        @XmlElement(name = "RelativeStandardError")
+//        protected DataSet relativeStandardError;
+//        @XmlElement(name = "AsymptoticCI")
+//        protected DataSet asymptoticCI;
+        
+        @XmlElementRefs({
+            @XmlElementRef(name = "CovarianceMatrix", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "CorrelationMatrix", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "RelativeStandardError", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "FIM", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "AsymptoticCI", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "StandardError", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        })
+        protected List<JAXBElement<? extends PharmMLRootType>> content;
 
         /**
-         * Gets the value of the fim property.
+         * Gets the value of the content property.
          * 
-         * @return
-         *     possible object is
-         *     {@link SOMatrixType }
-         *     
-         */
-        public SOMatrix getFIM() {
-            return fim;
-        }
-
-        /**
-         * Sets the value of the fim property.
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the fimsAndCovarianceMatrixesAndCorrelationMatrixes property.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link SOMatrixType }
-         *     
-         */
-        public void setFIM(SOMatrix value) {
-            this.fim = value;
-        }
-
-        /**
-         * Gets the value of the covarianceMatrix property.
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getContent().add(newItem);
+         * </pre>
          * 
-         * @return
-         *     possible object is
-         *     {@link SOMatrixType }
-         *     
-         */
-        public SOMatrix getCovarianceMatrix() {
-            return covarianceMatrix;
-        }
-
-        /**
-         * Sets the value of the covarianceMatrix property.
+         * <p>
+         * One should use the creators instead of this list to add a new element to avoid dealing
+         * with {@link JAXBElement} objects ({@link #createAsymptoticCI()}, {@link #createCorrelationMatrix()},
+         * {@link #createCovarianceMatrix()}, {@link #createFim()}, {@link #createRelativeStandardError()},
+         * {@link #createStandardError()}).
          * 
-         * @param value
-         *     allowed object is
-         *     {@link SOMatrixType }
-         *     
-         */
-        public void setCovarianceMatrix(SOMatrix value) {
-            this.covarianceMatrix = value;
-        }
-
-        /**
-         * Gets the value of the correlationMatrix property.
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link JAXBElement }{@code <}{@link SOMatrixType }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link SOMatrixType }{@code >}
+         * {@link JAXBElement }{@code <}{@link SOMatrixType }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * 
-         * @return
-         *     possible object is
-         *     {@link SOMatrixType }
-         *     
+         * @since SO 0.1
          */
-        public SOMatrix getCorrelationMatrix() {
-            return correlationMatrix;
-        }
-
-        /**
-         * Sets the value of the correlationMatrix property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link SOMatrixType }
-         *     
-         */
-        public void setCorrelationMatrix(SOMatrix value) {
-            this.correlationMatrix = value;
-        }
-
-        /**
-         * Gets the value of the standardError property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSet }
-         *     
-         */
-        public DataSet getStandardError() {
-            return standardError;
-        }
-
-        /**
-         * Sets the value of the standardError property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setStandardError(DataSet value) {
-            this.standardError = value;
-        }
-
-        /**
-         * Gets the value of the relativeStandardError property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSet }
-         *     
-         */
-        public DataSet getRelativeStandardError() {
-            return relativeStandardError;
-        }
-
-        /**
-         * Sets the value of the relativeStandardError property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setRelativeStandardError(DataSet value) {
-            this.relativeStandardError = value;
-        }
-
-        /**
-         * Gets the value of the asymptoticCI property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSet }
-         *     
-         */
-        public DataSet getAsymptoticCI() {
-            return asymptoticCI;
-        }
-
-        /**
-         * Sets the value of the asymptoticCI property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setAsymptoticCI(DataSet value) {
-            this.asymptoticCI = value;
+        public List<JAXBElement<? extends PharmMLRootType>> getContent() {
+            if (content == null) {
+                content = new ArrayList<JAXBElement<? extends PharmMLRootType>>();
+            }
+            return this.content;
         }
         
         /**
@@ -679,7 +588,8 @@ public class PrecisionPopulationEstimates
          */
         public SOMatrix createFim(){
         	SOMatrix el = new SOMatrix();
-        	this.fim = el;
+        	getContent().add(
+        			new ObjectFactory().createPrecisionPopulationEstimatesMLEFIM(el));
         	return el;
         }
 
@@ -689,7 +599,8 @@ public class PrecisionPopulationEstimates
          */
         public SOMatrix createCovarianceMatrix(){
         	SOMatrix el = new SOMatrix();
-        	this.covarianceMatrix = el;
+        	getContent().add(
+        			new ObjectFactory().createPrecisionPopulationEstimatesMLECovarianceMatrix(el));
         	return el;
         }
 
@@ -699,7 +610,8 @@ public class PrecisionPopulationEstimates
          */
         public SOMatrix createCorrelationMatrix(){
         	SOMatrix el = new SOMatrix();
-        	this.correlationMatrix = el;
+        	getContent().add(
+        			new ObjectFactory().createPrecisionPopulationEstimatesMLECorrelationMatrix(el));
         	return el;
         }
 
@@ -709,7 +621,8 @@ public class PrecisionPopulationEstimates
          */
         public DataSet createStandardError(){
         	DataSet el = new DataSet();
-        	this.standardError = el;
+        	getContent().add(
+        			new ObjectFactory().createPrecisionPopulationEstimatesMLEStandardError(el));
         	return el;
         }
 
@@ -719,7 +632,8 @@ public class PrecisionPopulationEstimates
          */
         public DataSet createRelativeStandardError(){
         	DataSet el = new DataSet();
-        	this.relativeStandardError = el;
+        	getContent().add(
+        			new ObjectFactory().createPrecisionPopulationEstimatesMLERelativeStandardError(el));
         	return el;
         }
 
@@ -729,7 +643,8 @@ public class PrecisionPopulationEstimates
          */
         public DataSet createAsymptoticCI(){
         	DataSet el = new DataSet();
-        	this.asymptoticCI = el;
+        	getContent().add(
+        			new ObjectFactory().createPrecisionPopulationEstimatesMLEAsymptoticCI(el));
         	return el;
         }
 
@@ -757,11 +672,11 @@ public class PrecisionPopulationEstimates
     }
 
     /**
-     * Creates a new empty {@link PrecisionPopulationEstimates.Bootstrap} bootstrap element, adds it to the current object and returns it.
-     * @return The created {@link PrecisionPopulationEstimates.Bootstrap} object.
+     * Creates a new empty {@link PrecisionEstimatesPercentile} bootstrap element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionEstimatesPercentile} object.
      */
-    public PrecisionPopulationEstimates.Bootstrap createBootstrap(){
-    	PrecisionPopulationEstimates.Bootstrap el = new PrecisionPopulationEstimates.Bootstrap();
+    public PrecisionEstimatesPercentile createBootstrap(){
+    	PrecisionEstimatesPercentile el = new PrecisionEstimatesPercentile();
     	this.bootstrap = el;
     	return el;
     }

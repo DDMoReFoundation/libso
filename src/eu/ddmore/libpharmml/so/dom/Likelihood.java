@@ -26,9 +26,13 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -44,137 +48,70 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="LikelihoodType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element name="LogLikelihood" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="Deviance" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="OFV" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="IndividualContribToLL" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="InformationCriteria" type="{http://www.pharmml.org/2013/03/StandardisedOutput}InformationCriteriaType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="LikelihoodType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *       &lt;choice maxOccurs="unbounded"&gt;
+ *         &lt;sequence&gt;
+ *           &lt;element name="LogLikelihood" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
+ *           &lt;element name="Deviance" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
+ *           &lt;element name="IndividualContribToLL" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *           &lt;element name="InformationCriteria" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}InformationCriteriaType" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/choice&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LikelihoodType", propOrder = {
-    "logLikelihood",
-    "deviance",
-    "individualContribToLL",
-    "informationCriteria"
+    "content"
 })
 public class Likelihood
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "LogLikelihood")
-    protected RealValue logLikelihood;
-    @XmlElement(name = "Deviance")
-    protected RealValue deviance;
-    @XmlElement(name = "IndividualContribToLL")
-    protected DataSet individualContribToLL;
-    @XmlElement(name = "InformationCriteria")
-    protected InformationCriteria informationCriteria;
+    @XmlElementRefs({
+        @XmlElementRef(name = "Deviance", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "LogLikelihood", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "InformationCriteria", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "IndividualContribToLL", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<?>> content;
 
     /**
-     * Gets the value of the logLikelihood property.
+     * Gets the value of the content property.
      * 
-     * @return
-     *     possible object is
-     *     {@link RealValue }
-     *     
-     */
-    public RealValue getLogLikelihood() {
-        return logLikelihood;
-    }
-
-    /**
-     * Sets the value of the logLikelihood property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the logLikelihoodsAndDeviancesAndIndividualContribToLLs property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValue }
-     *     
-     */
-    public void setLogLikelihood(RealValue value) {
-        this.logLikelihood = value;
-    }
-
-    /**
-     * Gets the value of the deviance property.
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getContent().add(newItem);
+     * </pre>
      * 
-     * @return
-     *     possible object is
-     *     {@link RealValue }
-     *     
-     */
-    public RealValue getDeviance() {
-        return deviance;
-    }
-
-    /**
-     * Sets the value of the deviance property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValue }
-     *     
-     */
-    public void setDeviance(RealValue value) {
-        this.deviance = value;
-    }
-
-    /**
-     * Gets the value of the individualContribToLL property.
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link InformationCriteriaType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
      * 
-     * @return
-     *     possible object is
-     *     {@link DataSetType }
-     *     
-     */
-    public DataSet getIndividualContribToLL() {
-        return individualContribToLL;
-    }
-
-    /**
-     * Sets the value of the individualContribToLL property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSetType }
-     *     
      */
-    public void setIndividualContribToLL(DataSet value) {
-        this.individualContribToLL = value;
-    }
-
-    /**
-     * Gets the value of the informationCriteria property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link InformationCriteriaType }
-     *     
-     */
-    public InformationCriteria getInformationCriteria() {
-        return informationCriteria;
-    }
-
-    /**
-     * Sets the value of the informationCriteria property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link InformationCriteriaType }
-     *     
-     */
-    public void setInformationCriteria(InformationCriteria value) {
-        this.informationCriteria = value;
+    public List<JAXBElement<?>> getContent() {
+        if (content == null) {
+        	content = new ArrayList<JAXBElement<?>>();
+        }
+        return this.content;
     }
     
     /**
@@ -183,7 +120,7 @@ public class Likelihood
      */
     public RealValue createLogLikelihood(){
     	RealValue el = new RealValue();
-    	this.logLikelihood = el;
+    	getContent().add(new ObjectFactory().createLikelihoodLogLikelihood(el));
     	return el;
     }
     /**
@@ -192,9 +129,8 @@ public class Likelihood
      * @return The created {@link RealValue} object.
      */
     public RealValue createLogLikelihood(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createLogLikelihood();
     	el.setValue(value);
-    	this.logLikelihood = el;
     	return el;
     }
 
@@ -204,7 +140,7 @@ public class Likelihood
      */
     public RealValue createDeviance(){
     	RealValue el = new RealValue();
-    	this.deviance = el;
+    	getContent().add(new ObjectFactory().createLikelihoodDeviance(el));
     	return el;
     }
     /**
@@ -213,9 +149,8 @@ public class Likelihood
      * @return The created {@link RealValue} object.
      */
     public RealValue createDeviance(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createDeviance();
     	el.setValue(value);
-    	this.deviance = el;
     	return el;
     }
 
@@ -225,7 +160,7 @@ public class Likelihood
      */
     public DataSet createIndividualContribToLL(){
     	DataSet el = new DataSet();
-    	this.individualContribToLL = el;
+    	getContent().add(new ObjectFactory().createLikelihoodIndividualContribToLL(el));
     	return el;
     }
 
@@ -235,7 +170,7 @@ public class Likelihood
      */
     public InformationCriteria createInformationCriteria(){
     	InformationCriteria el = new InformationCriteria();
-    	this.informationCriteria = el;
+    	getContent().add(new ObjectFactory().createLikelihoodInformationCriteria(el));
     	return el;
     }
 

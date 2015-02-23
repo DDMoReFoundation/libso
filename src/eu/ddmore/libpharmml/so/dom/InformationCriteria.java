@@ -26,9 +26,13 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -43,37 +47,68 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="InformationCriteriaType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element name="AIC" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="BIC" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *         &lt;element name="DIC" type="{http://www.pharmml.org/2013/03/CommonTypes}RealValueType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="InformationCriteriaType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
+ *       &lt;choice maxOccurs="unbounded"&gt;
+ *         &lt;sequence&gt;
+ *           &lt;element name="AIC" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValue" minOccurs="0"/&gt;
+ *           &lt;element name="BIC" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValue" minOccurs="0"/&gt;
+ *           &lt;element name="DIC" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValue" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/choice&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformationCriteriaType", propOrder = {
-    "aic",
-    "bic",
-    "dic"
+    "content"
 })
 public class InformationCriteria
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "AIC")
-    protected RealValue aic;
-    @XmlElement(name = "BIC")
-    protected RealValue bic;
-    @XmlElement(name = "DIC")
-    protected RealValue dic;
+	@XmlElementRefs({
+        @XmlElementRef(name = "DIC", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "BIC", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "AIC", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+    })
+    protected List<JAXBElement<RealValue>> content;
+
+    /**
+     * Gets the value of the content property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the aicsAndBICSAndDICS property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getContent().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValueType }{@code >}
+     * 
+     * 
+     */
+    public List<JAXBElement<RealValue>> getContent() {
+        if (content == null) {
+            content = new ArrayList<JAXBElement<RealValue>>();
+        }
+        return this.content;
+    }
     
     /**
      * Empty constructor
@@ -90,86 +125,14 @@ public class InformationCriteria
      */
     public InformationCriteria(Double aic, Double bic, Double dic){
     	if(aic != null){
-    		this.aic = new RealValue(aic);
+    		createAic(aic);
     	}
     	if(bic != null){
-    		this.bic = new RealValue(bic);
+    		createBic(bic);
     	}
     	if(dic != null){
-    		this.dic = new RealValue(dic);
+    		createDic(dic);
     	}
-    }
-
-    /**
-     * Gets the value of the aic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValue }
-     *     
-     */
-    public RealValue getAIC() {
-        return aic;
-    }
-
-    /**
-     * Sets the value of the aic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValue }
-     *     
-     */
-    public void setAIC(RealValue value) {
-        this.aic = value;
-    }
-
-    /**
-     * Gets the value of the bic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValueType }
-     *     
-     */
-    public RealValue getBIC() {
-        return bic;
-    }
-
-    /**
-     * Sets the value of the bic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValueType }
-     *     
-     */
-    public void setBIC(RealValue value) {
-        this.bic = value;
-    }
-
-    /**
-     * Gets the value of the dic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealValueType }
-     *     
-     */
-    public RealValue getDIC() {
-        return dic;
-    }
-
-    /**
-     * Sets the value of the dic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealValueType }
-     *     
-     */
-    public void setDIC(RealValue value) {
-        this.dic = value;
     }
     
     /**
@@ -178,7 +141,7 @@ public class InformationCriteria
      */
     public RealValue createAic(){
     	RealValue el = new RealValue();
-    	this.aic = el;
+    	getContent().add(new ObjectFactory().createInformationCriteriaAIC(el));
     	return el;
     }
     /**
@@ -187,9 +150,8 @@ public class InformationCriteria
      * @return The created {@link RealValue} object.
      */
     public RealValue createAic(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createAic();
     	el.setValue(value);
-    	this.aic = el;
     	return el;
     }
 
@@ -199,7 +161,7 @@ public class InformationCriteria
      */
     public RealValue createBic(){
     	RealValue el = new RealValue();
-    	this.bic = el;
+    	getContent().add(new ObjectFactory().createInformationCriteriaBIC(el));
     	return el;
     }
     /**
@@ -208,9 +170,8 @@ public class InformationCriteria
      * @return The created {@link RealValue} object.
      */
     public RealValue createBic(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createBic();
     	el.setValue(value);
-    	this.bic = el;
     	return el;
     }
 
@@ -220,7 +181,7 @@ public class InformationCriteria
      */
     public RealValue createDic(){
     	RealValue el = new RealValue();
-    	this.dic = el;
+    	getContent().add(new ObjectFactory().createInformationCriteriaDIC(el));
     	return el;
     }
     /**
@@ -229,9 +190,8 @@ public class InformationCriteria
      * @return The created {@link RealValue} object.
      */
     public RealValue createDic(double value){
-    	RealValue el = new RealValue();
+    	RealValue el = createDic();
     	el.setValue(value);
-    	this.dic = el;
     	return el;
     }
 

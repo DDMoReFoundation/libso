@@ -26,9 +26,15 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
@@ -198,158 +204,74 @@ public class IndividualEstimates
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "mean",
-        "median",
-        "mode",
-        "samples"
+        "content"
     })
     public static class Estimates
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "Mean")
-        protected DataSet mean;
-        @XmlElement(name = "Median")
-        protected DataSet median;
-        @XmlElement(name = "Mode")
-        protected DataSet mode;
-        @XmlElement(name = "Samples")
-        protected DataSet samples;
-
-        /**
-         * Gets the value of the mean property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSetType }
-         *     
-         */
-        public DataSet getMean() {
-            return mean;
-        }
-
-        /**
-         * Sets the value of the mean property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSetType }
-         *     
-         */
-        public void setMean(DataSet value) {
-            this.mean = value;
-        }
-
-        /**
-         * Gets the value of the median property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSetType }
-         *     
-         */
-        public DataSet getMedian() {
-            return median;
-        }
-
-        /**
-         * Sets the value of the median property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSetType }
-         *     
-         */
-        public void setMedian(DataSet value) {
-            this.median = value;
-        }
-
-        /**
-         * Gets the value of the mode property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSetType }
-         *     
-         */
-        public DataSet getMode() {
-            return mode;
-        }
-
-        /**
-         * Sets the value of the mode property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setMode(DataSet value) {
-            this.mode = value;
-        }
-
-        /**
-         * Gets the value of the samples property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSet }
-         *     
-         */
-        public DataSet getSamples() {
-            return samples;
-        }
-
-        /**
-         * Sets the value of the samples property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setSamples(DataSet value) {
-            this.samples = value;
-        }
+        @XmlElementRefs({
+            @XmlElementRef(name = "Mode", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Median", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Mean", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Samples", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        })
+        protected List<JAXBElement<DataSet>> content;
         
         /**
-         * Creates a new empty {@link DataSet} mean element, adds it to the current object and returns it.
-         * @return The created {@link DataSet} object.
+         * Gets the value of the content property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the meenAndMedienAndModes property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getContent().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * 
+         * 
          */
-        public DataSet createMean(){
-        	DataSet el = new DataSet();
-        	this.mean = el;
-        	return el;
+        public List<JAXBElement<DataSet>> getContent() {
+            if (content == null) {
+                content = new ArrayList<JAXBElement<DataSet>>();
+            }
+            return this.content;
         }
-
-        /**
-         * Creates a new empty {@link DataSet} median element, adds it to the current object and returns it.
-         * @return The created {@link DataSet} object.
-         */
-        public DataSet createMedian(){
-        	DataSet el = new DataSet();
-        	this.median = el;
-        	return el;
-        }
-
-        /**
-         * Creates a new empty {@link DataSet} mode element, adds it to the current object and returns it.
-         * @return The created {@link DataSet} object.
-         */
+        
         public DataSet createMode(){
-        	DataSet el = new DataSet();
-        	this.mode = el;
-        	return el;
+        	DataSet mode = new DataSet();
+        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesMode(mode));
+        	return mode;
+        }
+        
+        public DataSet createMedian(){
+        	DataSet median = new DataSet();
+        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesMedian(median));
+        	return median;
         }
 
-        /**
-         * Creates a new empty {@link DataSet} samples element, adds it to the current object and returns it.
-         * @return The created {@link DataSet} object.
-         */
+        public DataSet createMean(){
+        	DataSet mean = new DataSet();
+        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesMean(mean));
+        	return mean;
+        }
+
         public DataSet createSamples(){
-        	DataSet el = new DataSet();
-        	this.samples = el;
-        	return el;
+        	DataSet samples = new DataSet();
+        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesSamples(samples));
+        	return samples;
         }
 
 
@@ -380,118 +302,50 @@ public class IndividualEstimates
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "effectMean",
-        "effectMedian",
-        "effectMode",
-        "samples"
+        "content"
     })
     public static class RandomEffects
         extends PharmMLRootType
     {
 
-        @XmlElement(name = "EffectMean")
-        protected DataSet effectMean;
-        @XmlElement(name = "EffectMedian")
-        protected DataSet effectMedian;
-        @XmlElement(name = "EffectMode")
-        protected DataSet effectMode;
-        @XmlElement(name = "Samples")
-        protected DataSet samples;
+        @XmlElementRefs({
+            @XmlElementRef(name = "EffectMedian", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Samples", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "EffectMode", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "EffectMean", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        })
+        protected List<JAXBElement<DataSet>> content;
 
         /**
-         * Gets the value of the effectMean property.
+         * Gets the value of the content property.
          * 
-         * @return
-         *     possible object is
-         *     {@link DataSet }
-         *     
-         */
-        public DataSet getEffectMean() {
-            return effectMean;
-        }
-
-        /**
-         * Sets the value of the effectMean property.
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the effectMeenAndEffectMedienAndEffectModes property.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setEffectMean(DataSet value) {
-            this.effectMean = value;
-        }
-
-        /**
-         * Gets the value of the effectMedian property.
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getContent().add(newItem);
+         * </pre>
          * 
-         * @return
-         *     possible object is
-         *     {@link DataSetType }
-         *     
-         */
-        public DataSet getEffectMedian() {
-            return effectMedian;
-        }
-
-        /**
-         * Sets the value of the effectMedian property.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSetType }
-         *     
-         */
-        public void setEffectMedian(DataSet value) {
-            this.effectMedian = value;
-        }
-
-        /**
-         * Gets the value of the effectMode property.
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
+         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * 
-         * @return
-         *     possible object is
-         *     {@link DataSetType }
-         *     
-         */
-        public DataSet getEffectMode() {
-            return effectMode;
-        }
-
-        /**
-         * Sets the value of the effectMode property.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
          */
-        public void setEffectMode(DataSet value) {
-            this.effectMode = value;
-        }
-
-        /**
-         * Gets the value of the samples property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link DataSet }
-         *     
-         */
-        public DataSet getSamples() {
-            return samples;
-        }
-
-        /**
-         * Sets the value of the samples property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link DataSet }
-         *     
-         */
-        public void setSamples(DataSet value) {
-            this.samples = value;
+        public List<JAXBElement<DataSet>> getContent() {
+            if (content == null) {
+            	content = new ArrayList<JAXBElement<DataSet>>();
+            }
+            return this.content;
         }
         
         /**
@@ -500,7 +354,7 @@ public class IndividualEstimates
          */
         public DataSet createEffectMean(){
         	DataSet el = new DataSet();
-        	this.effectMean = el;
+        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsEffectMean(el));
         	return el;
         }
 
@@ -510,7 +364,7 @@ public class IndividualEstimates
          */
         public DataSet createEffectMedian(){
         	DataSet el = new DataSet();
-        	this.effectMedian = el;
+        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsEffectMedian(el));
         	return el;
         }
 
@@ -520,7 +374,7 @@ public class IndividualEstimates
          */
         public DataSet createEffectMode(){
         	DataSet el = new DataSet();
-        	this.effectMode = el;
+        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsEffectMode(el));
         	return el;
         }
 
@@ -530,7 +384,7 @@ public class IndividualEstimates
          */
         public DataSet createSamples(){
         	DataSet el = new DataSet();
-        	this.samples = el;
+        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsSamples(el));
         	return el;
         }
 
