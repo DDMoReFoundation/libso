@@ -68,7 +68,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "populationEstimates",
     "precisionPopulationEstimates",
     "individualEstimates",
-    "precisionIndividualEstimates_old",
+//    "precisionIndividualEstimates_old",
     "precisionIndividualEstimates",
     "residuals",
     "predictions",
@@ -86,8 +86,8 @@ public class Estimation
     @XmlElement(name = "IndividualEstimates")
     protected IndividualEstimates individualEstimates;
     
-    @XmlElement(name = "PrecisionIndividualEstimates")
-    protected PrecisionIndividualEstimates precisionIndividualEstimates_old; // SO 0.0
+//    @XmlElement(name = "PrecisionIndividualEstimates")
+//    protected PrecisionIndividualEstimates precisionIndividualEstimates_old; // SO 0.0
     @XmlElement(name = "PrecisionIndividualEstimates")
     protected SOTableDistrib precisionIndividualEstimates;
     
