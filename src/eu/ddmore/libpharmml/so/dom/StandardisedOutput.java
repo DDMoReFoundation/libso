@@ -28,8 +28,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-
 /**
  * A type defining the SO. This is the root element of any standardised output document.
  *
