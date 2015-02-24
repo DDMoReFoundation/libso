@@ -29,8 +29,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.Unmarshaller.Listener;
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -102,25 +100,25 @@ public class SOMarshaller {
 //			String packageName = PharmML.class.getPackage().getName();
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			Unmarshaller u = context.createUnmarshaller();
-			u.setEventHandler(new ValidationEventHandler() {
-				
-				@Override
-				public boolean handleEvent(ValidationEvent event) {
-					int severity = event.getSeverity();
-					switch(severity){
-					case ValidationEvent.ERROR:
-						errorHandler.handleError(event.getMessage());
-						break;
-					case ValidationEvent.FATAL_ERROR:
-						errorHandler.handleError(event.getMessage());
-						break;
-					case ValidationEvent.WARNING:
-						errorHandler.handleWarning(event.getMessage());
-						break;
-					}
-					return true;
-				}
-			});
+//			u.setEventHandler(new ValidationEventHandler() {
+//				
+//				@Override
+//				public boolean handleEvent(ValidationEvent event) {
+//					int severity = event.getSeverity();
+//					switch(severity){
+//					case ValidationEvent.ERROR:
+//						errorHandler.handleError(event.getMessage());
+//						break;
+//					case ValidationEvent.FATAL_ERROR:
+//						errorHandler.handleError(event.getMessage());
+//						break;
+//					case ValidationEvent.WARNING:
+//						errorHandler.handleWarning(event.getMessage());
+//						break;
+//					}
+//					return true;
+//				}
+//			});
 			
 			XMLStreamReader xmlsr = new XMLFilter(
 					currentDocVersion.getCorrespondingPharmMLVersion()).getXMLStreamReader(is);
