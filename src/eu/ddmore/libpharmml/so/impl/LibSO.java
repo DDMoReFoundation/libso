@@ -84,7 +84,7 @@ public class LibSO {
 			validator.validate(new StreamSource(bais));
 			bais.reset();
 			
-			final StandardisedOutput dom = this.marshaller.unmarshall(inStr,currentDocVersion);
+			final StandardisedOutput dom = this.marshaller.unmarshall(bais,currentDocVersion);
 			StandardisedOutputResource retVal = new StandardisedOutputResource() {
 				@Override
 				public StandardisedOutput getDom() {
