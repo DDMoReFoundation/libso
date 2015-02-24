@@ -35,12 +35,12 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
@@ -81,8 +81,23 @@ public class SOMarshaller {
 			throw new RuntimeException(e);
 		}
 	}
-
+	
 	public StandardisedOutput unmarshall(InputStream is) {
+		try {
+			byte[] data = toByteArray(is);
+			ByteArrayInputStream bais = new ByteArrayInputStream(data);
+			final SOVersion currentDocVersion = parseVersion(bais);
+			bais.reset();
+			
+			return unmarshall(bais,currentDocVersion);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (XMLStreamException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public StandardisedOutput unmarshall(InputStream is,final SOVersion currentDocVersion) {
 		try {
 //			String packageName = PharmML.class.getPackage().getName();
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
@@ -107,15 +122,13 @@ public class SOMarshaller {
 				}
 			});
 			
-			// Convert inputStream to byteArray so it can be read twice (first to get PharmML version before unmarshalling)
-			byte[] data = toByteArray(is);
-			ByteArrayInputStream bais = new ByteArrayInputStream(data);
-			final SOVersion currentDocVersion = parseVersion(bais);
-			bais.reset();
+			XMLStreamReader xmlsr = new XMLFilter(
+					currentDocVersion.getCorrespondingPharmMLVersion()).getXMLStreamReader(is);
 			
-			// Schema
-			Schema mySchema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
-			u.setSchema(mySchema);
+			
+//			// Schema
+//			Schema mySchema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
+//			u.setSchema(mySchema);
 			
 			// Store version info into each element
 			Listener listener = new Listener() {
@@ -128,13 +141,11 @@ public class SOMarshaller {
 			};
 			u.setListener(listener);
 			
-			StandardisedOutput doc = (StandardisedOutput)u.unmarshal(bais);
+			StandardisedOutput doc = (StandardisedOutput)u.unmarshal(xmlsr);
 			return doc;
 		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		} catch (XMLStreamException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
@@ -147,7 +158,7 @@ public class SOMarshaller {
 		return this.errorHandler;
 	}
 	
-	private SOVersion parseVersion(InputStream is) throws XMLStreamException{
+	static SOVersion parseVersion(InputStream is) throws XMLStreamException{
 		XMLInputFactory factory = XMLInputFactory.newFactory();
 		XMLStreamReader sReader = factory.createXMLStreamReader(is);
 		String version = null;
@@ -169,7 +180,7 @@ public class SOMarshaller {
 		return phVersion;
 	}
 	
-	private byte[] toByteArray(InputStream is) throws IOException{
+	static byte[] toByteArray(InputStream is) throws IOException{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();				
 		byte[] buffer = new byte[1024];
 		int read = 0;

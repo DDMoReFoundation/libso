@@ -18,8 +18,19 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.so.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.Validator;
+
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.impl.ValidationReportFactory;
@@ -39,19 +50,60 @@ public class LibSO {
 
 	public StandardisedOutputResource createDomFromResource(InputStream inStr) {
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-		this.marshaller.setErrorHandler(repFact);
-		final StandardisedOutput dom = this.marshaller.unmarshall(inStr);
-		StandardisedOutputResource retVal = new StandardisedOutputResource() {
-			@Override
-			public StandardisedOutput getDom() {
-				return dom;
-			}
-			@Override
-			public IValidationReport getCreationReport() {
-				return repFact.createReport();
-			}
-		};
-		return retVal;
+//		this.marshaller.setErrorHandler(repFact);
+		
+		final SOVersion currentDocVersion;
+		
+		try {
+		
+			byte[] data = SOMarshaller.toByteArray(inStr);
+			ByteArrayInputStream bais = new ByteArrayInputStream(data);
+			currentDocVersion = SOMarshaller.parseVersion(bais);
+			bais.reset();
+			
+			// Validating stream with schemas
+			Schema schema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
+			Validator validator = schema.newValidator();
+			validator.setErrorHandler(new ErrorHandler() {
+				
+				@Override
+				public void warning(SAXParseException exception) throws SAXException {
+					repFact.handleWarning(exception.getMessage());
+				}
+				
+				@Override
+				public void fatalError(SAXParseException exception) throws SAXException {
+					repFact.handleError(exception.getMessage());
+				}
+				
+				@Override
+				public void error(SAXParseException exception) throws SAXException {
+					repFact.handleError(exception.getMessage());
+				}
+			});
+			validator.validate(new StreamSource(bais));
+			bais.reset();
+			
+			final StandardisedOutput dom = this.marshaller.unmarshall(inStr,currentDocVersion);
+			StandardisedOutputResource retVal = new StandardisedOutputResource() {
+				@Override
+				public StandardisedOutput getDom() {
+					return dom;
+				}
+				@Override
+				public IValidationReport getCreationReport() {
+					return repFact.createReport();
+				}
+			};
+			return retVal;
+		
+		} catch (XMLStreamException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (SAXException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public StandardisedOutputResource createDom(SOVersion version) {
