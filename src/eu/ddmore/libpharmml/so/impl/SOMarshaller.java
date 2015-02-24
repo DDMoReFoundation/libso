@@ -28,9 +28,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.Unmarshaller.Listener;
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
-import javax.xml.bind.Unmarshaller.Listener;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -40,6 +40,7 @@ import javax.xml.validation.Schema;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
@@ -54,8 +55,29 @@ public class SOMarshaller {
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			Marshaller m = context.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.marshal(dom, os);
+//			m.marshal(dom, os);
+			
+			SOVersion version = SOVersion.getEnum(dom.getWrittenVersion());
+			if(version == null){
+				throw new IllegalStateException("writtenVersion attribute must be set.");
+			}
+			
+			if(SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
+				// Marshalling into a XMLStreamWriter with filter for namespaces.
+				// Into a ByteArray so it can be inputstreamed again.
+				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+				SOXMLFilter filter = new SOXMLFilter(version);	
+//				XMLStreamWriter xmlsw = filter.getXMLStreamWriter(byteOut);	
+				m.marshal(dom, byteOut);
+				
+				filter.filterPharmMLUris(new ByteArrayInputStream(byteOut.toByteArray()), os);
+			} else { // no filtering, applying old default namespace
+				m.marshal(dom, os);
+			}
+			
 		} catch (JAXBException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}

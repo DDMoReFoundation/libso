@@ -43,13 +43,12 @@ public enum SOVersion {
 	}
 
 	public static SOVersion getEnum(String version) {
-		if(version.equals("0.0")){
-			return SOVersion.v0_0;
-		} else if (version.equals("0.1")) {
-			return SOVersion.v0_1;
-		} else {
-			return null;
+		for(SOVersion soVersion : values()){
+			if(version.equals(soVersion.toString())){
+				return soVersion;
+			}
 		}
+		return null;
 	}
 
 	public String getCatalogLocation() {
