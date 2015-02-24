@@ -56,7 +56,7 @@ public class SOSchemaFactory {
 			// merging SO and PharmML catalogs
 			URL url = getClass().getResource(version.getCatalogLocation());
 			//TODO: no hardcoding
-			URL url_pharmml = PharmMLSchemaFactory.class.getResource(eu.ddmore.libpharmml.impl.Messages.getString(version.getCorrespondingPharmMLVersion().getCatalogLocation()));
+			URL url_pharmml = PharmMLSchemaFactory.class.getResource(version.getCorrespondingPharmMLVersion().getCatalogLocation());
 			String[] catalogs = { url.toExternalForm(), url_pharmml.toExternalForm() };
 			XMLCatalogResolver resolver = new XMLCatalogResolver();
 			resolver.setCatalogList(catalogs);
