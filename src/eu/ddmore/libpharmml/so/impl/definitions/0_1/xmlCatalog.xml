@@ -4,7 +4,7 @@
     
 
     
-    <system systemId="http://www.pharmml.org/2013/03/StandardisedOutput"
+    <system systemId="http://www.pharmml.org/so/0.1/StandardisedOutput"
         uri="standardisedOutput.xsd"/>
   
     
