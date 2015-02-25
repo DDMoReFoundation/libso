@@ -35,7 +35,6 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import eu.ddmore.libpharmml.IErrorHandler;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.XMLFilter;
@@ -59,6 +58,7 @@ public class SOMarshaller {
 			if(version == null){
 				throw new IllegalStateException("writtenVersion attribute must be set.");
 			}
+			m.setListener(new SOMarshalListener(version));
 			
 			if(SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
@@ -129,14 +129,15 @@ public class SOMarshaller {
 //			u.setSchema(mySchema);
 			
 			// Store version info into each element
-			Listener listener = new Listener() {
-				@Override
-				public void beforeUnmarshal(Object target, Object parent) {
-					if(target instanceof PharmMLElement){
-						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion.getCorrespondingPharmMLVersion());
-					}
-				}
-			};
+//			Listener listener = new Listener() {
+//				@Override
+//				public void beforeUnmarshal(Object target, Object parent) {
+//					if(target instanceof PharmMLElement){
+//						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion.getCorrespondingPharmMLVersion());
+//					}
+//				}
+//			};
+			Listener listener = new SOUnmarshalListener(currentDocVersion);
 			u.setListener(listener);
 			
 			StandardisedOutput doc = (StandardisedOutput)u.unmarshal(xmlsr);
