@@ -18,11 +18,15 @@
  *******************************************************************************/
 package eu.ddmore.libpharmml.so.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.util.JAXBSource;
+//import javax.xml.bind.JAXBContext;
+//import javax.xml.bind.JAXBException;
+//import javax.xml.bind.util.JAXBSource;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.Validator;
 
@@ -39,7 +43,7 @@ import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOValidator {
 
-	private static final String CONTEXT_NAME = Messages.getString("SOMarshaller.contextDefn"); //$NON-NLS-1$
+//	private static final String CONTEXT_NAME = Messages.getString("SOMarshaller.contextDefn"); //$NON-NLS-1$
 
 	public IValidationReport createValidationReport(StandardisedOutputResource resource) {
 		try{
@@ -55,8 +59,13 @@ public class SOValidator {
 				LoggerWrapper.getLogger().warning("Missing or unknown writtenVersion of SO document. Using default version ("+docVersion+").");
 			}
 
-			JAXBContext jc = JAXBContext.newInstance(CONTEXT_NAME);
-			JAXBSource source = new JAXBSource(jc, dom);
+//			JAXBContext jc = JAXBContext.newInstance(CONTEXT_NAME);
+//			JAXBSource source = new JAXBSource(jc, dom);
+			
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			SOMarshaller m = new SOMarshaller();
+			m.marshall(dom, baos);
+			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 	 
 			Schema schema = SOSchemaFactory.getInstance().createSOSchema(docVersion);
 			Validator validator = schema.newValidator();
@@ -94,8 +103,6 @@ public class SOValidator {
 			return rptFact.createReport();
 		}
 		catch (IOException e) {
-			throw new RuntimeException(e.getMessage(), e);
-		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);
         } catch (SAXException e) {
 			throw new RuntimeException(e.getMessage(), e);
