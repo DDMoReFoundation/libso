@@ -195,5 +195,35 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
     	this.estimation = el;
     	return el;
     }
+    
+    /**
+     * Creates a new empty {@link TaskInformation} taskInformation element, adds it to the current object and returns it.
+     * @return The created {@link TaskInformation} object.
+     */
+    public TaskInformation createTaskInformation(){
+            TaskInformation el = new TaskInformation();
+            this.taskInformation = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link ModelDiagnostic} modelDiagnostic element, adds it to the current object and returns it.
+     * @return The created {@link ModelDiagnostic} object.
+     */
+    public ModelDiagnostic createModelDiagnostic(){
+            ModelDiagnostic el = new ModelDiagnostic();
+            this.modelDiagnostic = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link Simulation} simulation element, adds it to the current object and returns it.
+     * @return The created {@link Simulation} object.
+     */
+    public Simulation createSimulation(){
+            Simulation el = new Simulation();
+            this.simulation = el;
+            return el;
+    }
 
 }

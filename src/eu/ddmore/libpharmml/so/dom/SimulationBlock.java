@@ -8,12 +8,12 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
@@ -76,7 +76,7 @@ public class SimulationBlock
     @XmlElement(name = "RawResultsFile")
     protected ExternalFile rawResultsFile;
     @XmlAttribute(name = "replicate")
-    protected BigInteger replicate;
+    protected Integer replicate;
 
     /**
      * Gets the value of the simulatedProfiles property.
@@ -251,10 +251,10 @@ public class SimulationBlock
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getReplicate() {
+    public Integer getReplicate() {
         return replicate;
     }
 
@@ -263,11 +263,82 @@ public class SimulationBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setReplicate(BigInteger value) {
+    public void setReplicate(Integer value) {
         this.replicate = value;
     }
+    
+    /**                                                              
+     * Creates a new empty {@link DataSet} simulatedProfiles element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.                                                                 
+     */                                                                                                            
+    public DataSet createSimulatedProfiles(){                                                                      
+            DataSet el = new DataSet();                                                                            
+            this.simulatedProfiles = el;                                                                           
+            return el;                                                                                             
+    }                                                                                                              
+
+    /**
+     * Creates a new empty {@link DataSet} indivParameters element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.                                                               
+     */                                                                                                          
+    public DataSet createIndivParameters(){                                                                      
+            DataSet el = new DataSet();                                                                          
+            this.indivParameters = el;                                                                           
+            return el;                                                                                           
+    }
+
+    /**
+     * Creates a new empty {@link DataSet} randomEffects element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
+     */
+    public DataSet createRandomEffects(){
+            DataSet el = new DataSet();
+            this.randomEffects = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSet} covariates element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
+     */
+    public DataSet createCovariates(){
+            DataSet el = new DataSet();
+            this.covariates = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSet} populationParameters element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
+     */
+    public DataSet createPopulationParameters(){
+            DataSet el = new DataSet();
+            this.populationParameters = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link DataSet} dosing element, adds it to the current object and returns it.
+     * @return The created {@link DataSet} object.
+     */
+    public DataSet createDosing(){
+            DataSet el = new DataSet();
+            this.dosing = el;
+            return el;
+    }
+
+    /**
+     * Creates a new empty {@link ExternalFile} rawResultsFile element, adds it to the current object and returns it.
+     * @return The created {@link ExternalFile} object.
+     */
+    public ExternalFile createRawResultsFile(){
+            ExternalFile el = new ExternalFile();
+            this.rawResultsFile = el;
+            return el;
+    }
+
 
 }
