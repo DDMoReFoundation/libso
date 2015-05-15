@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -53,49 +54,50 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PrecisionPopulationEstimatesType"&gt;
- *   &lt;complexContent&gt;
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="MLE" minOccurs="0"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
- *                 &lt;choice maxOccurs="unbounded"&gt;
- *                   &lt;sequence&gt;
- *                     &lt;element name="FIM" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOMatrixType" minOccurs="0"/&gt;
- *                     &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOMatrixType" minOccurs="0"/&gt;
- *                     &lt;element name="CorrelationMatrix" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOMatrixType" minOccurs="0"/&gt;
- *                     &lt;element name="StandardError" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *                     &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *                     &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *                   &lt;/sequence&gt;
- *                 &lt;/choice&gt;
- *               &lt;/extension&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
- *         &lt;element name="Bayesian" minOccurs="0"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
- *                 &lt;sequence&gt;
- *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *                   &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SOTableDistribType" minOccurs="0"/&gt;
- *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *                 &lt;/sequence&gt;
- *               &lt;/extension&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
- *         &lt;element name="Bootstrap" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
- *         &lt;element name="LLP" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
- *         &lt;element name="SIR" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
- *         &lt;element name="MultiDimLLP" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/extension&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="PrecisionPopulationEstimatesType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *       &lt;sequence>
+ *         &lt;element name="MLE" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *                 &lt;choice maxOccurs="unbounded">
+ *                   &lt;sequence>
+ *                     &lt;element name="FIM" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOMatrixType" minOccurs="0"/>
+ *                     &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOMatrixType" minOccurs="0"/>
+ *                     &lt;element name="CorrelationMatrix" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOMatrixType" minOccurs="0"/>
+ *                     &lt;element name="StandardError" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="RelativeStandardError" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="AsymptoticCI" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="ConditionNumber" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}Rhs" minOccurs="0"/>
+ *                   &lt;/sequence>
+ *                 &lt;/choice>
+ *               &lt;/extension>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="Bayesian" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *                 &lt;sequence>
+ *                   &lt;element name="StandardDeviationPosterior" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
+ *                   &lt;element name="PercentilesCI" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/extension>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="Bootstrap" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/>
+ *         &lt;element name="LLP" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/>
+ *         &lt;element name="SIR" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/>
+ *         &lt;element name="MultiDimLLP" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PrecisionEstimatesPercentileType" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -534,12 +536,13 @@ public class PrecisionPopulationEstimates
 //        protected DataSet asymptoticCI;
         
         @XmlElementRefs({
-            @XmlElementRef(name = "CovarianceMatrix", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "CorrelationMatrix", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "RelativeStandardError", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "FIM", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "AsymptoticCI", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "StandardError", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+            @XmlElementRef(name = "CovarianceMatrix", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "CorrelationMatrix", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "RelativeStandardError", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "FIM", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "AsymptoticCI", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "StandardError", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "ConditionNumber", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<? extends PharmMLRootType>> content;
 
