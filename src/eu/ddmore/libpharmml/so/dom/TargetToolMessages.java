@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -39,6 +40,7 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -79,13 +81,13 @@ public class TargetToolMessages
 {
 
 	@XmlElementRefs({
-        @XmlElementRef(name = "IterationNumber", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ElapsedTime", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "OutputFilePath", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Errors", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Warnings", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ChainsNumber", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Termination", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "IterationNumber", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ElapsedTime", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "OutputFilePath", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Errors", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Warnings", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ChainsNumber", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Termination", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
 

@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -80,8 +81,8 @@ public class RawResults
     protected List<ExternalFile> rawFile;
     
     @XmlElementRefs({
-        @XmlElementRef(name = "DataFile", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "GraphicsFile", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "DataFile", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "GraphicsFile", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<ExternalFile>> dataFilesAndGraphicsFiles;
 

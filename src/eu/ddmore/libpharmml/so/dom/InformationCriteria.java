@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -73,9 +75,9 @@ public class InformationCriteria
 {
 
 	@XmlElementRefs({
-        @XmlElementRef(name = "DIC", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "BIC", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "AIC", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "DIC", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "BIC", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "AIC", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<RealValue>> content;
 

@@ -17,9 +17,9 @@
  * under the License.
  *******************************************************************************/
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", 
+@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, 
 xmlns = {@javax.xml.bind.annotation.XmlNs(
-		namespaceURI = "http://www.pharmml.org/so/0.1/StandardisedOutput", 
+		namespaceURI = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, 
 		prefix = "so")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.so.dom;

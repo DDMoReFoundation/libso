@@ -28,6 +28,7 @@ package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -75,10 +77,10 @@ public class Likelihood
 {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "Deviance", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "LogLikelihood", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "InformationCriteria", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "IndividualContribToLL", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "Deviance", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "LogLikelihood", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "InformationCriteria", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "IndividualContribToLL", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
 

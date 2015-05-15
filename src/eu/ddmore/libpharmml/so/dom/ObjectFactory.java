@@ -12,10 +12,12 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
+
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -35,40 +37,40 @@ import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _IndivFitsObservationTable_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "ObservationTable");
-    private final static QName _IndivFitsPredictionTable_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "PredictionTable");
-    private final static QName _DiagnosticPlotsStructuralModelIndivFits_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "IndivFits");
-    private final static QName _DiagnosticPlotsStructuralModelIndivPredictionVsObserv_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "IndivPredictionVsObserv");
-    private final static QName _DiagnosticPlotsStructuralModelVPC_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "VPC");
-    private final static QName _TargetToolMessagesTermination_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Termination");
-    private final static QName _TargetToolMessagesWarnings_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Warnings");
-    private final static QName _TargetToolMessagesErrors_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Errors");
-    private final static QName _TargetToolMessagesElapsedTime_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "ElapsedTime");
-    private final static QName _TargetToolMessagesOutputFilePath_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "OutputFilePath");
-    private final static QName _TargetToolMessagesChainsNumber_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "ChainsNumber");
-    private final static QName _TargetToolMessagesIterationNumber_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "IterationNumber");
-    private final static QName _InformationCriteriaAIC_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "AIC");
-    private final static QName _InformationCriteriaBIC_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "BIC");
-    private final static QName _InformationCriteriaDIC_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "DIC");
-    private final static QName _LikelihoodLogLikelihood_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "LogLikelihood");
-    private final static QName _LikelihoodDeviance_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Deviance");
-    private final static QName _LikelihoodIndividualContribToLL_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "IndividualContribToLL");
-    private final static QName _LikelihoodInformationCriteria_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "InformationCriteria");
-    private final static QName _IndividualEstimatesRandomEffectsEffectMean_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "EffectMean");
-    private final static QName _IndividualEstimatesRandomEffectsEffectMedian_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "EffectMedian");
-    private final static QName _IndividualEstimatesRandomEffectsEffectMode_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "EffectMode");
-    private final static QName _IndividualEstimatesRandomEffectsSamples_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Samples");
-    private final static QName _IndividualEstimatesEstimatesMean_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Mean");
-    private final static QName _IndividualEstimatesEstimatesMedian_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Median");
-    private final static QName _IndividualEstimatesEstimatesMode_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "Mode");
-    private final static QName _PrecisionPopulationEstimatesMLEFIM_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "FIM");
-    private final static QName _PrecisionPopulationEstimatesMLECovarianceMatrix_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "CovarianceMatrix");
-    private final static QName _PrecisionPopulationEstimatesMLECorrelationMatrix_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "CorrelationMatrix");
-    private final static QName _PrecisionPopulationEstimatesMLEStandardError_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "StandardError");
-    private final static QName _PrecisionPopulationEstimatesMLERelativeStandardError_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "RelativeStandardError");
-    private final static QName _PrecisionPopulationEstimatesMLEAsymptoticCI_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "AsymptoticCI");
-    private final static QName _RawResultsDataFile_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "DataFile");
-    private final static QName _RawResultsGraphicsFile_QNAME = new QName("http://www.pharmml.org/so/0.1/StandardisedOutput", "GraphicsFile");
+    private final static QName _IndivFitsObservationTable_QNAME = new QName(SOXMLFilter.NS_SO, "ObservationTable");
+    private final static QName _IndivFitsPredictionTable_QNAME = new QName(SOXMLFilter.NS_SO, "PredictionTable");
+    private final static QName _DiagnosticPlotsStructuralModelIndivFits_QNAME = new QName(SOXMLFilter.NS_SO, "IndivFits");
+    private final static QName _DiagnosticPlotsStructuralModelIndivPredictionVsObserv_QNAME = new QName(SOXMLFilter.NS_SO, "IndivPredictionVsObserv");
+    private final static QName _DiagnosticPlotsStructuralModelVPC_QNAME = new QName(SOXMLFilter.NS_SO, "VPC");
+    private final static QName _TargetToolMessagesTermination_QNAME = new QName(SOXMLFilter.NS_SO, "Termination");
+    private final static QName _TargetToolMessagesWarnings_QNAME = new QName(SOXMLFilter.NS_SO, "Warnings");
+    private final static QName _TargetToolMessagesErrors_QNAME = new QName(SOXMLFilter.NS_SO, "Errors");
+    private final static QName _TargetToolMessagesElapsedTime_QNAME = new QName(SOXMLFilter.NS_SO, "ElapsedTime");
+    private final static QName _TargetToolMessagesOutputFilePath_QNAME = new QName(SOXMLFilter.NS_SO, "OutputFilePath");
+    private final static QName _TargetToolMessagesChainsNumber_QNAME = new QName(SOXMLFilter.NS_SO, "ChainsNumber");
+    private final static QName _TargetToolMessagesIterationNumber_QNAME = new QName(SOXMLFilter.NS_SO, "IterationNumber");
+    private final static QName _InformationCriteriaAIC_QNAME = new QName(SOXMLFilter.NS_SO, "AIC");
+    private final static QName _InformationCriteriaBIC_QNAME = new QName(SOXMLFilter.NS_SO, "BIC");
+    private final static QName _InformationCriteriaDIC_QNAME = new QName(SOXMLFilter.NS_SO, "DIC");
+    private final static QName _LikelihoodLogLikelihood_QNAME = new QName(SOXMLFilter.NS_SO, "LogLikelihood");
+    private final static QName _LikelihoodDeviance_QNAME = new QName(SOXMLFilter.NS_SO, "Deviance");
+    private final static QName _LikelihoodIndividualContribToLL_QNAME = new QName(SOXMLFilter.NS_SO, "IndividualContribToLL");
+    private final static QName _LikelihoodInformationCriteria_QNAME = new QName(SOXMLFilter.NS_SO, "InformationCriteria");
+    private final static QName _IndividualEstimatesRandomEffectsEffectMean_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMean");
+    private final static QName _IndividualEstimatesRandomEffectsEffectMedian_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMedian");
+    private final static QName _IndividualEstimatesRandomEffectsEffectMode_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMode");
+    private final static QName _IndividualEstimatesRandomEffectsSamples_QNAME = new QName(SOXMLFilter.NS_SO, "Samples");
+    private final static QName _IndividualEstimatesEstimatesMean_QNAME = new QName(SOXMLFilter.NS_SO, "Mean");
+    private final static QName _IndividualEstimatesEstimatesMedian_QNAME = new QName(SOXMLFilter.NS_SO, "Median");
+    private final static QName _IndividualEstimatesEstimatesMode_QNAME = new QName(SOXMLFilter.NS_SO, "Mode");
+    private final static QName _PrecisionPopulationEstimatesMLEFIM_QNAME = new QName(SOXMLFilter.NS_SO, "FIM");
+    private final static QName _PrecisionPopulationEstimatesMLECovarianceMatrix_QNAME = new QName(SOXMLFilter.NS_SO, "CovarianceMatrix");
+    private final static QName _PrecisionPopulationEstimatesMLECorrelationMatrix_QNAME = new QName(SOXMLFilter.NS_SO, "CorrelationMatrix");
+    private final static QName _PrecisionPopulationEstimatesMLEStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "StandardError");
+    private final static QName _PrecisionPopulationEstimatesMLERelativeStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "RelativeStandardError");
+    private final static QName _PrecisionPopulationEstimatesMLEAsymptoticCI_QNAME = new QName(SOXMLFilter.NS_SO, "AsymptoticCI");
+    private final static QName _RawResultsDataFile_QNAME = new QName(SOXMLFilter.NS_SO, "DataFile");
+    private final static QName _RawResultsGraphicsFile_QNAME = new QName(SOXMLFilter.NS_SO, "GraphicsFile");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.so.dom
@@ -297,7 +299,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "ObservationTable", scope = IndivFits.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "ObservationTable", scope = IndivFits.class)
     public JAXBElement<DataSet> createIndivFitsObservationTable(DataSet value) {
         return new JAXBElement<DataSet>(_IndivFitsObservationTable_QNAME, DataSet.class, IndivFits.class, value);
     }
@@ -306,7 +308,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "PredictionTable", scope = IndivFits.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "PredictionTable", scope = IndivFits.class)
     public JAXBElement<DataSet> createIndivFitsPredictionTable(DataSet value) {
         return new JAXBElement<DataSet>(_IndivFitsPredictionTable_QNAME, DataSet.class, IndivFits.class, value);
     }
@@ -315,7 +317,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link IndivFits }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "IndivFits", scope = DiagnosticPlotsStructuralModel.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "IndivFits", scope = DiagnosticPlotsStructuralModel.class)
     public JAXBElement<IndivFits> createDiagnosticPlotsStructuralModelIndivFits(IndivFits value) {
         return new JAXBElement<IndivFits>(_DiagnosticPlotsStructuralModelIndivFits_QNAME, IndivFits.class, DiagnosticPlotsStructuralModel.class, value);
     }
@@ -324,7 +326,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "IndivPredictionVsObserv", scope = DiagnosticPlotsStructuralModel.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "IndivPredictionVsObserv", scope = DiagnosticPlotsStructuralModel.class)
     public JAXBElement<DataSet> createDiagnosticPlotsStructuralModelIndivPredictionVsObserv(DataSet value) {
         return new JAXBElement<DataSet>(_DiagnosticPlotsStructuralModelIndivPredictionVsObserv_QNAME, DataSet.class, DiagnosticPlotsStructuralModel.class, value);
     }
@@ -333,7 +335,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "VPC", scope = DiagnosticPlotsStructuralModel.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "VPC", scope = DiagnosticPlotsStructuralModel.class)
     public JAXBElement<DataSet> createDiagnosticPlotsStructuralModelVPC(DataSet value) {
         return new JAXBElement<DataSet>(_DiagnosticPlotsStructuralModelVPC_QNAME, DataSet.class, DiagnosticPlotsStructuralModel.class, value);
     }
@@ -342,7 +344,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StringValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Termination", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Termination", scope = TargetToolMessages.class)
     public JAXBElement<StringValue> createTargetToolMessagesTermination(StringValue value) {
         return new JAXBElement<StringValue>(_TargetToolMessagesTermination_QNAME, StringValue.class, TargetToolMessages.class, value);
     }
@@ -351,7 +353,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StringValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Warnings", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Warnings", scope = TargetToolMessages.class)
     public JAXBElement<StringValue> createTargetToolMessagesWarnings(StringValue value) {
         return new JAXBElement<StringValue>(_TargetToolMessagesWarnings_QNAME, StringValue.class, TargetToolMessages.class, value);
     }
@@ -360,7 +362,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StringValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Errors", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Errors", scope = TargetToolMessages.class)
     public JAXBElement<StringValue> createTargetToolMessagesErrors(StringValue value) {
         return new JAXBElement<StringValue>(_TargetToolMessagesErrors_QNAME, StringValue.class, TargetToolMessages.class, value);
     }
@@ -369,7 +371,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "ElapsedTime", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "ElapsedTime", scope = TargetToolMessages.class)
     public JAXBElement<RealValue> createTargetToolMessagesElapsedTime(RealValue value) {
         return new JAXBElement<RealValue>(_TargetToolMessagesElapsedTime_QNAME, RealValue.class, TargetToolMessages.class, value);
     }
@@ -378,7 +380,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "OutputFilePath", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "OutputFilePath", scope = TargetToolMessages.class)
     public JAXBElement<ExternalFile> createTargetToolMessagesOutputFilePath(ExternalFile value) {
         return new JAXBElement<ExternalFile>(_TargetToolMessagesOutputFilePath_QNAME, ExternalFile.class, TargetToolMessages.class, value);
     }
@@ -387,7 +389,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "ChainsNumber", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "ChainsNumber", scope = TargetToolMessages.class)
     public JAXBElement<RealValue> createTargetToolMessagesChainsNumber(RealValue value) {
         return new JAXBElement<RealValue>(_TargetToolMessagesChainsNumber_QNAME, RealValue.class, TargetToolMessages.class, value);
     }
@@ -396,7 +398,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "IterationNumber", scope = TargetToolMessages.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "IterationNumber", scope = TargetToolMessages.class)
     public JAXBElement<RealValue> createTargetToolMessagesIterationNumber(RealValue value) {
         return new JAXBElement<RealValue>(_TargetToolMessagesIterationNumber_QNAME, RealValue.class, TargetToolMessages.class, value);
     }
@@ -405,7 +407,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "AIC", scope = InformationCriteria.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "AIC", scope = InformationCriteria.class)
     public JAXBElement<RealValue> createInformationCriteriaAIC(RealValue value) {
         return new JAXBElement<RealValue>(_InformationCriteriaAIC_QNAME, RealValue.class, InformationCriteria.class, value);
     }
@@ -414,7 +416,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "BIC", scope = InformationCriteria.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "BIC", scope = InformationCriteria.class)
     public JAXBElement<RealValue> createInformationCriteriaBIC(RealValue value) {
         return new JAXBElement<RealValue>(_InformationCriteriaBIC_QNAME, RealValue.class, InformationCriteria.class, value);
     }
@@ -423,7 +425,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "DIC", scope = InformationCriteria.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "DIC", scope = InformationCriteria.class)
     public JAXBElement<RealValue> createInformationCriteriaDIC(RealValue value) {
         return new JAXBElement<RealValue>(_InformationCriteriaDIC_QNAME, RealValue.class, InformationCriteria.class, value);
     }
@@ -432,7 +434,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "LogLikelihood", scope = Likelihood.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "LogLikelihood", scope = Likelihood.class)
     public JAXBElement<RealValue> createLikelihoodLogLikelihood(RealValue value) {
         return new JAXBElement<RealValue>(_LikelihoodLogLikelihood_QNAME, RealValue.class, Likelihood.class, value);
     }
@@ -441,7 +443,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Deviance", scope = Likelihood.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Deviance", scope = Likelihood.class)
     public JAXBElement<RealValue> createLikelihoodDeviance(RealValue value) {
         return new JAXBElement<RealValue>(_LikelihoodDeviance_QNAME, RealValue.class, Likelihood.class, value);
     }
@@ -450,7 +452,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "IndividualContribToLL", scope = Likelihood.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "IndividualContribToLL", scope = Likelihood.class)
     public JAXBElement<DataSet> createLikelihoodIndividualContribToLL(DataSet value) {
         return new JAXBElement<DataSet>(_LikelihoodIndividualContribToLL_QNAME, DataSet.class, Likelihood.class, value);
     }
@@ -459,7 +461,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link InformationCriteria }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "InformationCriteria", scope = Likelihood.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "InformationCriteria", scope = Likelihood.class)
     public JAXBElement<InformationCriteria> createLikelihoodInformationCriteria(InformationCriteria value) {
         return new JAXBElement<InformationCriteria>(_LikelihoodInformationCriteria_QNAME, InformationCriteria.class, Likelihood.class, value);
     }
@@ -468,7 +470,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "EffectMean", scope = IndividualEstimates.RandomEffects.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "EffectMean", scope = IndividualEstimates.RandomEffects.class)
     public JAXBElement<DataSet> createIndividualEstimatesRandomEffectsEffectMean(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesRandomEffectsEffectMean_QNAME, DataSet.class, IndividualEstimates.RandomEffects.class, value);
     }
@@ -477,7 +479,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "EffectMedian", scope = IndividualEstimates.RandomEffects.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "EffectMedian", scope = IndividualEstimates.RandomEffects.class)
     public JAXBElement<DataSet> createIndividualEstimatesRandomEffectsEffectMedian(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesRandomEffectsEffectMedian_QNAME, DataSet.class, IndividualEstimates.RandomEffects.class, value);
     }
@@ -486,7 +488,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "EffectMode", scope = IndividualEstimates.RandomEffects.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "EffectMode", scope = IndividualEstimates.RandomEffects.class)
     public JAXBElement<DataSet> createIndividualEstimatesRandomEffectsEffectMode(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesRandomEffectsEffectMode_QNAME, DataSet.class, IndividualEstimates.RandomEffects.class, value);
     }
@@ -495,7 +497,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Samples", scope = IndividualEstimates.RandomEffects.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Samples", scope = IndividualEstimates.RandomEffects.class)
     public JAXBElement<DataSet> createIndividualEstimatesRandomEffectsSamples(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesRandomEffectsSamples_QNAME, DataSet.class, IndividualEstimates.RandomEffects.class, value);
     }
@@ -504,7 +506,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Mean", scope = IndividualEstimates.Estimates.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Mean", scope = IndividualEstimates.Estimates.class)
     public JAXBElement<DataSet> createIndividualEstimatesEstimatesMean(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesEstimatesMean_QNAME, DataSet.class, IndividualEstimates.Estimates.class, value);
     }
@@ -513,7 +515,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Median", scope = IndividualEstimates.Estimates.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Median", scope = IndividualEstimates.Estimates.class)
     public JAXBElement<DataSet> createIndividualEstimatesEstimatesMedian(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesEstimatesMedian_QNAME, DataSet.class, IndividualEstimates.Estimates.class, value);
     }
@@ -522,7 +524,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Mode", scope = IndividualEstimates.Estimates.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Mode", scope = IndividualEstimates.Estimates.class)
     public JAXBElement<DataSet> createIndividualEstimatesEstimatesMode(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesEstimatesMode_QNAME, DataSet.class, IndividualEstimates.Estimates.class, value);
     }
@@ -531,7 +533,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "Samples", scope = IndividualEstimates.Estimates.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "Samples", scope = IndividualEstimates.Estimates.class)
     public JAXBElement<DataSet> createIndividualEstimatesEstimatesSamples(DataSet value) {
         return new JAXBElement<DataSet>(_IndividualEstimatesRandomEffectsSamples_QNAME, DataSet.class, IndividualEstimates.Estimates.class, value);
     }
@@ -540,7 +542,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SOMatrix }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "FIM", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "FIM", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<SOMatrix> createPrecisionPopulationEstimatesMLEFIM(SOMatrix value) {
         return new JAXBElement<SOMatrix>(_PrecisionPopulationEstimatesMLEFIM_QNAME, SOMatrix.class, PrecisionPopulationEstimates.MLE.class, value);
     }
@@ -549,7 +551,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SOMatrix }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "CovarianceMatrix", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "CovarianceMatrix", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<SOMatrix> createPrecisionPopulationEstimatesMLECovarianceMatrix(SOMatrix value) {
         return new JAXBElement<SOMatrix>(_PrecisionPopulationEstimatesMLECovarianceMatrix_QNAME, SOMatrix.class, PrecisionPopulationEstimates.MLE.class, value);
     }
@@ -558,7 +560,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SOMatrix }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "CorrelationMatrix", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "CorrelationMatrix", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<SOMatrix> createPrecisionPopulationEstimatesMLECorrelationMatrix(SOMatrix value) {
         return new JAXBElement<SOMatrix>(_PrecisionPopulationEstimatesMLECorrelationMatrix_QNAME, SOMatrix.class, PrecisionPopulationEstimates.MLE.class, value);
     }
@@ -567,7 +569,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "StandardError", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "StandardError", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<DataSet> createPrecisionPopulationEstimatesMLEStandardError(DataSet value) {
         return new JAXBElement<DataSet>(_PrecisionPopulationEstimatesMLEStandardError_QNAME, DataSet.class, PrecisionPopulationEstimates.MLE.class, value);
     }
@@ -576,7 +578,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "RelativeStandardError", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "RelativeStandardError", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<DataSet> createPrecisionPopulationEstimatesMLERelativeStandardError(DataSet value) {
         return new JAXBElement<DataSet>(_PrecisionPopulationEstimatesMLERelativeStandardError_QNAME, DataSet.class, PrecisionPopulationEstimates.MLE.class, value);
     }
@@ -585,7 +587,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DataSet }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "AsymptoticCI", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "AsymptoticCI", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<DataSet> createPrecisionPopulationEstimatesMLEAsymptoticCI(DataSet value) {
         return new JAXBElement<DataSet>(_PrecisionPopulationEstimatesMLEAsymptoticCI_QNAME, DataSet.class, PrecisionPopulationEstimates.MLE.class, value);
     }
@@ -594,7 +596,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "DataFile", scope = RawResults.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "DataFile", scope = RawResults.class)
     public JAXBElement<ExternalFile> createRawResultsDataFile(ExternalFile value) {
         return new JAXBElement<ExternalFile>(_RawResultsDataFile_QNAME, ExternalFile.class, RawResults.class, value);
     }
@@ -603,7 +605,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", name = "GraphicsFile", scope = RawResults.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "GraphicsFile", scope = RawResults.class)
     public JAXBElement<ExternalFile> createRawResultsGraphicsFile(ExternalFile value) {
         return new JAXBElement<ExternalFile>(_RawResultsGraphicsFile_QNAME, ExternalFile.class, RawResults.class, value);
     }

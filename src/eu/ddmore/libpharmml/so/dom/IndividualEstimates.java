@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -211,10 +212,10 @@ public class IndividualEstimates
     {
 
         @XmlElementRefs({
-            @XmlElementRef(name = "Mode", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Median", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Mean", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Samples", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+            @XmlElementRef(name = "Mode", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Median", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Mean", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Samples", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<DataSet>> content;
         
@@ -309,10 +310,10 @@ public class IndividualEstimates
     {
 
         @XmlElementRefs({
-            @XmlElementRef(name = "EffectMedian", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Samples", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "EffectMode", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "EffectMean", namespace = "http://www.pharmml.org/so/0.1/StandardisedOutput", type = JAXBElement.class, required = false)
+            @XmlElementRef(name = "EffectMedian", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Samples", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "EffectMode", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "EffectMean", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<DataSet>> content;
 
