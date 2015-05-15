@@ -45,17 +45,29 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * <pre>
  * &lt;complexType name="PopulationEstimatesType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="MLE" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *         &lt;element name="MLE" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
  *         &lt;element name="Bayesian" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *                 &lt;sequence>
- *                   &lt;element name="PosteriorMean" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="PosteriorMode" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PosteriorMean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PosteriorMode" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/extension>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="Bootstrap" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *                 &lt;sequence>
+ *                   &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -72,7 +84,8 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PopulationEstimatesType", propOrder = {
     "mle",
-    "bayesian"
+    "bayesian",
+    "bootstrap"
 })
 public class PopulationEstimates
     extends PharmMLRootType
@@ -82,6 +95,8 @@ public class PopulationEstimates
     protected DataSet mle;
     @XmlElement(name = "Bayesian")
     protected PopulationEstimates.Bayesian bayesian;
+    @XmlElement(name = "Bootstrap")
+    protected PopulationEstimates.Bootstrap bootstrap;
 
     /**
      * Gets the value of the mle property.
@@ -131,6 +146,30 @@ public class PopulationEstimates
         this.bayesian = value;
     }
 
+    /**
+     * Gets the value of the bootstrap property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PopulationEstimatesType.Bootstrap }
+     *     
+     */
+    public PopulationEstimates.Bootstrap getBootstrap() {
+        return bootstrap;
+    }
+
+    /**
+     * Sets the value of the bootstrap property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PopulationEstimatesType.Bootstrap }
+     *     
+     */
+    public void setBootstrap(PopulationEstimates.Bootstrap value) {
+        this.bootstrap = value;
+    }
+
 
     /**
      * <p>Java class for anonymous complex type.
@@ -140,11 +179,11 @@ public class PopulationEstimates
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
      *       &lt;sequence>
-     *         &lt;element name="PosteriorMean" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="PosteriorMode" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="PosteriorMean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="PosteriorMode" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -293,6 +332,96 @@ public class PopulationEstimates
     	PopulationEstimates.Bayesian el = new PopulationEstimates.Bayesian();
     	this.bayesian = el;
     	return el;
+    }
+    
+    public PopulationEstimates.Bootstrap createBootstrap(){
+    	PopulationEstimates.Bootstrap el = new PopulationEstimates.Bootstrap();
+    	this.bootstrap = el;
+    	return el;
+    }
+    
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+     *       &lt;sequence>
+     *         &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/extension>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "mean",
+        "median"
+    })
+    public static class Bootstrap
+        extends PharmMLRootType
+    {
+
+        @XmlElement(name = "Mean")
+        protected DataSet mean;
+        @XmlElement(name = "Median")
+        protected DataSet median;
+
+        /**
+         * Gets the value of the mean property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link DataSet }
+         *     
+         */
+        public DataSet getMean() {
+            return mean;
+        }
+
+        /**
+         * Sets the value of the mean property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link DataSet }
+         *     
+         */
+        public void setMean(DataSet value) {
+            this.mean = value;
+        }
+
+        /**
+         * Gets the value of the median property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link DataSet }
+         *     
+         */
+        public DataSet getMedian() {
+            return median;
+        }
+
+        /**
+         * Sets the value of the median property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link DataSet }
+         *     
+         */
+        public void setMedian(DataSet value) {
+            this.median = value;
+        }
+
     }
 
 
