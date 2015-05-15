@@ -11,7 +11,7 @@
 		<!--xjc:simple/ -->
 	</jxb:globalBindings> 
      <jxb:schemaBindings>
-      <jxb:package name="eu.ddmore.libpharmml.dom.so">
+      <jxb:package name="eu.ddmore.libpharmml.so.dom">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
 		</jxb:javadoc>
       </jxb:package>
