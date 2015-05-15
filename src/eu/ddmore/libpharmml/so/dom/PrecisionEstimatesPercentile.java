@@ -24,16 +24,17 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PrecisionEstimatesPercentileType"&gt;
- *   &lt;complexContent&gt;
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="PrecisionEstimates" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType"/&gt;
- *         &lt;element name="Percentiles" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/extension&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="PrecisionEstimatesPercentileType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *       &lt;sequence>
+ *         &lt;element name="PrecisionEstimates" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType"/>
+ *         &lt;element name="Percentiles" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType"/>
+ *         &lt;element name="PosteriorDistribution" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -41,7 +42,8 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PrecisionEstimatesPercentileType", propOrder = {
     "precisionEstimates",
-    "percentiles"
+    "percentiles",
+    "posteriorDistribution"
 })
 public class PrecisionEstimatesPercentile
     extends PharmMLRootType
@@ -51,6 +53,8 @@ public class PrecisionEstimatesPercentile
     protected DataSet precisionEstimates;
     @XmlElement(name = "Percentiles", required = true)
     protected DataSet percentiles;
+    @XmlElement(name = "PosteriorDistribution")
+    protected SOTableDistrib posteriorDistribution;
 
     /**
      * Gets the value of the precisionEstimates property.
@@ -98,6 +102,30 @@ public class PrecisionEstimatesPercentile
      */
     public void setPercentiles(DataSet value) {
         this.percentiles = value;
+    }
+
+    /**
+     * Gets the value of the posteriorDistribution property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SOTableDistribType }
+     *     
+     */
+    public SOTableDistrib getPosteriorDistribution() {
+        return posteriorDistribution;
+    }
+
+    /**
+     * Sets the value of the posteriorDistribution property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SOTableDistribType }
+     *     
+     */
+    public void setPosteriorDistribution(SOTableDistrib value) {
+        this.posteriorDistribution = value;
     }
 
 }
