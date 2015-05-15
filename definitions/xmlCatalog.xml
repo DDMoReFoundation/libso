@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    
+    <system systemId="http://www.pharmml.org/pharmml/0.6/Maths" 
+        uri="maths.xsd"/>
+    
+    <system systemId="http://www.pharmml.org/so/0.2/StandardisedOutput"
+        uri="standardisedOutput.xsd"/>
+    
+    <system systemId="http://www.pharmml.org/pharmml/0.6/Dataset" 
+        uri="dataset.xsd"/>
+    
+    <system
+        systemId="http://www.pharmml.org/pharmml/0.6/CommonTypes" 
+        uri="commonTypes.xsd"/>
+    
+    <system systemId="http://www.pharmml.org/pharmml/0.6/ModelDefinition"
+        uri="modelDefinition.xsd"/>
+    
+    <!-- uncertml -->
+    <system
+        systemId="http://www.uncertml.org/3.0" 
+        uri="UncertML30.xsd"/>
+
+</catalog>
+
