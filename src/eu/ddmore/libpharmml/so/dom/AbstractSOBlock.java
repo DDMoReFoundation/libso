@@ -4,13 +4,17 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 
 @XmlTransient
 public abstract class AbstractSOBlock extends PharmMLRootType {
 	
+	// Mapped attributes
+	// Be sure to add the attributes to the propOrder in the inheriting class
+	
+//	@XmlElement(name = "ToolSettings")
+//    protected ExternalFile deprec_toolSettings;
 	@XmlElement(name = "ToolSettings")
-    protected ExternalFile toolSettings;
+    protected ToolSettings toolSettings;
     @XmlElement(name = "RawResults")
     protected RawResults rawResults;
     @XmlElement(name = "TaskInformation")
@@ -21,16 +25,18 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
     protected ModelDiagnostic modelDiagnostic;
     @XmlElement(name = "Simulation")
     protected Simulation simulation;
+    @XmlElement(name = "OptimalDesign")
+    protected OptimalDesign optimalDesign;
     
     /**
      * Gets the value of the toolSettings property.
      * 
      * @return
      *     possible object is
-     *     {@link ExternalFile }
+     *     {@link ToolSettings }
      *     
      */
-    public ExternalFile getToolSettings() {
+    public ToolSettings getToolSettings() {
         return toolSettings;
     }
 
@@ -39,10 +45,10 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
      * 
      * @param value
      *     allowed object is
-     *     {@link ExternalFile }
+     *     {@link ToolSettings }
      *     
      */
-    public void setToolSettings(ExternalFile value) {
+    public void setToolSettings(ToolSettings value) {
         this.toolSettings = value;
     }
 
@@ -167,11 +173,35 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
     }
     
     /**
-     * Creates a new empty {@link ExternalFile} toolSettings element, adds it to the current object and returns it.
-     * @return The created {@link ExternalFile} object.
+     * Gets the value of the optimalDesign property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link OptimalDesign }
+     *     
      */
-    public ExternalFile createToolSettings(){
-    	ExternalFile el = new ExternalFile();
+    public OptimalDesign getOptimalDesign() {
+        return optimalDesign;
+    }
+
+    /**
+     * Sets the value of the optimalDesign property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OptimalDesign }
+     *     
+     */
+    public void setOptimalDesign(OptimalDesign value) {
+        this.optimalDesign = value;
+    }
+    
+    /**
+     * Creates a new empty {@link ToolSettings} toolSettings element, adds it to the current object and returns it.
+     * @return The created {@link ToolSettings} object.
+     */
+    public ToolSettings createToolSettings(){
+    	ToolSettings el = new ToolSettings();
     	this.toolSettings = el;
     	return el;
     }
@@ -224,6 +254,16 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
             Simulation el = new Simulation();
             this.simulation = el;
             return el;
+    }
+    
+    /**
+     * Creates a new empty optimal design, adds it to the current object and returns it.
+     * @return The created {@link OptimalDesign} object.
+     */
+    public OptimalDesign createOptimalDesign(){
+    	OptimalDesign od = new OptimalDesign();
+    	this.optimalDesign = od;
+    	return od;
     }
 
 }

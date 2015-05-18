@@ -65,7 +65,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "taskInformation",
     "estimation",
     "modelDiagnostic",
-    "simulation"
+    "simulation",
+    "optimalDesign"
 })
 public class SOBlock
     extends AbstractSOBlock

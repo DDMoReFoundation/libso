@@ -59,6 +59,7 @@ import javax.xml.bind.annotation.XmlType;
 	    "estimation",
 	    "modelDiagnostic",
 	    "simulation",
+	    "optimalDesign",
 	    "soBlock"
 	})
 public class StandardisedOutput extends AbstractSOBlock {
