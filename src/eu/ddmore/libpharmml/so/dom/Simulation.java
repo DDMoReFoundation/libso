@@ -10,13 +10,11 @@ package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
-import eu.ddmore.libpharmml.dom.dataset.DataSet;
-import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 
 
 /**
@@ -33,12 +31,12 @@ import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
  *       &lt;choice&gt;
  *         &lt;element name="SimulationBlock" type="{http://www.pharmml.org/so/0.1/StandardisedOutput}SimulationBlockType" maxOccurs="unbounded"/&gt;
  *         &lt;sequence&gt;
- *           &lt;element name="SimulatedProfiles" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *           &lt;element name="IndivParameters" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *           &lt;element name="RandomEffects" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *           &lt;element name="Covariates" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *           &lt;element name="PopulationParameters" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
- *           &lt;element name="Dosing" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/&gt;
+ *           &lt;element name="SimulatedProfiles" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationSubType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *           &lt;element name="IndivParameters" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationSubType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *           &lt;element name="RandomEffects" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationSubType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *           &lt;element name="Covariates" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationSubType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *           &lt;element name="PopulationParameters" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationSubType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *           &lt;element name="Dosing" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationSubType" maxOccurs="unbounded" minOccurs="0"/&gt;
  *           &lt;element name="RawResultsFile" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" minOccurs="0"/&gt;
  *         &lt;/sequence&gt;
  *       &lt;/choice&gt;
@@ -51,203 +49,21 @@ import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SimulationType", propOrder = {
-    "simulatedProfiles",
-    "indivParameters",
-    "randomEffects",
-    "covariates",
-    "populationParameters",
-    "dosing",
+    "listOfSimulatedProfiles",
+    "listOfIndivParameters",
+    "listOfRandomEffects",
+    "listOfCovariates",
+    "listOfPopulationParameters",
+    "listOfDosing",
     "rawResultsFile",
     "listOfSimulationBlocks"
 })
 public class Simulation
-    extends PharmMLRootType
+    extends AbstractSimulationBlock
 {
 
-    @XmlElement(name = "SimulatedProfiles")
-    protected DataSet simulatedProfiles;
-    @XmlElement(name = "IndivParameters")
-    protected DataSet indivParameters;
-    @XmlElement(name = "RandomEffects")
-    protected DataSet randomEffects;
-    @XmlElement(name = "Covariates")
-    protected DataSet covariates;
-    @XmlElement(name = "PopulationParameters")
-    protected DataSet populationParameters;
-    @XmlElement(name = "Dosing")
-    protected DataSet dosing;
-    @XmlElement(name = "RawResultsFile")
-    protected ExternalFile rawResultsFile;
     @XmlElement(name = "SimulationBlock")
     protected List<SimulationBlock> listOfSimulationBlocks;
-
-    /**
-     * Gets the value of the simulatedProfiles property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSet }
-     *     
-     */
-    public DataSet getSimulatedProfiles() {
-        return simulatedProfiles;
-    }
-
-    /**
-     * Sets the value of the simulatedProfiles property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSet }
-     *     
-     */
-    public void setSimulatedProfiles(DataSet value) {
-        this.simulatedProfiles = value;
-    }
-
-    /**
-     * Gets the value of the indivParameters property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSet }
-     *     
-     */
-    public DataSet getIndivParameters() {
-        return indivParameters;
-    }
-
-    /**
-     * Sets the value of the indivParameters property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSet }
-     *     
-     */
-    public void setIndivParameters(DataSet value) {
-        this.indivParameters = value;
-    }
-
-    /**
-     * Gets the value of the randomEffects property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSet }
-     *     
-     */
-    public DataSet getRandomEffects() {
-        return randomEffects;
-    }
-
-    /**
-     * Sets the value of the randomEffects property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSet }
-     *     
-     */
-    public void setRandomEffects(DataSet value) {
-        this.randomEffects = value;
-    }
-
-    /**
-     * Gets the value of the covariates property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSet }
-     *     
-     */
-    public DataSet getCovariates() {
-        return covariates;
-    }
-
-    /**
-     * Sets the value of the covariates property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSet }
-     *     
-     */
-    public void setCovariates(DataSet value) {
-        this.covariates = value;
-    }
-
-    /**
-     * Gets the value of the populationParameters property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSet }
-     *     
-     */
-    public DataSet getPopulationParameters() {
-        return populationParameters;
-    }
-
-    /**
-     * Sets the value of the populationParameters property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSet }
-     *     
-     */
-    public void setPopulationParameters(DataSet value) {
-        this.populationParameters = value;
-    }
-
-    /**
-     * Gets the value of the dosing property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataSet }
-     *     
-     */
-    public DataSet getDosing() {
-        return dosing;
-    }
-
-    /**
-     * Sets the value of the dosing property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataSet }
-     *     
-     */
-    public void setDosing(DataSet value) {
-        this.dosing = value;
-    }
-
-    /**
-     * Gets the value of the rawResultsFile property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ExternalFile }
-     *     
-     */
-    public ExternalFile getRawResultsFile() {
-        return rawResultsFile;
-    }
-
-    /**
-     * Sets the value of the rawResultsFile property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ExternalFile }
-     *     
-     */
-    public void setRawResultsFile(ExternalFile value) {
-        this.rawResultsFile = value;
-    }
 
     /**
      * Gets the value of the simulationBlocks property.
@@ -261,7 +77,7 @@ public class Simulation
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSimulationBlocks().add(newItem);
+     *    getListOfSimulationBlocks().add(newItem);
      * </pre>
      * 
      * 
@@ -278,76 +94,6 @@ public class Simulation
         return this.listOfSimulationBlocks;
     }
     
-    /**                                                              
-     * Creates a new empty {@link DataSet} simulatedProfiles element, adds it to the current object and returns it.
-     * @return The created {@link DataSet} object.                                                                 
-     */                                                                                                            
-    public DataSet createSimulatedProfiles(){                                                                      
-            DataSet el = new DataSet();                                                                            
-            this.simulatedProfiles = el;                                                                           
-            return el;                                                                                             
-    }                                                                                                              
-
-    /**
-     * Creates a new empty {@link DataSet} indivParameters element, adds it to the current object and returns it.
-     * @return The created {@link DataSet} object.                                                               
-     */                                                                                                          
-    public DataSet createIndivParameters(){                                                                      
-            DataSet el = new DataSet();                                                                          
-            this.indivParameters = el;                                                                           
-            return el;                                                                                           
-    }                                                                                                            
-
-    /**
-     * Creates a new empty {@link DataSet} randomEffects element, adds it to the current object and returns it.
-     * @return The created {@link DataSet} object.                                                             
-     */                                                                                                        
-    public DataSet createRandomEffects(){                                                                      
-            DataSet el = new DataSet();                                                                        
-            this.randomEffects = el;                                                                           
-            return el;                                                                                         
-    }
-
-    /**
-     * Creates a new empty {@link DataSet} covariates element, adds it to the current object and returns it.
-     * @return The created {@link DataSet} object.
-     */
-    public DataSet createCovariates(){
-            DataSet el = new DataSet();
-            this.covariates = el;
-            return el;
-    }
-
-    /**
-     * Creates a new empty {@link DataSet} populationParameters element, adds it to the current object and returns it.
-     * @return The created {@link DataSet} object.
-     */
-    public DataSet createPopulationParameters(){
-            DataSet el = new DataSet();
-            this.populationParameters = el;
-            return el;
-    }
-
-    /**
-     * Creates a new empty {@link DataSet} dosing element, adds it to the current object and returns it.
-     * @return The created {@link DataSet} object.
-     */
-    public DataSet createDosing(){
-            DataSet el = new DataSet();
-            this.dosing = el;
-            return el;
-    }
-
-    /**
-     * Creates a new empty {@link ExternalFile} rawResultsFile element, adds it to the current object and returns it.
-     * @return The created {@link ExternalFile} object.
-     */
-    public ExternalFile createRawResultsFile(){
-            ExternalFile el = new ExternalFile();
-            this.rawResultsFile = el;
-            return el;
-    }
-
     /**
      * Creates a new empty {@link SimulationBlock} simulationBlocks element, adds it to the current object and returns it.
      * @return The created {@link SimulationBlock} object.
