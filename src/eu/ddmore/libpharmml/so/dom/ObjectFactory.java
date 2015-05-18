@@ -627,7 +627,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Rhs }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.2/StandardisedOutput", name = "ConditionNumber", scope = PrecisionPopulationEstimates.MLE.class)
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "ConditionNumber", scope = PrecisionPopulationEstimates.MLE.class)
     public JAXBElement<Rhs> createPrecisionPopulationEstimatesTypeMLEConditionNumber(Rhs value) {
         return new JAXBElement<Rhs>(_PrecisionPopulationEstimatesMLEConditionNumber_QNAME, Rhs.class, PrecisionPopulationEstimates.MLE.class, value);
     }
