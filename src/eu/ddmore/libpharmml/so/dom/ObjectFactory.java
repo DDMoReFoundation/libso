@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
+import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
@@ -37,40 +38,43 @@ import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _IndivFitsObservationTable_QNAME = new QName(SOXMLFilter.NS_SO, "ObservationTable");
-    private final static QName _IndivFitsPredictionTable_QNAME = new QName(SOXMLFilter.NS_SO, "PredictionTable");
-    private final static QName _DiagnosticPlotsStructuralModelIndivFits_QNAME = new QName(SOXMLFilter.NS_SO, "IndivFits");
-    private final static QName _DiagnosticPlotsStructuralModelIndivPredictionVsObserv_QNAME = new QName(SOXMLFilter.NS_SO, "IndivPredictionVsObserv");
-    private final static QName _DiagnosticPlotsStructuralModelVPC_QNAME = new QName(SOXMLFilter.NS_SO, "VPC");
-    private final static QName _TargetToolMessagesTermination_QNAME = new QName(SOXMLFilter.NS_SO, "Termination");
-    private final static QName _TargetToolMessagesWarnings_QNAME = new QName(SOXMLFilter.NS_SO, "Warnings");
-    private final static QName _TargetToolMessagesErrors_QNAME = new QName(SOXMLFilter.NS_SO, "Errors");
-    private final static QName _TargetToolMessagesElapsedTime_QNAME = new QName(SOXMLFilter.NS_SO, "ElapsedTime");
-    private final static QName _TargetToolMessagesOutputFilePath_QNAME = new QName(SOXMLFilter.NS_SO, "OutputFilePath");
-    private final static QName _TargetToolMessagesChainsNumber_QNAME = new QName(SOXMLFilter.NS_SO, "ChainsNumber");
-    private final static QName _TargetToolMessagesIterationNumber_QNAME = new QName(SOXMLFilter.NS_SO, "IterationNumber");
-    private final static QName _InformationCriteriaAIC_QNAME = new QName(SOXMLFilter.NS_SO, "AIC");
-    private final static QName _InformationCriteriaBIC_QNAME = new QName(SOXMLFilter.NS_SO, "BIC");
-    private final static QName _InformationCriteriaDIC_QNAME = new QName(SOXMLFilter.NS_SO, "DIC");
-    private final static QName _LikelihoodLogLikelihood_QNAME = new QName(SOXMLFilter.NS_SO, "LogLikelihood");
-    private final static QName _LikelihoodDeviance_QNAME = new QName(SOXMLFilter.NS_SO, "Deviance");
-    private final static QName _LikelihoodIndividualContribToLL_QNAME = new QName(SOXMLFilter.NS_SO, "IndividualContribToLL");
-    private final static QName _LikelihoodInformationCriteria_QNAME = new QName(SOXMLFilter.NS_SO, "InformationCriteria");
-    private final static QName _IndividualEstimatesRandomEffectsEffectMean_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMean");
-    private final static QName _IndividualEstimatesRandomEffectsEffectMedian_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMedian");
-    private final static QName _IndividualEstimatesRandomEffectsEffectMode_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMode");
-    private final static QName _IndividualEstimatesRandomEffectsSamples_QNAME = new QName(SOXMLFilter.NS_SO, "Samples");
-    private final static QName _IndividualEstimatesEstimatesMean_QNAME = new QName(SOXMLFilter.NS_SO, "Mean");
-    private final static QName _IndividualEstimatesEstimatesMedian_QNAME = new QName(SOXMLFilter.NS_SO, "Median");
-    private final static QName _IndividualEstimatesEstimatesMode_QNAME = new QName(SOXMLFilter.NS_SO, "Mode");
-    private final static QName _PrecisionPopulationEstimatesMLEFIM_QNAME = new QName(SOXMLFilter.NS_SO, "FIM");
-    private final static QName _PrecisionPopulationEstimatesMLECovarianceMatrix_QNAME = new QName(SOXMLFilter.NS_SO, "CovarianceMatrix");
-    private final static QName _PrecisionPopulationEstimatesMLECorrelationMatrix_QNAME = new QName(SOXMLFilter.NS_SO, "CorrelationMatrix");
-    private final static QName _PrecisionPopulationEstimatesMLEStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "StandardError");
-    private final static QName _PrecisionPopulationEstimatesMLERelativeStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "RelativeStandardError");
-    private final static QName _PrecisionPopulationEstimatesMLEAsymptoticCI_QNAME = new QName(SOXMLFilter.NS_SO, "AsymptoticCI");
-    private final static QName _RawResultsDataFile_QNAME = new QName(SOXMLFilter.NS_SO, "DataFile");
-    private final static QName _RawResultsGraphicsFile_QNAME = new QName(SOXMLFilter.NS_SO, "GraphicsFile");
+	private final static QName _DiagnosticPlotsStructuralModelIndivFits_QNAME = new QName(SOXMLFilter.NS_SO, "IndivFits");
+	private final static QName _DiagnosticPlotsStructuralModelIndivPredictionVsObserv_QNAME = new QName(SOXMLFilter.NS_SO, "IndivPredictionVsObserv");
+	private final static QName _DiagnosticPlotsStructuralModelVPC_QNAME = new QName(SOXMLFilter.NS_SO, "VPC");
+	private final static QName _IndivFitsObservationTable_QNAME = new QName(SOXMLFilter.NS_SO, "ObservationTable");
+	private final static QName _IndivFitsPredictionTable_QNAME = new QName(SOXMLFilter.NS_SO, "PredictionTable");
+	private final static QName _IndividualEstimatesEstimatesMean_QNAME = new QName(SOXMLFilter.NS_SO, "Mean");
+	private final static QName _IndividualEstimatesEstimatesMedian_QNAME = new QName(SOXMLFilter.NS_SO, "Median");
+	private final static QName _IndividualEstimatesEstimatesMode_QNAME = new QName(SOXMLFilter.NS_SO, "Mode");
+	private final static QName _IndividualEstimatesRandomEffectsEffectMean_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMean");
+	private final static QName _IndividualEstimatesRandomEffectsEffectMedian_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMedian");
+	private final static QName _IndividualEstimatesRandomEffectsEffectMode_QNAME = new QName(SOXMLFilter.NS_SO, "EffectMode");
+	private final static QName _IndividualEstimatesRandomEffectsSamples_QNAME = new QName(SOXMLFilter.NS_SO, "Samples");
+	private final static QName _InformationCriteriaAIC_QNAME = new QName(SOXMLFilter.NS_SO, "AIC");
+	private final static QName _InformationCriteriaBIC_QNAME = new QName(SOXMLFilter.NS_SO, "BIC");
+	private final static QName _InformationCriteriaDIC_QNAME = new QName(SOXMLFilter.NS_SO, "DIC");
+	private final static QName _LikelihoodDeviance_QNAME = new QName(SOXMLFilter.NS_SO, "Deviance");
+	private final static QName _LikelihoodIndividualContribToLL_QNAME = new QName(SOXMLFilter.NS_SO, "IndividualContribToLL");
+	private final static QName _LikelihoodInformationCriteria_QNAME = new QName(SOXMLFilter.NS_SO, "InformationCriteria");
+	private final static QName _LikelihoodLogLikelihood_QNAME = new QName(SOXMLFilter.NS_SO, "LogLikelihood");
+	private final static QName _PrecisionPopulationEstimatesMLEAsymptoticCI_QNAME = new QName(SOXMLFilter.NS_SO, "AsymptoticCI");
+    private final static QName _PrecisionPopulationEstimatesMLEConditionNumber_QNAME = new QName(SOXMLFilter.NS_SO, "ConditionNumber");
+	private final static QName _PrecisionPopulationEstimatesMLECorrelationMatrix_QNAME = new QName(SOXMLFilter.NS_SO, "CorrelationMatrix");
+	private final static QName _PrecisionPopulationEstimatesMLECovarianceMatrix_QNAME = new QName(SOXMLFilter.NS_SO, "CovarianceMatrix");
+	private final static QName _PrecisionPopulationEstimatesMLEFIM_QNAME = new QName(SOXMLFilter.NS_SO, "FIM");
+	private final static QName _PrecisionPopulationEstimatesMLERelativeStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "RelativeStandardError");
+	private final static QName _PrecisionPopulationEstimatesMLEStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "StandardError");
+	private final static QName _RawResultsDataFile_QNAME = new QName(SOXMLFilter.NS_SO, "DataFile");
+	private final static QName _RawResultsGraphicsFile_QNAME = new QName(SOXMLFilter.NS_SO, "GraphicsFile");
+	private final static QName _SO_QNAME = new QName(SOXMLFilter.NS_SO, "SO");
+	private final static QName _TargetToolMessagesChainsNumber_QNAME = new QName(SOXMLFilter.NS_SO, "ChainsNumber");
+	private final static QName _TargetToolMessagesElapsedTime_QNAME = new QName(SOXMLFilter.NS_SO, "ElapsedTime");
+	private final static QName _TargetToolMessagesErrors_QNAME = new QName(SOXMLFilter.NS_SO, "Errors");
+	private final static QName _TargetToolMessagesIterationNumber_QNAME = new QName(SOXMLFilter.NS_SO, "IterationNumber");
+	private final static QName _TargetToolMessagesOutputFilePath_QNAME = new QName(SOXMLFilter.NS_SO, "OutputFilePath");
+	private final static QName _TargetToolMessagesTermination_QNAME = new QName(SOXMLFilter.NS_SO, "Termination");
+	private final static QName _TargetToolMessagesWarnings_QNAME = new QName(SOXMLFilter.NS_SO, "Warnings");
+
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.ddmore.libpharmml.so.dom
@@ -386,6 +390,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SOType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "SO")
+    public JAXBElement<StandardisedOutput> createSO(StandardisedOutput value) {
+        return new JAXBElement<StandardisedOutput>(_SO_QNAME, StandardisedOutput.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
      * 
      */
@@ -608,6 +621,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "GraphicsFile", scope = RawResults.class)
     public JAXBElement<ExternalFile> createRawResultsGraphicsFile(ExternalFile value) {
         return new JAXBElement<ExternalFile>(_RawResultsGraphicsFile_QNAME, ExternalFile.class, RawResults.class, value);
+    }
+    
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Rhs }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pharmml.org/so/0.2/StandardisedOutput", name = "ConditionNumber", scope = PrecisionPopulationEstimates.MLE.class)
+    public JAXBElement<Rhs> createPrecisionPopulationEstimatesTypeMLEConditionNumber(Rhs value) {
+        return new JAXBElement<Rhs>(_PrecisionPopulationEstimatesMLEConditionNumber_QNAME, Rhs.class, PrecisionPopulationEstimates.MLE.class, value);
     }
 
 }
