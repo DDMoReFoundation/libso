@@ -20,12 +20,15 @@ package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
+import eu.ddmore.libpharmml.dom.dataset.ExternalFile.Delimiter;
 
 
 /**
@@ -90,5 +93,35 @@ public class ToolSettings
         }
         return this.listOfFile;
     }
+    
+    /**
+	 * Creates a new empty {@link ExternalFile} object, adds it to this
+	 * {@link ToolSettings} element and returns it.
+	 * @return The created {@link ExternalFile} object.
+	 */
+	public ExternalFile createExternalFile(){
+		ExternalFile el = new ExternalFile();
+		getListOfFile().add(el);
+		return el;
+	}
+	
+	/**
+	 * Creates a new empty {@link ExternalFile} object, adds it to this
+	 * {@link ToolSettings} element and returns it.
+	 * @param path Path relative to the SO file.
+	 * @param format Format of the file
+	 * @param delimiter {@link Delimiter} value.
+	 * @param oid Object id for reference.
+	 * @return The created {@link ExternalFile} object.
+	 */
+	public ExternalFile createExternalFile(String path, String format, Delimiter delimiter, String oid){
+		ExternalFile el = new ExternalFile();
+		el.setPath(path);
+		el.setFormat(format);
+		el.setDelimiter(delimiter);
+		el.setOid(oid);
+		getListOfFile().add(el);
+		return el;
+	}
 
 }
