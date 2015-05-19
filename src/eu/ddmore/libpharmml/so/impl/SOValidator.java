@@ -21,6 +21,9 @@ package eu.ddmore.libpharmml.so.impl;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 //import javax.xml.bind.JAXBContext;
 //import javax.xml.bind.JAXBException;
@@ -34,12 +37,15 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.ValidationReportFactory;
 import eu.ddmore.libpharmml.so.StandardisedOutputResource;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 //import eu.ddmore.libpharmml.validation.SymbolResolver;
+import eu.ddmore.libpharmml.validation.PharmMLElementWrapper;
+import eu.ddmore.libpharmml.validation.Validatable;
 
 public class SOValidator {
 
@@ -100,6 +106,13 @@ public class SOValidator {
 //				rptFact.addError(error);
 //			}
 			
+			List<IValidationError> errors = new ArrayList<IValidationError>();
+			PharmMLElementWrapper wRoot = new PharmMLElementWrapper(dom);
+			recursiveValidate(errors, wRoot);
+			for(IValidationError error : errors){
+				rptFact.addError(error);
+			}
+			
 			return rptFact.createReport();
 		}
 		catch (IOException e) {
@@ -108,6 +121,24 @@ public class SOValidator {
 			throw new RuntimeException(e.getMessage(), e);
         }
 	}
+	
+	/**
+	 * Recursive method that parses a PharmML tree and validates any validatable element.
+	 * @param errors The list that shall be filled during the process.
+	 * @param wEl The element to validate. Its mapped children are fetched and this method
+	 * is executed on each child.
+	 */
+	private static void recursiveValidate(List<IValidationError> errors, PharmMLElementWrapper wEl){
+		Object el = wEl.getElement();
+		if(el instanceof Validatable){
+			LoggerWrapper.getLogger().info("Validating "+el);
+			errors.addAll(((Validatable)el).validate());
+		}
+		for(PharmMLElementWrapper wChild : wEl.getChildren()){
+			recursiveValidate(errors, wChild);
+		}
+	}
+
 
 	
 }
