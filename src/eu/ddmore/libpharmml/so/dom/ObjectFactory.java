@@ -66,7 +66,7 @@ public class ObjectFactory {
 	private final static QName _PrecisionPopulationEstimatesMLEStandardError_QNAME = new QName(SOXMLFilter.NS_SO, "StandardError");
 	private final static QName _RawResultsDataFile_QNAME = new QName(SOXMLFilter.NS_SO, "DataFile");
 	private final static QName _RawResultsGraphicsFile_QNAME = new QName(SOXMLFilter.NS_SO, "GraphicsFile");
-	private final static QName _SO_QNAME = new QName(SOXMLFilter.NS_SO, "SO");
+//	private final static QName _SO_QNAME = new QName(SOXMLFilter.NS_SO, "SO");
 	private final static QName _TargetToolMessagesChainsNumber_QNAME = new QName(SOXMLFilter.NS_SO, "ChainsNumber");
 	private final static QName _TargetToolMessagesElapsedTime_QNAME = new QName(SOXMLFilter.NS_SO, "ElapsedTime");
 	private final static QName _TargetToolMessagesErrors_QNAME = new QName(SOXMLFilter.NS_SO, "Errors");
@@ -389,14 +389,14 @@ public class ObjectFactory {
         return new JAXBElement<ExternalFile>(_TargetToolMessagesOutputFilePath_QNAME, ExternalFile.class, TargetToolMessages.class, value);
     }
 
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SOType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "SO")
-    public JAXBElement<StandardisedOutput> createSO(StandardisedOutput value) {
-        return new JAXBElement<StandardisedOutput>(_SO_QNAME, StandardisedOutput.class, null, value);
-    }
+//    /**
+//     * Create an instance of {@link JAXBElement }{@code <}{@link SOType }{@code >}}
+//     * 
+//     */
+//    @XmlElementDecl(namespace = SOXMLFilter.NS_SO, name = "SO")
+//    public JAXBElement<StandardisedOutput> createSO(StandardisedOutput value) {
+//        return new JAXBElement<StandardisedOutput>(_SO_QNAME, StandardisedOutput.class, null, value);
+//    }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RealValue }{@code >}}
