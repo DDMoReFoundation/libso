@@ -11,7 +11,7 @@
 
 	<!-- Edit version and build values if needed -->
 	<property name="libpharmml.name" value="libPharmML-SO"/>
-	<property name="libpharmml.version" value="0.2-beta"/>
+	<property name="libpharmml.version" value="0.3"/>
 	<property name="libpharmml.build" value="1"/>
 	<property name="libpharmml.fullname" value="${libpharmml.name}-${libpharmml.version}-b${libpharmml.build}"/>
 	
@@ -155,102 +155,102 @@
 	<!-- ================================= 
           target: api-docs              
          ================================= -->
-    <target name="api-docs">
-        <javadoc access="package" author="true" splitindex="true" use="true" version="true" source="${source}"
-            	sourcepath="${src.dir}" destdir="${docs.build.dir}" doctitle="libPharmML-SO" 
-            	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false">
-                    <classpath refid="src.path" />
-            </javadoc>
-    </target>
+	<target name="api-docs">
+	    <javadoc access="package" author="true" splitindex="true" use="true" version="true" source="${source}"
+		    sourcepath="${src.dir}" destdir="${docs.build.dir}" doctitle="libPharmML-SO" 
+		    nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false">
+			<classpath refid="src.path" />
+		</javadoc>
+	</target>
 	
 	<!-- ================================= 
           target: jar-file              
          ================================= -->
-    <target name="jar-bin" depends="build-src,init-jardir" description="Generate a jar for distribution of the library">
-        <jar destfile="${jar.dir}/${libpharmml.jar}">
-        	<fileset dir="${src.bin.dir}"/>
-        	<!--fileset dir="${schema.dir}">
-        		<include name="*"/>
-        		<exclude name="*.xpr"/>
-        	</fileset-->
-        </jar>
-    </target>
+	<target name="jar-bin" depends="build-src,init-jardir" description="Generate a jar for distribution of the library">
+	    <jar destfile="${jar.dir}/${libpharmml.jar}">
+		    <fileset dir="${src.bin.dir}"/>
+		    <!--fileset dir="${schema.dir}">
+			    <include name="*"/>
+			    <exclude name="*.xpr"/>
+		    </fileset-->
+	    </jar>
+	</target>
 
 	<!-- ================================= 
           target: jar-all           
          ================================= -->
-    <target name="jar-all" description="creates all jar files for distribution"
-    	depends="jar-bin, jar-src, jar-docs"/>
+	<target name="jar-all" description="creates all jar files for distribution"
+	    depends="jar-bin, jar-src, jar-docs"/>
+	
+	<target name="jar-docs" depends="api-docs,init-jardir">
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/${jar.name.doc}">
+			<fileset dir="${docs.build.dir}" />
+		</jar>
+	</target>
+				
+	<target name="init-jardir">
+		<delete dir="${jar.dir}" />
+		<mkdir dir="${jar.dir}" />
+	</target>
     
-    <target name="jar-docs" depends="api-docs,init-jardir">
-            <mkdir dir="${jar.dir}" />
-            <jar destfile="${jar.dir}/${jar.name.doc}">
-                    <fileset dir="${docs.build.dir}" />
-            </jar>
-    </target>
-                            
-    <target name="init-jardir">
-            <delete dir="${jar.dir}" />
-            <mkdir dir="${jar.dir}" />
-    </target>
-
-    <target name="jar-src" depends="init-jardir">
-            <jar destfile="${jar.dir}/${jar.name.src}">
-                    <fileset dir="${src.dir}" />
-            </jar>
-    </target>
+	<target name="jar-src" depends="init-jardir">
+		<jar destfile="${jar.dir}/${jar.name.src}">
+			<fileset dir="${src.dir}" />
+		</jar>
+	</target>
 	
 	<!-- ================================= 
           target: build-test              
          ================================= -->
-<!--	<target name="build-test" depends="init,retrieve,jar-bin" description="Build test files">-->
-<!--		<javac srcdir="${test.dir}"-->
-<!--         destdir="${test.bin.dir}"-->
-<!--         includeantruntime="no"-->
-<!--         classpathref="test.path"-->
-<!--         source="${source}"-->
-<!--         target="${target}"-->
-<!--         debug="on"/>-->
-<!--		<copy todir="${test.bin.dir}">-->
-<!--			<fileset dir="${test.dir}">-->
-<!--				<exclude name="**/*.java" />-->
-<!--				<exclude name="**/*.class" />-->
-<!--			</fileset>-->
-<!--		</copy>-->
-<!--	</target>-->
+	<target name="build-test" depends="init,retrieve,jar-bin" description="Build test files">
+		<javac srcdir="${test.dir}"
+         destdir="${test.bin.dir}"
+         includeantruntime="no"
+         classpathref="test.path"
+         source="${source}"
+         target="${target}"
+         debug="on"/>
+		<copy todir="${test.bin.dir}">
+			<fileset dir="${test.dir}">
+				<exclude name="**/*.java" />
+				<exclude name="**/*.class" />
+			</fileset>
+		</copy>
+	</target>
 
 	<!-- ================================= 
           target: run-tests              
          ================================= -->
-	<!--<target name="run-tests" depends="gen-reports" description="Runs unit tests and generates html reports"/>-->
-	<!---->
-	<!--<target name="run-junit" depends="build-test" description="description">-->
-	<!--	<delete dir="${test.output.dir}/logs" />-->
-	<!--	<mkdir dir="${test.output.dir}/logs" />-->
-	<!--	<junit printsummary="yes" haltonfailure="no" fork="true" maxmemory="512m">-->
-	<!--		<classpath>-->
-	<!--			<path refid="test.path"/>-->
-	<!--			<pathelement location="${test.bin.dir}"/>-->
-	<!--		</classpath>-->
-	<!--		<batchtest todir="${test.output.dir}/logs">-->
-	<!--			<formatter type="xml" />-->
-	<!--			<fileset dir="${test.bin.dir}">-->
-	<!--				<include name="**/*Test.class" />-->
-	<!--			</fileset>-->
-	<!--		</batchtest>-->
-	<!--	</junit>-->
-	<!--</target>-->
-	<!---->
-	<!--<target name="gen-reports" depends="run-junit" description="description">-->
-	<!--	<clean report directory -->
-	<!--	<delete dir="${test.output.dir}/junitReports" />-->
-	<!--	<mkdir dir="${test.output.dir}/junitReports" />-->
-	<!---->
-	<!--	 generate report -->
-	<!--	<junitreport todir="${test.output.dir}/junitReports">-->
-	<!--		<fileset dir="${test.output.dir}/logs" includes="**/*.xml" />-->
-	<!--		<report todir="${test.output.dir}/junitReports" />-->
-	<!--	</junitreport>-->
-	<!--</target>-->
+	<target name="run-tests" depends="gen-reports" description="Runs unit tests and generates html reports"/>
+	
+	<target name="run-junit" depends="build-test" description="description">
+		<delete dir="${test.output.dir}/logs" />
+		<mkdir dir="${test.output.dir}/logs" />
+		<junit printsummary="yes" haltonfailure="no" fork="true" maxmemory="512m">
+			<classpath>
+				<path refid="test.path"/>
+				<pathelement location="${test.bin.dir}"/>
+			</classpath>
+			<batchtest todir="${test.output.dir}/logs">
+				<formatter type="xml" />
+				<fileset dir="${test.bin.dir}">
+					<include name="**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="gen-reports" depends="run-junit" description="description">
+		<!-- clean report directory -->
+		<delete dir="${test.output.dir}/junitReports" />
+		<mkdir dir="${test.output.dir}/junitReports" />
+
+		<!-- generate report -->
+		<junitreport todir="${test.output.dir}/junitReports">
+			<fileset dir="${test.output.dir}/logs" includes="**/*.xml" />
+			<report todir="${test.output.dir}/junitReports" />
+		</junitreport>
+	</target>
 
 </project>
