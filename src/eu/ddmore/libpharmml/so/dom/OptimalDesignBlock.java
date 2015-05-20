@@ -19,12 +19,12 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
@@ -87,7 +87,7 @@ public class OptimalDesignBlock
     @XmlElement(name = "Design")
     protected ExternalFile design;
     @XmlAttribute(name = "blockNumber")
-    protected BigInteger blockNumber;
+    protected Integer blockNumber;
 
     /**
      * Gets the value of the fim property.
@@ -262,10 +262,10 @@ public class OptimalDesignBlock
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public BigInteger getBlockNumber() {
+    public Integer getBlockNumber() {
         return blockNumber;
     }
 
@@ -274,10 +274,10 @@ public class OptimalDesignBlock
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Integer }
      *     
      */
-    public void setBlockNumber(BigInteger value) {
+    public void setBlockNumber(Integer value) {
         this.blockNumber = value;
     }
 
