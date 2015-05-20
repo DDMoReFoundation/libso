@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 European Molecular Biology Laboratory,
+ * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  *
  * Licensed under the Apache License, Version 2.0 (the
@@ -34,10 +34,21 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="SOType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="PharmMLRef" type="{http://www.pharmml.org/2013/03/StandardisedOutput}PharmMLRefType"/>
- *         &lt;element name="SOBlock" type="{http://www.pharmml.org/2013/03/StandardisedOutput}SOBlockType" maxOccurs="unbounded"/>
+ *         &lt;element name="PharmMLRef" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PharmMLRefType" minOccurs="0"/>
+ *         &lt;choice>
+ *           &lt;element name="SOBlock" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOBlockType" maxOccurs="unbounded"/>
+ *           &lt;sequence>
+ *             &lt;element name="ToolSettings" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}ToolSettingsType" minOccurs="0"/>
+ *             &lt;element name="RawResults" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}RawResultsType" minOccurs="0"/>
+ *             &lt;element name="TaskInformation" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}TaskInformationType" minOccurs="0"/>
+ *             &lt;element name="Estimation" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}EstimationType" minOccurs="0"/>
+ *             &lt;element name="ModelDiagnostic" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}ModelDiagnosticType" minOccurs="0"/>
+ *             &lt;element name="Simulation" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationType" minOccurs="0"/>
+ *             &lt;element name="OptimalDesign" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}OptimalDesignType" minOccurs="0"/>
+ *           &lt;/sequence>
+ *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="writtenVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="implementedBy" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -83,7 +94,7 @@ public class StandardisedOutput extends AbstractSOBlock {
      * 
      * @return
      *     possible object is
-     *     {@link PharmMLRefType }
+     *     {@link PharmMLRef }
      *     
      */
     public PharmMLRef getPharmMLRef() {
@@ -95,7 +106,7 @@ public class StandardisedOutput extends AbstractSOBlock {
      * 
      * @param value
      *     allowed object is
-     *     {@link PharmMLRefType }
+     *     {@link PharmMLRef }
      *     
      */
     public void setPharmMLRef(PharmMLRef value) {
@@ -120,7 +131,7 @@ public class StandardisedOutput extends AbstractSOBlock {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SOBlockType }
+     * {@link SOBlock }
      * 
      * 
      */

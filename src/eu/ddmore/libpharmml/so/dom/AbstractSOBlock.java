@@ -117,7 +117,7 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
      * 
      * @param value
      *     allowed object is
-     *     {@link EstimationType }
+     *     {@link Estimation }
      *     
      */
     public void setEstimation(Estimation value) {
