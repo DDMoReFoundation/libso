@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 //import javax.xml.bind.JAXBContext;
 //import javax.xml.bind.JAXBException;
 //import javax.xml.bind.util.JAXBSource;
@@ -37,6 +38,7 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
@@ -106,12 +108,8 @@ public class SOValidator {
 //				rptFact.addError(error);
 //			}
 			
-			List<IValidationError> errors = new ArrayList<IValidationError>();
 			PharmMLElementWrapper wRoot = new PharmMLElementWrapper(dom);
-			recursiveValidate(errors, wRoot);
-			for(IValidationError error : errors){
-				rptFact.addError(error);
-			}
+			recursiveValidate(rptFact, wRoot);
 			
 			return rptFact.createReport();
 		}
@@ -122,20 +120,15 @@ public class SOValidator {
         }
 	}
 	
-	/**
-	 * Recursive method that parses a PharmML tree and validates any validatable element.
-	 * @param errors The list that shall be filled during the process.
-	 * @param wEl The element to validate. Its mapped children are fetched and this method
-	 * is executed on each child.
-	 */
-	private static void recursiveValidate(List<IValidationError> errors, PharmMLElementWrapper wEl){
+
+	private static void recursiveValidate(IErrorHandler errorHandler, PharmMLElementWrapper wEl){
 		Object el = wEl.getElement();
 		if(el instanceof Validatable){
 			LoggerWrapper.getLogger().info("Validating "+el);
-			errors.addAll(((Validatable)el).validate());
+			((Validatable)el).validate(errorHandler);
 		}
 		for(PharmMLElementWrapper wChild : wEl.getChildren()){
-			recursiveValidate(errors, wChild);
+			recursiveValidate(errorHandler, wChild);
 		}
 	}
 
