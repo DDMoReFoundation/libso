@@ -29,15 +29,17 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.Unmarshaller.Listener;
+import javax.xml.bind.ValidationEvent;
+import javax.xml.bind.ValidationEventHandler;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
@@ -47,7 +49,7 @@ public class SOMarshaller {
 	public SOMarshaller(){
 	}
 	
-	public void marshall(StandardisedOutput dom, OutputStream os) {
+	public void marshall(StandardisedOutput dom, OutputStream os, javax.xml.bind.Marshaller.Listener mListener) {
 		try {
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			Marshaller m = context.createMarshaller();
@@ -58,9 +60,9 @@ public class SOMarshaller {
 			if(version == null){
 				throw new IllegalStateException("writtenVersion attribute must be set.");
 			}
-			m.setListener(new SOMarshalListener(version));
+			m.setListener(mListener);
 			
-			if(SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
+			if(!SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
 				// Into a ByteArray so it can be inputstreamed again.
 				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
@@ -87,7 +89,7 @@ public class SOMarshaller {
 			final SOVersion currentDocVersion = parseVersion(bais);
 			bais.reset();
 			
-			return unmarshall(bais,currentDocVersion);
+			return unmarshall(bais,currentDocVersion,null);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		} catch (XMLStreamException e) {
@@ -95,52 +97,56 @@ public class SOMarshaller {
 		}
 	}
 
-	public StandardisedOutput unmarshall(InputStream is,final SOVersion currentDocVersion) {
+	public StandardisedOutput unmarshall(InputStream is,final SOVersion currentDocVersion,Listener uListener) {
 		try {
 //			String packageName = PharmML.class.getPackage().getName();
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
 			Unmarshaller u = context.createUnmarshaller();
-//			u.setEventHandler(new ValidationEventHandler() {
-//				
-//				@Override
-//				public boolean handleEvent(ValidationEvent event) {
-//					int severity = event.getSeverity();
-//					switch(severity){
-//					case ValidationEvent.ERROR:
-//						errorHandler.handleError(event.getMessage());
-//						break;
-//					case ValidationEvent.FATAL_ERROR:
-//						errorHandler.handleError(event.getMessage());
-//						break;
-//					case ValidationEvent.WARNING:
-//						errorHandler.handleWarning(event.getMessage());
-//						break;
-//					}
-//					return true;
-//				}
-//			});
+			u.setEventHandler(new ValidationEventHandler() {
+				
+				@Override
+				public boolean handleEvent(ValidationEvent event) {
+					int severity = event.getSeverity();
+					switch(severity){
+					case ValidationEvent.ERROR:
+						errorHandler.handleError("SCHEMA",event.getMessage(),event.getLocator());
+						break;
+					case ValidationEvent.FATAL_ERROR:
+						errorHandler.handleError("SCHEMA",event.getMessage(),event.getLocator());
+						break;
+					case ValidationEvent.WARNING:
+						errorHandler.handleWarning(event.getMessage());
+						break;
+					}
+					return true;
+				}
+			});
 			
-			XMLStreamReader xmlsr = new XMLFilter(
-					currentDocVersion.getCorrespondingPharmMLVersion()).getXMLStreamReader(is);
+			// Schema
+			PharmMLVersion pharmmlVersion = currentDocVersion.getCorrespondingPharmMLVersion();
+			Schema mySchema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
+			u.setSchema(mySchema);
 			
+			u.setListener(uListener);
 			
-//			// Schema
-//			Schema mySchema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
-//			u.setSchema(mySchema);
+			StandardisedOutput doc;
+			if(!pharmmlVersion.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getXMLStreamReader(is);
+				doc = (StandardisedOutput)u.unmarshal(xmlsr);
+			} else {
+				doc = (StandardisedOutput)u.unmarshal(is);
+			}
 			
-			// Store version info into each element
-//			Listener listener = new Listener() {
-//				@Override
-//				public void beforeUnmarshal(Object target, Object parent) {
-//					if(target instanceof PharmMLElement){
-//						((PharmMLElement)target).setUnmarshalVersion(currentDocVersion.getCorrespondingPharmMLVersion());
-//					}
-//				}
-//			};
-			Listener listener = new SOUnmarshalListener(currentDocVersion);
-			u.setListener(listener);
+//			// Not calling the full validator, as the validation is performed but the
+//			// UnmarshalListener.
+//			if(version.isEqualOrLaterThan(PharmMLVersion.V0_6)){
+//				SymbolResolver sr = new SymbolResolver(doc, errorHandler);
+//				sr.validateAll();
+//			} else {
+//				LoggerWrapper.getLogger().info("Version is below "+PharmMLVersion.V0_6+", no complex validation performed.");
+//			}
 			
-			StandardisedOutput doc = (StandardisedOutput)u.unmarshal(xmlsr);
+
 			return doc;
 		} catch (JAXBException e) {
 			throw new RuntimeException(e.getMessage(), e);

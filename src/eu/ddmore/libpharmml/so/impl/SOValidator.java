@@ -21,10 +21,6 @@ package eu.ddmore.libpharmml.so.impl;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-
 
 //import javax.xml.bind.JAXBContext;
 //import javax.xml.bind.JAXBException;
@@ -39,7 +35,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.IErrorHandler;
-import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.ValidationReportFactory;
@@ -72,7 +67,7 @@ public class SOValidator {
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			SOMarshaller m = new SOMarshaller();
-			m.marshall(dom, baos);
+			m.marshall(dom, baos, new SOMarshalListener(docVersion, new VoidIdFactoryImpl()));
 			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 	 
 			Schema schema = SOSchemaFactory.getInstance().createSOSchema(docVersion);

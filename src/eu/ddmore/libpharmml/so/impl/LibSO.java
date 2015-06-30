@@ -24,15 +24,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.xml.stream.XMLStreamException;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.Validator;
-
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 import eu.ddmore.libpharmml.IValidationReport;
+import eu.ddmore.libpharmml.impl.MarshalListener;
 import eu.ddmore.libpharmml.impl.ValidationReportFactory;
 import eu.ddmore.libpharmml.so.StandardisedOutputResource;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
@@ -43,14 +37,28 @@ public class LibSO {
 	private SOValidator validator;
 
 	public void save(OutputStream opStr, StandardisedOutputResource resource) {
-		// Set the correct written version that we are compliant with.
-//		resource.getDom().setWrittenVersion(WRITTEN_VERSION);
-		this.marshaller.marshall(resource.getDom(), opStr);
+		if(resource.getDom().getWrittenVersion() == null){
+			throw new RuntimeException("writtenVersion attribute must be set to the root element.");
+		}
+		
+//		IdFactory idFactory = resource.getIdFactory();
+		
+		SOVersion version = SOVersion.getEnum(resource.getDom().getWrittenVersion());
+		MarshalListener mListener;
+		if(version != null){
+			mListener = new SOMarshalListener(version, new VoidIdFactoryImpl());
+		} else {
+			throw new RuntimeException("Unknown or unsupported PharmML written version ("+resource.getDom().getWrittenVersion()+")");
+		}
+		
+		mListener.autosetId(false);
+		
+		this.marshaller.marshall(resource.getDom(), opStr, mListener);
 	}
 
 	public StandardisedOutputResource createDomFromResource(InputStream inStr) {
 		final ValidationReportFactory repFact = new ValidationReportFactory();
-//		this.marshaller.setErrorHandler(repFact);
+		this.marshaller.setErrorHandler(repFact);
 		
 		final SOVersion currentDocVersion;
 		
@@ -61,30 +69,8 @@ public class LibSO {
 			currentDocVersion = SOMarshaller.parseVersion(bais);
 			bais.reset();
 			
-			// Validating stream with schemas
-			Schema schema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
-			Validator validator = schema.newValidator();
-			validator.setErrorHandler(new ErrorHandler() {
-				
-				@Override
-				public void warning(SAXParseException exception) throws SAXException {
-					repFact.handleWarning(exception.getMessage());
-				}
-				
-				@Override
-				public void fatalError(SAXParseException exception) throws SAXException {
-					repFact.handleError(exception.getMessage());
-				}
-				
-				@Override
-				public void error(SAXParseException exception) throws SAXException {
-					repFact.handleError(exception.getMessage());
-				}
-			});
-			validator.validate(new StreamSource(bais));
-			bais.reset();
-			
-			final StandardisedOutput dom = this.marshaller.unmarshall(bais,currentDocVersion);
+			final StandardisedOutput dom = this.marshaller.unmarshall(bais,currentDocVersion,
+					new SOUnmarshalListener(currentDocVersion, new VoidIdFactoryImpl(),repFact));
 			StandardisedOutputResource retVal = new StandardisedOutputResource() {
 				@Override
 				public StandardisedOutput getDom() {
@@ -100,8 +86,6 @@ public class LibSO {
 		} catch (XMLStreamException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} catch (SAXException e) {
 			throw new RuntimeException(e);
 		}
 	}
