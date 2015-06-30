@@ -82,12 +82,12 @@ public class SOValidator {
 				
 				@Override
 				public void fatalError(SAXParseException exception) throws SAXException {
-					rptFact.handleError(exception.getMessage());
+					rptFact.handleError("SCHEMA",exception.getMessage());
 				}
 				
 				@Override
 				public void error(SAXParseException exception) throws SAXException {
-					rptFact.handleError(exception.getMessage());
+					rptFact.handleError("SCHEMA",exception.getMessage());
 				}
 			});
 			validator.validate(source);
