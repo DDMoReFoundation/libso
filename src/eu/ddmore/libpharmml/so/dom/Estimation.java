@@ -85,7 +85,7 @@ public class Estimation
     protected SOTableDistrib precisionIndividualEstimates;
     
     @XmlElement(name = "Residuals")
-    protected Residuals residuals;
+    protected Residual residuals;
     @XmlElement(name = "Predictions")
     protected DataSet predictions;
     @XmlElement(name = "Likelihood")
@@ -197,7 +197,7 @@ public class Estimation
      *     {@link Residuals }
      *     
      */
-    public Residuals getResiduals() {
+    public Residual getResiduals() {
         return residuals;
     }
 
@@ -209,7 +209,7 @@ public class Estimation
      *     {@link Residuals }
      *     
      */
-    public void setResiduals(Residuals value) {
+    public void setResiduals(Residual value) {
         this.residuals = value;
     }
 
@@ -326,11 +326,11 @@ public class Estimation
     }
 
     /**
-     * Creates a new empty {@link Residuals} residuals element, adds it to the current object and returns it.
-     * @return The created {@link Residuals} object.
+     * Creates a new empty {@link Residual} residual element, adds it to the current object and returns it.
+     * @return The created {@link Residual} object.
      */
-    public Residuals createResiduals(){
-    	Residuals el = new Residuals();
+    public Residual createResiduals(){
+    	Residual el = new Residual();
     	this.residuals = el;
     	return el;
     }

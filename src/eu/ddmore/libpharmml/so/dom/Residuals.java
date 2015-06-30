@@ -60,7 +60,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
  * &lt;/complexType>
  * </pre>
  * 
- * 
+ * @deprecated See {@link Residual}.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ResidualsType", propOrder = {
@@ -72,6 +72,7 @@ import eu.ddmore.libpharmml.dom.dataset.DataSet;
     "pd",
     "npde"
 })
+@Deprecated
 public class Residuals
     extends PharmMLRootType
 {

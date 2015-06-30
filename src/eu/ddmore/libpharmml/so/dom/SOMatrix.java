@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.impl.XMLFilter;
 
 
 /**
@@ -66,7 +67,7 @@ public class SOMatrix
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Matrix", namespace = "http://www.pharmml.org/2013/03/CommonTypes", required = true)
+    @XmlElement(name = "Matrix", namespace = XMLFilter.NS_DEFAULT_CT, required = true)
     protected Matrix matrix;
 
     /**

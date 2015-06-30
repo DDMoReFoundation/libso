@@ -199,8 +199,8 @@ public class ObjectFactory {
      * Create an instance of {@link Residuals }
      * 
      */
-    public Residuals createResiduals() {
-        return new Residuals();
+    public Residual createResiduals() {
+        return new Residual();
     }
 
     /**
