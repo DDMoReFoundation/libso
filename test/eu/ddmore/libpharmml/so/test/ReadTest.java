@@ -1,5 +1,6 @@
 package eu.ddmore.libpharmml.so.test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
@@ -67,10 +68,10 @@ public class ReadTest {
 	public void ReadInvalidFile() throws FileNotFoundException{
 		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(invalidExample));
 		IValidationReport report = sor.getCreationReport();
-		assertEquals("Creation errors detected", 2, report.numErrors());
+		assertEquals("Creation errors detected", 41, report.numErrors());
 		
 		IValidationReport valReport = libSO.getValidator().createValidationReport(sor);
-		assertEquals("Validation errors detected", 40, valReport.numErrors());
+		assertEquals("Validation errors detected", 39, valReport.numErrors());
 	}
 	
 	@Test
@@ -128,6 +129,7 @@ public class ReadTest {
 		// FIM
 		SOMatrix fim = odb.getFIM();
 		Matrix fimMatrix = fim.getMatrix();
+		assertNotNull(fimMatrix);
 		assertEquals(Matrix.Type.ANY.toString(), fimMatrix.getMatrixType());
 		MatrixColumnRowNames rowNames = fimMatrix.getRowNames();
 		assertEquals("POP_CL", rowNames.getStringOrSymbRef().get(0).toString());
