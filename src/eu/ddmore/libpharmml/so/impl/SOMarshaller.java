@@ -40,6 +40,7 @@ import javax.xml.validation.Schema;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
+import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
@@ -123,14 +124,13 @@ public class SOMarshaller {
 			});
 			
 			// Schema
-			PharmMLVersion pharmmlVersion = currentDocVersion.getCorrespondingPharmMLVersion();
-			Schema mySchema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion);
+			Schema mySchema = SOSchemaFactory.getInstance().createSOSchema(currentDocVersion, NamespaceType.DEFAULT);
 			u.setSchema(mySchema);
 			
 			u.setListener(uListener);
 			
 			StandardisedOutput doc;
-			if(!pharmmlVersion.isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+			if(!currentDocVersion.equals(SOVersion.DEFAULT)){
 				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getXMLStreamReader(is);
 				doc = (StandardisedOutput)u.unmarshal(xmlsr);
 			} else {

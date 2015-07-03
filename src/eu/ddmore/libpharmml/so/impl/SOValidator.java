@@ -22,6 +22,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+
 //import javax.xml.bind.JAXBContext;
 //import javax.xml.bind.JAXBException;
 //import javax.xml.bind.util.JAXBSource;
@@ -37,6 +38,7 @@ import org.xml.sax.SAXParseException;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.IValidationReport;
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
+import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 import eu.ddmore.libpharmml.impl.ValidationReportFactory;
 import eu.ddmore.libpharmml.so.StandardisedOutputResource;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
@@ -70,7 +72,7 @@ public class SOValidator {
 			m.marshall(dom, baos, new SOMarshalListener(docVersion, new VoidIdFactoryImpl()));
 			Source source = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
 	 
-			Schema schema = SOSchemaFactory.getInstance().createSOSchema(docVersion);
+			Schema schema = SOSchemaFactory.getInstance().createSOSchema(docVersion, NamespaceType.OLD);
 			Validator validator = schema.newValidator();
 			final ValidationReportFactory rptFact = new ValidationReportFactory();
 			validator.setErrorHandler(new ErrorHandler() {

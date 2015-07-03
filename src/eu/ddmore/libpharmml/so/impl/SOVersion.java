@@ -56,6 +56,15 @@ public enum SOVersion {
 		return catalogLocation;
 	}
 	
+	/**
+	 * Gets the catalog location for the schemas that have the default namespaces, i.e. the last
+	 * PharmML version.
+	 * @return Catalog location
+	 */
+	public String getDefaultCatalogLocation(){
+		return catalogLocation.replace("/xmlCatalog.xml", "/default/xmlCatalog.xml");
+	}
+	
 	public PharmMLVersion getCorrespondingPharmMLVersion(){
 		return pharmmlVersion;
 	}
