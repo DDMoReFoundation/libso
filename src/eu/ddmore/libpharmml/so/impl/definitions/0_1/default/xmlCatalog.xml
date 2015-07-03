@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    
+
+    
+    <system systemId="http://www.pharmml.org/so/0.2/StandardisedOutput"
+        uri="standardisedOutput.xsd"/>
+  
+    
+    <!-- numl -->
+<!--     <system systemId="http://www.numl.org/numl/level1/version1"  -->
+<!--         uri="../pharmml-spec/numl/NUMLSchema.xsd"/> -->
+
+</catalog>
+
