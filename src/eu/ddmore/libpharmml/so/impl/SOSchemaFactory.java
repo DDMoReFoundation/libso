@@ -26,13 +26,10 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.xml.sax.SAXException;
 import org.apache.xerces.util.XMLCatalogResolver;
+import org.xml.sax.SAXException;
 
-import eu.ddmore.libpharmml.impl.LoggerWrapper;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory;
-import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
 
 
@@ -79,7 +76,6 @@ public class SOSchemaFactory {
 			StreamSource src = new StreamSource(val);
 			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			sf.setResourceResolver(resolver);
-			LoggerWrapper.getLogger().warning(systemURI+"//"+catalogs[0]+"//"+catalogs[1]+"//"+src);
 			Schema mySchema = sf.newSchema(new StreamSource[] { src });
 
 			return mySchema;
