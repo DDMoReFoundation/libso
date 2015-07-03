@@ -63,7 +63,7 @@ public class SOMarshaller {
 			}
 			m.setListener(mListener);
 			
-			if(!version.equals(PharmMLVersion.DEFAULT)){
+			if(!version.equals(SOVersion.DEFAULT)){
 				LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+version);
 			}
 			
@@ -103,7 +103,7 @@ public class SOMarshaller {
 	}
 
 	public StandardisedOutput unmarshall(InputStream is,final SOVersion currentDocVersion,Listener uListener) {
-		if(!currentDocVersion.equals(PharmMLVersion.DEFAULT)){
+		if(!currentDocVersion.equals(SOVersion.DEFAULT)){
 			LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+currentDocVersion);
 		}
 		try {
