@@ -63,6 +63,10 @@ public class SOMarshaller {
 			}
 			m.setListener(mListener);
 			
+			if(!version.equals(PharmMLVersion.DEFAULT)){
+				LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+version);
+			}
+			
 			if(!SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
 				// Into a ByteArray so it can be inputstreamed again.
@@ -99,6 +103,9 @@ public class SOMarshaller {
 	}
 
 	public StandardisedOutput unmarshall(InputStream is,final SOVersion currentDocVersion,Listener uListener) {
+		if(!currentDocVersion.equals(PharmMLVersion.DEFAULT)){
+			LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+currentDocVersion);
+		}
 		try {
 //			String packageName = PharmML.class.getPackage().getName();
 			JAXBContext context = JAXBContext.newInstance(CONTEXT_NAME);
