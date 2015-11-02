@@ -1,8 +1,7 @@
 package eu.ddmore.libpharmml.so.test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -61,7 +60,7 @@ public class ReadTest {
 	public void ReadValidFile() throws FileNotFoundException{
 		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(validExample));
 		IValidationReport report = sor.getCreationReport();
-		assertTrue("No error", report.isValid());
+		AssertUtil.assertValid(report);
 	}
 	
 	@Test
@@ -113,7 +112,7 @@ public class ReadTest {
 		SimulationBlock simuBlock = simu.getListOfSimulationBlocks().get(0);
 		assertEquals(Integer.valueOf(1), simuBlock.getReplicate());
 		SimulationItem simProfiles = simuBlock.getListOfSimulatedProfiles().get(0);
-		List<ColumnDefinition> colDefs = simProfiles.getListOfColumnDefinition();
+		List<ColumnDefinition> colDefs = simProfiles.getDefinition().getListOfColumn();
 		ColumnDefinition col1 = colDefs.get(0);
 		assertEquals("ID", col1.getColumnId());
 		assertEquals(ColumnType.ID, col1.getColumnType());
