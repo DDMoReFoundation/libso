@@ -6,10 +6,11 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 
 @XmlTransient
-public abstract class AbstractSimulationBlock {
+public abstract class AbstractSimulationBlock extends PharmMLRootType {
 
     @XmlElement(name = "RawResultsFile")
     protected ExternalFile rawResultsFile;
