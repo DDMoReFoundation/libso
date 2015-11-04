@@ -23,7 +23,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Enumeration;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -38,6 +40,7 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.validation.Schema;
 
 import eu.ddmore.libpharmml.IErrorHandler;
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
@@ -61,6 +64,7 @@ public class SOMarshaller {
 			if(version == null){
 				throw new IllegalStateException("writtenVersion attribute must be set.");
 			}
+			setMarshalVersion(dom, version.getCorrespondingPharmMLVersion());
 			m.setListener(mListener);
 			
 			if(!version.equals(SOVersion.DEFAULT)){
@@ -137,7 +141,8 @@ public class SOMarshaller {
 			u.setListener(uListener);
 			
 			StandardisedOutput doc;
-			if(!currentDocVersion.equals(SOVersion.DEFAULT)){
+			if(!(currentDocVersion.equals(SOVersion.DEFAULT) 
+					&& currentDocVersion.getCorrespondingPharmMLVersion().equals(PharmMLVersion.DEFAULT))){
 				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getXMLStreamReader(is);
 				doc = (StandardisedOutput)u.unmarshal(xmlsr);
 			} else {
@@ -202,4 +207,17 @@ public class SOMarshaller {
 		baos.flush();	
 		return baos.toByteArray();
 	}
+	
+	// Duplicated with MarshallerImpl of libPharmML.
+	private void setMarshalVersion(PharmMLElement node, PharmMLVersion version){
+		node.setMarshalVersion(version);
+		Enumeration<TreeNode> children = node.children();
+		while(children.hasMoreElements()){
+			TreeNode child = children.nextElement();
+			if(child instanceof PharmMLElement){
+				setMarshalVersion((PharmMLElement) child, version);
+			}
+		}
+	}
+	
 }
