@@ -29,6 +29,7 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -85,6 +86,18 @@ public class RawResults
         @XmlElementRef(name = "GraphicsFile", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<ExternalFile>> dataFilesAndGraphicsFiles;
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	List<TreeNode> list = new ArrayList<TreeNode>(super.listChildren());
+    	for(ExternalFile ef : getListOfRawFile()){
+    		list.add(ef);
+    	}
+    	for(JAXBElement<ExternalFile> jaxbEl : getDataFilesAndGraphicsFiles()){
+    		list.add(jaxbEl.getValue());
+    	}
+    	return list;
+    }
 
     /**
      * Gets the value of the dataFilesAndGraphicsFiles property.

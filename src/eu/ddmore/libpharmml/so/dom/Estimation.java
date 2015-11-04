@@ -19,6 +19,9 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -363,6 +367,19 @@ public class Estimation
     	TargetToolMessages el = new TargetToolMessages();
     	this.targetToolMessages = el;
     	return el;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(populationEstimates)
+    			.addIfNotNull(precisionPopulationEstimates)
+    			.addIfNotNull(individualEstimates)
+    			.addIfNotNull(precisionIndividualEstimates)
+    			.addIfNotNull(residuals)
+    			.addIfNotNull(predictions)
+    			.addIfNotNull(likelihood)
+    			.addIfNotNull(targetToolMessages);
     }
     
 }

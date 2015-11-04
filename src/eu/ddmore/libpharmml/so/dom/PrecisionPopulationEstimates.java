@@ -22,6 +22,7 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -231,6 +233,14 @@ public class PrecisionPopulationEstimates
         protected SOTableDistrib posteriorDistribution;
         @XmlElement(name = "PercentilesCI")
         protected DataSet percentilesCI;
+        
+        @Override
+        protected List<TreeNode> listChildren() {
+        	return new ChainedList<TreeNode>(super.listChildren())
+        			.addIfNotNull(standardDeviationPosterior)
+        			.addIfNotNull(posteriorDistribution)
+        			.addIfNotNull(percentilesCI);
+        }
 
         /**
          * Gets the value of the standardDeviationPosterior property.
@@ -376,6 +386,14 @@ public class PrecisionPopulationEstimates
         protected SOTableDistrib parameterDistribution;
         @XmlElement(name = "PercentilesCI")
         protected DataSet percentilesCI;
+        
+        @Override
+        protected List<TreeNode> listChildren() {
+        	return new ChainedList<TreeNode>(super.listChildren())
+        			.addIfNotNull(standardDeviation)
+        			.addIfNotNull(parameterDistribution)
+        			.addIfNotNull(percentilesCI);
+        }
 
         /**
          * Gets the value of the standardDeviation property.
@@ -541,6 +559,15 @@ public class PrecisionPopulationEstimates
             @XmlElementRef(name = "ConditionNumber", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<? extends PharmMLRootType>> content;
+        
+        @Override
+        protected List<TreeNode> listChildren() {
+        	List<TreeNode> list = new ArrayList<TreeNode>(super.listChildren());
+        	for(JAXBElement<? extends PharmMLRootType> jaxbEl : getContent()){
+        		list.add(jaxbEl.getValue());
+        	}
+        	return list;
+        }
 
         /**
          * Gets the value of the content property.
@@ -680,5 +707,15 @@ public class PrecisionPopulationEstimates
     	return el;
     }
 
-
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(mle)
+    			.addIfNotNull(bayesian)
+    			.addIfNotNull(bootstrap)
+    			.addIfNotNull(llp)
+    			.addIfNotNull(sir)
+    			.addIfNotNull(multiDimLLP);
+    }
+    
 }

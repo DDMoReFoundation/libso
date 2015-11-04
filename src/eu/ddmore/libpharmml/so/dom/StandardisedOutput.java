@@ -21,12 +21,15 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.util.ChainedList;
 
 /**
  * A type defining the SO. This is the root element of any standardised output document.
@@ -88,6 +91,13 @@ public class StandardisedOutput extends AbstractSOBlock {
 	
 	@XmlAttribute(name = "metadataFile",required = false)
 	protected String metadataFile;
+	
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>(super.listChildren())
+				.addIfNotNull(pharmMLRef)
+				.addIfNotNull(soBlock);
+	}
 	
 	/**
      * Gets the value of the pharmMLRef property.

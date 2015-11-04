@@ -8,13 +8,18 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -191,6 +196,15 @@ public class Message
      */
     public void setType(String value) {
         this.type = value;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>()
+    			.addIfNotNull(toolname)
+    			.addIfNotNull(name)
+    			.addIfNotNull(content)
+    			.addIfNotNull(severity);
     }
 
 }

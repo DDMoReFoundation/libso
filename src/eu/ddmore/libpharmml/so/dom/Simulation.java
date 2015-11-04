@@ -11,10 +11,13 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -64,6 +67,12 @@ public class Simulation
 
     @XmlElement(name = "SimulationBlock")
     protected List<SimulationBlock> listOfSimulationBlocks;
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(listOfSimulationBlocks);
+    }
 
     /**
      * Gets the value of the simulationBlocks property.

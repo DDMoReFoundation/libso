@@ -19,6 +19,9 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -304,6 +308,13 @@ public class PopulationEstimates
         	return el;
         }
 
+        @Override
+        protected List<TreeNode> listChildren() {
+        	return new ChainedList<TreeNode>(super.listChildren())
+        			.addIfNotNull(posteriorMean)
+        			.addIfNotNull(posteriorMedian)
+        			.addIfNotNull(posteriorMode);
+        }
 
     }
     
@@ -414,8 +425,22 @@ public class PopulationEstimates
         public void setMedian(DataSet value) {
             this.median = value;
         }
+        
+        @Override
+        protected List<TreeNode> listChildren() {
+        	return new ChainedList<TreeNode>(super.listChildren())
+        			.addIfNotNull(mean)
+        			.addIfNotNull(median);
+        }
 
     }
 
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(mle)
+    			.addIfNotNull(bayesian)
+    			.addIfNotNull(bootstrap);
+    }
 
 }

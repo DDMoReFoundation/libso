@@ -11,6 +11,7 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -92,6 +93,15 @@ public class DiagnosticPlotsStructuralModel
             indivFitsAndIndivPredictionVsObservsAndVPCS = new ArrayList<JAXBElement<? extends PharmMLRootType>>();
         }
         return this.indivFitsAndIndivPredictionVsObservsAndVPCS;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	List<TreeNode> list = new ArrayList<TreeNode>(super.listChildren());
+    	for(JAXBElement<? extends PharmMLRootType> jaxbEl : getIndivFitsAndIndivPredictionVsObservsAndVPCS()){
+    		list.add(jaxbEl.getValue());
+    	}
+    	return list;
     }
 
 }

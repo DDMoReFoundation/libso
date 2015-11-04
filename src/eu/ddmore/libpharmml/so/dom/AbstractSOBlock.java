@@ -1,9 +1,13 @@
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 @XmlTransient
 public abstract class AbstractSOBlock extends PharmMLRootType {
@@ -264,6 +268,18 @@ public abstract class AbstractSOBlock extends PharmMLRootType {
     	OptimalDesign od = new OptimalDesign();
     	this.optimalDesign = od;
     	return od;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(toolSettings)
+    			.addIfNotNull(rawResults)
+    			.addIfNotNull(taskInformation)
+    			.addIfNotNull(estimation)
+    			.addIfNotNull(modelDiagnostic)
+    			.addIfNotNull(simulation)
+    			.addIfNotNull(optimalDesign);
     }
 
 }

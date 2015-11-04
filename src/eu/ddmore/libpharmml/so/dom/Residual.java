@@ -1,5 +1,8 @@
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -7,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ResidualType", propOrder = {
@@ -20,6 +24,13 @@ public class Residual extends PharmMLRootType {
 	
 	@XmlElement(name = "EpsShrinkage")
 	protected DataSet epsShrinkage;
+	
+	@Override
+	protected List<TreeNode> listChildren() {
+		return new ChainedList<TreeNode>(super.listChildren())
+				.addIfNotNull(residualTable)
+				.addIfNotNull(epsShrinkage);
+	}
 
 	public DataSet getResidualTable() {
 		return residualTable;

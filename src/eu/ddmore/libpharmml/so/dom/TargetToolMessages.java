@@ -22,6 +22,7 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,6 +35,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -83,6 +85,15 @@ public class TargetToolMessages
         @XmlElementRef(name = "Termination", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
+	
+	@Override
+	protected List<TreeNode> listChildren() {
+		List<TreeNode> list = new ChainedList<TreeNode>(super.listChildren());
+		for(JAXBElement<?> jaxbEl : getContent()){
+			list.add((TreeNode) jaxbEl.getValue());
+		}
+		return list;
+	}
 
     /**
      * Gets the value of the content property.

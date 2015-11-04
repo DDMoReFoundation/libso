@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -33,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -91,6 +95,19 @@ public class Residuals
     protected DataSet pd;
     @XmlElement(name = "NPDE")
     protected DataSet npde;
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(res)
+    			.addIfNotNull(ires)
+    			.addIfNotNull(wres)
+    			.addIfNotNull(cwres)
+    			.addIfNotNull(iwres)
+    			.addIfNotNull(pd)
+    			.addIfNotNull(npde);
+    			
+    }
 
     /**
      * Gets the value of the res property.

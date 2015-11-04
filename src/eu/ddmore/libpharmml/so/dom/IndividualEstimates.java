@@ -22,6 +22,7 @@ package eu.ddmore.libpharmml.so.dom;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -272,6 +274,14 @@ public class IndividualEstimates
         	return samples;
         }
 
+        @Override
+        protected List<TreeNode> listChildren() {
+        	List<TreeNode> list = new ArrayList<TreeNode>(super.listChildren());
+        	for(JAXBElement<DataSet> jaxbEl : getContent()){
+        		list.add(jaxbEl.getValue());
+        	}
+        	return list;
+        }
 
     }
 
@@ -385,7 +395,15 @@ public class IndividualEstimates
         	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsSamples(el));
         	return el;
         }
-
+        
+        @Override
+        protected List<TreeNode> listChildren() {
+        	List<TreeNode> list = new ArrayList<TreeNode>(super.listChildren());
+        	for(JAXBElement<DataSet> jaxbEl : getContent()){
+        		list.add(jaxbEl.getValue());
+        	}
+        	return list;
+        }
 
     }
 
@@ -419,5 +437,12 @@ public class IndividualEstimates
     	return el;
     }
 
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(estimates)
+    			.addIfNotNull(randomEffects)
+    			.addIfNotNull(etaShrinkage);
+    }
     
 }

@@ -10,13 +10,17 @@ package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
+
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -85,6 +89,12 @@ public class ModelDiagnostic
             diagnosticPlotsStructuralModelsAndDiagnosticPlotsIndividualParams = new ArrayList<PharmMLRootType>();
         }
         return this.diagnosticPlotsStructuralModelsAndDiagnosticPlotsIndividualParams;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(diagnosticPlotsStructuralModelsAndDiagnosticPlotsIndividualParams);
     }
 
 }

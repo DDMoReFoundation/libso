@@ -19,6 +19,9 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -28,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -279,6 +283,18 @@ public class OptimalDesignBlock
      */
     public void setBlockNumber(Integer value) {
         this.blockNumber = value;
+    }
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(fim)
+    			.addIfNotNull(covarianceMatrix)
+    			.addIfNotNull(parameterPrecision)
+    			.addIfNotNull(criteria)
+    			.addIfNotNull(tests)
+    			.addIfNotNull(simulatedData)
+    			.addIfNotNull(design);
     }
 
 }

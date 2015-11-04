@@ -26,6 +26,9 @@
 
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.List;
+
+import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -63,6 +66,7 @@ import eu.ddmore.libpharmml.dom.uncertml.ParetoDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.StudentTDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.UniformDistribution;
 import eu.ddmore.libpharmml.dom.uncertml.WeibullDistribution;
+import eu.ddmore.libpharmml.util.ChainedList;
 
 
 /**
@@ -108,6 +112,13 @@ public class SOTableDistrib
     
     @XmlTransient
     protected AbstractDistributionType distribution;
+    
+    @Override
+    protected List<TreeNode> listChildren() {
+    	return new ChainedList<TreeNode>(super.listChildren())
+    			.addIfNotNull(distribution)
+    			.addIfNotNull(dataSet);
+    }
     
     protected static class Adapter extends XmlAdapter<SOTableDistrib, SOTableDistrib>{
 
