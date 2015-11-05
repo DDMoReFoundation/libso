@@ -48,7 +48,7 @@ public class SOXMLFilter extends XMLFilter {
 	
 	public SOXMLFilter(SOVersion writtenVersion){
 		super(writtenVersion.getCorrespondingPharmMLVersion());
-		LoggerWrapper.getLogger().warning("Filtering namespaces of SO "+writtenVersion+" and PharmML "+writtenVersion.getCorrespondingPharmMLVersion().getValue());
+		LoggerWrapper.getLogger().info("Filtering namespaces of SO "+writtenVersion+" and PharmML "+writtenVersion.getCorrespondingPharmMLVersion().getValue());
 		this.pharmml_version = writtenVersion.getCorrespondingPharmMLVersion();
 		this.so_version = writtenVersion;
 		NS_DOC_SO = getSONamespace(so_version);
