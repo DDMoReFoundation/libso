@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 European Molecular Biology Laboratory,
+ * Copyright (c) 2014, 2015 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  *
  * Licensed under the Apache License, Version 2.0 (the
@@ -31,13 +31,14 @@ import org.xml.sax.SAXException;
 
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 
 
 public class SOSchemaFactory {
 	private static SOSchemaFactory anInstance = null;
 
 //	private static final String DEFINITIONS_XML_CATALOG_XML = Messages.getString("MarshallerImpl.xmlCatalogLocation"); //$NON-NLS-1$
-	private static final String SO_URI = Messages.getString("SOMarshaller.SOURI");
+//	private static final String SO_URI = Messages.getString("SOMarshaller.SOURI");
 	
 	
 	public static SOSchemaFactory getInstance(){
@@ -59,7 +60,14 @@ public class SOSchemaFactory {
 			URL url = SOSchemaFactory.class.getResource(locationData[0]);
 			String systemURI = locationData[1];
 
-			String[] pharmmlLocationData = PharmMLSchemaFactory.getInstance().resolveCatalogLocation(version.getCorrespondingPharmMLVersion(), namespaceType);
+			String[] pharmmlLocationData;
+			if(version.getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+				pharmmlLocationData = PharmMLSchemaFactory.getInstance().resolveCatalogLocation(
+						version.getCorrespondingPharmMLVersion(), NamespaceType.DEFAULT);
+			} else {
+				pharmmlLocationData = PharmMLSchemaFactory.getInstance().resolveCatalogLocation(
+						version.getCorrespondingPharmMLVersion(), NamespaceType.OLD);
+			}
 			String pharmmlCatalogLocation = pharmmlLocationData[0];
 			URL url_pharmml = PharmMLSchemaFactory.class.getResource(pharmmlCatalogLocation);
 			
