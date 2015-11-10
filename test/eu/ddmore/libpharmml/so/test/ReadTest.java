@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import eu.ddmore.libpharmml.IValidationReport;
+import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixColumnRowNames;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixRow;
@@ -37,6 +38,7 @@ import eu.ddmore.libpharmml.so.dom.SimulationItem;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 import eu.ddmore.libpharmml.so.dom.ToolSettings;
 import eu.ddmore.libpharmml.so.impl.LibSO;
+import eu.ddmore.libpharmml.so.impl.SOValidator;
 
 public class ReadTest {
 	
@@ -57,14 +59,22 @@ public class ReadTest {
 	}
 	
 	@Test
-	public void ReadValidFile() throws FileNotFoundException{
+	public void ReadValidFile() throws Exception{
 		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(validExample));
 		IValidationReport report = sor.getCreationReport();
 		AssertUtil.assertValid(report);
 	}
 	
 	@Test
-	public void ReadInvalidFile() throws FileNotFoundException{
+	public void ValidateFile() throws Exception{
+		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(validExample));
+		SOValidator validator = libSO.getValidator();
+		libSO.save(System.out, sor);
+		AssertUtil.assertValid(validator.createValidationReport(sor));
+	}
+	
+	@Test
+	public void ReadInvalidFile() throws Exception{
 		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(invalidExample));
 		IValidationReport report = sor.getCreationReport();
 		assertEquals("Creation errors detected", 41, report.numErrors());
@@ -74,7 +84,7 @@ public class ReadTest {
 	}
 	
 	@Test
-	public void ReadContent() throws FileNotFoundException{
+	public void ReadContent() throws Exception{
 		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(validExample));
 		
 		// SO Root element

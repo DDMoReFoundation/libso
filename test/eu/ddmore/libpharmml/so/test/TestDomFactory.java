@@ -15,8 +15,9 @@ public class TestDomFactory {
 		so.setWrittenVersion(SOVersion.v0_2.toString());
 		
 		SOBlock block = so.createSoBlock();
+		block.setBlkId("block1");
 		ToolSettings ts = block.createToolSettings();
-		ts.createExternalFile("files/data1.csv", "csv", Delimiter.COMMA, "data1");
+		ts.createExternalFile("files/data1.csv", "CSV", Delimiter.COMMA, "data1");
 		
 		return so;
 	}
