@@ -26,14 +26,14 @@
 	</info>
 	<configurations>
 		<conf name="src-build"  description="builds src code"/>
-		<!--<conf name="test-build"  description="builds code for testing"/>-->
+		<conf name="test-build"  description="builds code for testing"/>
 	</configurations>
 	<dependencies>
 		<dependency org="com.sun.xml.bind" name="jaxb-impl" rev="2.2.7" conf="src-build->default"/> 
 		<dependency org="xerces" name="xercesImpl" rev="2.11.0" conf="src-build->default"/>
 		<dependency org="xml-resolver" name="xml-resolver" rev="1.2" conf="src-build->default"/>
-		<!--<dependency org="junit" name="junit-dep" rev="4.11" conf="test-build->default"/>-->
-		<dependency org="eu.ddmore.pharmml" name="libPharmML" rev="0.4.4-b1" conf="src-build->default"/>
+		<dependency org="junit" name="junit-dep" rev="4.11" conf="test-build->default"/>
+		<dependency org="eu.ddmore.pharmml" name="libPharmML" rev="0.4.5-b1" conf="src-build->default"/>
 		<!--dependency org="junit" name="junit" rev="4.11" conf="test-build->default"/--> 
 	</dependencies>
 </ivy-module>
