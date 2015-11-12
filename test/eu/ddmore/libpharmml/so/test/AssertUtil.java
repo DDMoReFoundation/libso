@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 import eu.ddmore.libpharmml.IValidationError;
 import eu.ddmore.libpharmml.IValidationReport;
-import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
+//import eu.ddmore.libpharmml.dom.commontypes.BooleanValue;
 import eu.ddmore.libpharmml.dom.commontypes.IntValue;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.Rhs;
@@ -19,13 +19,13 @@ import eu.ddmore.libpharmml.dom.commontypes.VectorValue;
 
 public class AssertUtil extends Assert {
 	
-	public static void assertAssignValue(Boolean expected, Rhs actual){
-		assertNotNull(actual);
-		assertNotNull(actual.getScalar());
-		Object value = actual.getScalar();
-		assertThat(value, instanceOf(BooleanValue.class));
-		assertEquals(expected.booleanValue(), ((BooleanValue)value).booleanValue());
-	}
+//	public static void assertAssignValue(Boolean expected, Rhs actual){
+//		assertNotNull(actual);
+//		assertNotNull(actual.getScalar());
+//		Object value = actual.getScalar();
+//		assertThat(value, instanceOf(BooleanValue.class));
+//		assertEquals(expected.booleanValue(), ((BooleanValue)value).booleanValue());
+//	}
 	
 	public static void assertAssignValue(Integer expected, Rhs actual){
 		assertNotNull(actual);
