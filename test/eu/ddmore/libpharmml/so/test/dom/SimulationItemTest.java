@@ -76,7 +76,7 @@ public class SimulationItemTest {
 		assertNotNull(def);
 		ExternalFile extFile = dosing.getExternalFile();
 		assertNotNull(extFile);
-		assertEquals("/extFile.czv", extFile.getPath());
+		assertEquals("/extFile.csv", extFile.getPath());
 		assertEquals("CSV", extFile.getFormat());
 		assertEquals("COMMA", extFile.getDelimiter());
 	}
