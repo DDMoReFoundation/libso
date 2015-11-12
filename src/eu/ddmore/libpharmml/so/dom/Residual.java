@@ -51,7 +51,7 @@ public class Residual extends PharmMLRootType {
 	/**
 	 * Creates a new empty residual table, adds it to this
 	 * {@link Residual} element and returns it.
-	 * @return The created {@link Dataset} object.
+	 * @return The created {@link DataSet} object.
 	 */
 	public DataSet createResidualTable(){
 		DataSet el = new DataSet();
@@ -62,7 +62,7 @@ public class Residual extends PharmMLRootType {
 	/**
 	 * Creates a new empty Eps Shrinkage element, adds it to this
 	 * {@link Residual} element and returns it.
-	 * @return The created {@link Dataset} object.
+	 * @return The created {@link DataSet} object.
 	 */
 	public DataSet createEpsShrinkage(){
 		DataSet el = new DataSet();
