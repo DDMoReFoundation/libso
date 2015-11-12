@@ -71,7 +71,7 @@ public class SOMarshaller {
 				LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+version);
 			}
 			
-			if(!SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_7_3)){
+			if(!SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
 				// Into a ByteArray so it can be inputstreamed again.
 				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
