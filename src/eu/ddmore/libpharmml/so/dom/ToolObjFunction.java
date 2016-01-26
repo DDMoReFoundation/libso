@@ -22,73 +22,66 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
-
-import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 
 
 /**
+ * Tool-specific objective function type.
  * 
- *                 Type defining the PharmML reference in the SO file.
- *             
- * 
- * <p>Java class for PharmMLRefType complex type.
+ * <p>Java class for ToolObjFunctionType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PharmMLRefType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
- *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+ * &lt;complexType name="ToolObjFunctionType">
+ *   &lt;simpleContent>
+ *     &lt;extension base="&lt;http://www.pharmml.org/pharmml/0.8/CommonTypes>RealValue">
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/extension>
- *   &lt;/complexContent>
+ *   &lt;/simpleContent>
  * &lt;/complexType>
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PharmMLRefType")
-public class PharmMLRef
-    extends PharmMLRootType
+@XmlType(name = "ToolObjFunctionType")
+public class ToolObjFunction
+    extends RealValue
 {
-	
-	public PharmMLRef(){}
-	
-	public PharmMLRef(String name){
-		this.name = name;
-	}
 
-    @XmlAttribute(name = "name")
-    protected String name;
+    @XmlAttribute(name = "type")
+    protected String type;
+    
+    public ToolObjFunction(){}
+    
+    public ToolObjFunction(String type, double value){
+    	this.type = type;
+    	this.value = value;
+    }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the type property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the type property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
-    }
-    
-    @Override
-    public String toString() {
-    	return super.toString()+" to="+name;
+    public void setType(String value) {
+        this.type = value;
     }
 
 }

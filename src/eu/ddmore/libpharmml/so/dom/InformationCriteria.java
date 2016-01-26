@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
-
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
@@ -29,10 +28,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
-
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
-import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 
 
 /**
@@ -43,35 +40,35 @@ import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="InformationCriteriaType"&gt;
- *   &lt;complexContent&gt;
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
- *       &lt;choice maxOccurs="unbounded"&gt;
- *         &lt;sequence&gt;
- *           &lt;element name="AIC" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValue" minOccurs="0"/&gt;
- *           &lt;element name="BIC" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValue" minOccurs="0"/&gt;
- *           &lt;element name="DIC" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValue" minOccurs="0"/&gt;
- *         &lt;/sequence&gt;
- *       &lt;/choice&gt;
- *     &lt;/extension&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="InformationCriteriaType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+ *       &lt;choice maxOccurs="unbounded">
+ *         &lt;sequence>
+ *           &lt;element name="AIC" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RealValueType" minOccurs="0"/>
+ *           &lt;element name="BIC" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RealValueType" minOccurs="0"/>
+ *           &lt;element name="DIC" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RealValueType" minOccurs="0"/>
+ *         &lt;/sequence>
+ *       &lt;/choice>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformationCriteriaType", propOrder = {
-    "content"
+    "aicAndBICAndDIC"
 })
 public class InformationCriteria
     extends PharmMLRootType
 {
 
-	@XmlElementRefs({
-        @XmlElementRef(name = "DIC", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "BIC", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "AIC", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
+    @XmlElementRefs({
+        @XmlElementRef(name = "AIC", namespace = "http://www.pharmml.org/so/0.3/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "BIC", namespace = "http://www.pharmml.org/so/0.3/StandardisedOutput", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "DIC", namespace = "http://www.pharmml.org/so/0.3/StandardisedOutput", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<RealValue>> content;
 
@@ -112,32 +109,12 @@ public class InformationCriteria
     public InformationCriteria(){}
     
     /**
-     * Creates new information criteria with the specified values. 
-     * All the parameters of this constructor are nullable, so no
-     * element will be created for a null criterion.
-     * @param aic Akaike information criterion.
-     * @param bic Bayesian information criterion.
-     * @param dic Deviance information criterion.
-     */
-    public InformationCriteria(Double aic, Double bic, Double dic){
-    	if(aic != null){
-    		createAic(aic);
-    	}
-    	if(bic != null){
-    		createBic(bic);
-    	}
-    	if(dic != null){
-    		createDic(dic);
-    	}
-    }
-    
-    /**
      * Creates a new empty {@link RealValue} aic element, adds it to the current object and returns it.
      * @return The created {@link RealValue} object.
      */
     public RealValue createAic(){
     	RealValue el = new RealValue();
-    	getContent().add(new ObjectFactory().createInformationCriteriaAIC(el));
+    	getContent().add(ObjectFactory.getInstance().createInformationCriteriaAIC(el));
     	return el;
     }
     /**
@@ -157,7 +134,7 @@ public class InformationCriteria
      */
     public RealValue createBic(){
     	RealValue el = new RealValue();
-    	getContent().add(new ObjectFactory().createInformationCriteriaBIC(el));
+    	getContent().add(ObjectFactory.getInstance().createInformationCriteriaBIC(el));
     	return el;
     }
     /**
@@ -177,7 +154,7 @@ public class InformationCriteria
      */
     public RealValue createDic(){
     	RealValue el = new RealValue();
-    	getContent().add(new ObjectFactory().createInformationCriteriaDIC(el));
+    	getContent().add(ObjectFactory.getInstance().createInformationCriteriaDIC(el));
     	return el;
     }
     /**

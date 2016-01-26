@@ -1,21 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
@@ -26,31 +26,27 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.util.ChainedList;
 
+
 /**
- * A type defining the SO. This is the root element of any standardised output document.
- *
+ * A type defining the SO.
+ * 
+ * <p>Java class for SOType complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
  * <pre>
  * &lt;complexType name="SOType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="PharmMLRef" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PharmMLRefType" minOccurs="0"/>
+ *         &lt;element name="PharmMLRef" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}PharmMLRefType" minOccurs="0"/>
  *         &lt;choice>
- *           &lt;element name="SOBlock" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOBlockType" maxOccurs="unbounded"/>
- *           &lt;sequence>
- *             &lt;element name="ToolSettings" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}ToolSettingsType" minOccurs="0"/>
- *             &lt;element name="RawResults" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}RawResultsType" minOccurs="0"/>
- *             &lt;element name="TaskInformation" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}TaskInformationType" minOccurs="0"/>
- *             &lt;element name="Estimation" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}EstimationType" minOccurs="0"/>
- *             &lt;element name="ModelDiagnostic" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}ModelDiagnosticType" minOccurs="0"/>
- *             &lt;element name="Simulation" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SimulationType" minOccurs="0"/>
- *             &lt;element name="OptimalDesign" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}OptimalDesignType" minOccurs="0"/>
- *           &lt;/sequence>
+ *           &lt;element name="SOBlock" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}SOBlockType" maxOccurs="unbounded"/>
  *         &lt;/choice>
  *       &lt;/sequence>
  *       &lt;attribute name="writtenVersion" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -60,27 +56,21 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlRootElement(name = "SO")
-@XmlType(propOrder = {
-	    "pharmMLRef",
-	    "toolSettings",
-	    "rawResults",
-	    "taskInformation",
-	    "estimation",
-	    "modelDiagnostic",
-	    "simulation",
-	    "optimalDesign",
-	    "soBlock"
-	})
-public class StandardisedOutput extends AbstractSOBlock {
-	
-	@XmlElement(name = "PharmMLRef")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "SOType", propOrder = {
+    "pharmMLRef",
+    "soBlock"
+})
+public class StandardisedOutput
+    extends PharmMLRootType
+{
+
+    @XmlElement(name = "PharmMLRef")
     protected PharmMLRef pharmMLRef;
-    @XmlElement(name = "SOBlock", required = true)
+    @XmlElement(name = "SOBlock")
     protected List<SOBlock> soBlock;
 
 	@XmlAttribute(name = "writtenVersion",required = true)
@@ -135,7 +125,7 @@ public class StandardisedOutput extends AbstractSOBlock {
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSOBlock().add(newItem);
+     *    getListOfSOBlock().add(newItem);
      * </pre>
      * 
      * 
@@ -152,30 +142,78 @@ public class StandardisedOutput extends AbstractSOBlock {
         return this.soBlock;
     }
 
-	public String getWrittenVersion() {
-		return writtenVersion;
-	}
+    /**
+     * Gets the value of the writtenVersion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWrittenVersion() {
+        return writtenVersion;
+    }
 
-	public void setWrittenVersion(String writtenVersion) {
-		this.writtenVersion = writtenVersion;
-	}
+    /**
+     * Sets the value of the writtenVersion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWrittenVersion(String value) {
+        this.writtenVersion = value;
+    }
 
-	public String getImplementedBy() {
-		return implementedBy;
-	}
+    /**
+     * Gets the value of the implementedBy property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getImplementedBy() {
+        return implementedBy;
+    }
 
-	public void setImplementedBy(String implementedBy) {
-		this.implementedBy = implementedBy;
-	}
+    /**
+     * Sets the value of the implementedBy property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setImplementedBy(String value) {
+        this.implementedBy = value;
+    }
 
-	public String getMetadataFile() {
-		return metadataFile;
-	}
+    /**
+     * Gets the value of the metadataFile property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMetadataFile() {
+        return metadataFile;
+    }
 
-	public void setMetadataFile(String metadataFile) {
-		this.metadataFile = metadataFile;
-	}
-	
+    /**
+     * Sets the value of the metadataFile property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMetadataFile(String value) {
+        this.metadataFile = value;
+    }
+
 	/**
 	 * Creates a new empty {@link PharmMLRef} pharmMLRef element, adds it to the current object and returns it.
 	 * @param name The name of the PharmML file that this SO object refers to.
@@ -197,6 +235,16 @@ public class StandardisedOutput extends AbstractSOBlock {
 	        getListOfSOBlock().add(el);
 	        return el;
 	}
-
 	
+	/**
+	 * Creates a new empty {@link SOBlock} soBlock element, adds it to the current object and returns it.
+	 * @param blkId Block id for symbol scope.
+	 * @return The created {@link SOBlock} object.
+	 */
+	public SOBlock createSoBlock(String blkId){
+	        SOBlock el = new SOBlock(blkId);
+	        getListOfSOBlock().add(el);
+	        return el;
+	}
+
 }

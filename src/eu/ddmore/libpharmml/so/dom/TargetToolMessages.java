@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
-
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
@@ -34,8 +33,8 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.StringValue;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
-import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import static eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO;
 
 
 /**
@@ -46,23 +45,23 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TargetToolMessagesType"&gt;
- *   &lt;complexContent&gt;
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType"&gt;
- *       &lt;choice maxOccurs="unbounded"&gt;
- *         &lt;sequence&gt;
- *           &lt;element name="Termination" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}StringValueType" minOccurs="0"/&gt;
- *           &lt;element name="Warnings" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}StringValueType" minOccurs="0"/&gt;
- *           &lt;element name="Errors" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}StringValueType" minOccurs="0"/&gt;
- *           &lt;element name="ElapsedTime" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
- *           &lt;element name="OutputFilePath" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" minOccurs="0"/&gt;
- *           &lt;element name="ChainsNumber" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
- *           &lt;element name="IterationNumber" type="{http://www.pharmml.org/pharmml/0.6/CommonTypes}RealValueType" minOccurs="0"/&gt;
- *         &lt;/sequence&gt;
- *       &lt;/choice&gt;
- *     &lt;/extension&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="TargetToolMessagesType">
+ *   &lt;complexContent>
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+ *       &lt;choice maxOccurs="unbounded">
+ *         &lt;sequence>
+ *           &lt;element name="Termination" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}StringValue" minOccurs="0"/>
+ *           &lt;element name="Warnings" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}StringValue" minOccurs="0"/>
+ *           &lt;element name="Errors" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}StringValue" minOccurs="0"/>
+ *           &lt;element name="ElapsedTime" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RealValue" minOccurs="0"/>
+ *           &lt;element name="OutputFilePath" type="{http://www.pharmml.org/pharmml/0.8/Dataset}ExternalFile" minOccurs="0"/>
+ *           &lt;element name="ChainsNumber" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RealValue" minOccurs="0"/>
+ *           &lt;element name="IterationNumber" type="{http://www.pharmml.org/pharmml/0.8/CommonTypes}RealValue" minOccurs="0"/>
+ *         &lt;/sequence>
+ *       &lt;/choice>
+ *     &lt;/extension>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 
@@ -75,14 +74,14 @@ public class TargetToolMessages
     extends PharmMLRootType
 {
 
-	@XmlElementRefs({
-        @XmlElementRef(name = "IterationNumber", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ElapsedTime", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "OutputFilePath", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Errors", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Warnings", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ChainsNumber", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "Termination", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
+    @XmlElementRefs({
+        @XmlElementRef(name = "OutputFilePath", namespace = NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "IterationNumber", namespace = NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ElapsedTime", namespace = NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Errors", namespace = NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Termination", namespace = NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "ChainsNumber", namespace = NS_SO, type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "Warnings", namespace = NS_SO, type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
 	
@@ -96,29 +95,29 @@ public class TargetToolMessages
 	}
 
     /**
-     * Gets the value of the content property.
+     * Gets the value of the terminationAndWarningsAndErrors property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the terminationsAndWarningsAndErrors property.
+     * This is why there is not a <CODE>set</CODE> method for the terminationAndWarningsAndErrors property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getContent().add(newItem);
+     *    getTerminationAndWarningsAndErrors().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
-     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link ExternalFile }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
+     * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link StringValue }{@code >}
      * 
      * 

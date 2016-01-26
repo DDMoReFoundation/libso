@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
-
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
 import java.util.List;
@@ -44,15 +43,15 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="OptimalDesignBlockType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="FIM" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOMatrixType" minOccurs="0"/>
- *         &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOMatrixType" minOccurs="0"/>
- *         &lt;element name="ParameterPrecision" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="Criteria" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="Tests" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="SimulatedData" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" minOccurs="0"/>
- *         &lt;element name="Design" type="{http://www.pharmml.org/pharmml/0.6/Dataset}ExternalFileType" minOccurs="0"/>
+ *         &lt;element name="FIM" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}SOMatrixType" minOccurs="0"/>
+ *         &lt;element name="CovarianceMatrix" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}SOMatrixType" minOccurs="0"/>
+ *         &lt;element name="ParameterPrecision" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="Criteria" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="Tests" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+ *         &lt;element name="SimulatedData" type="{http://www.pharmml.org/pharmml/0.8/Dataset}ExternalFile" minOccurs="0"/>
+ *         &lt;element name="Design" type="{http://www.pharmml.org/pharmml/0.8/Dataset}ExternalFile" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="blockNumber" type="{http://www.w3.org/2001/XMLSchema}integer" />
  *     &lt;/extension>
@@ -92,6 +91,12 @@ public class OptimalDesignBlock
     protected ExternalFile design;
     @XmlAttribute(name = "blockNumber")
     protected Integer blockNumber;
+    
+    public OptimalDesignBlock(){}
+    
+    public OptimalDesignBlock(Integer blockNumber){
+    	this.blockNumber = blockNumber;
+    }
 
     /**
      * Gets the value of the fim property.

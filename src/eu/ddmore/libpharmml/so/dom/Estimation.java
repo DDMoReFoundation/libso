@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
-
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
 import java.util.List;
@@ -42,16 +41,16 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="EstimationType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="PopulationEstimates" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PopulationEstimatesType" minOccurs="0"/>
- *         &lt;element name="PrecisionPopulationEstimates" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}PrecisionPopulationEstimatesType" minOccurs="0"/>
- *         &lt;element name="IndividualEstimates" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}IndividualEstimatesType" minOccurs="0"/>
- *         &lt;element name="PrecisionIndividualEstimates" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}SOTableDistribType" minOccurs="0"/>
- *         &lt;element name="Residuals" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}ResidualType" minOccurs="0"/>
- *         &lt;element name="Predictions" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *         &lt;element name="Likelihood" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}LikelihoodType" minOccurs="0"/>
- *         &lt;element name="TargetToolMessages" type="{http://www.pharmml.org/so/0.2/StandardisedOutput}TargetToolMessagesType" minOccurs="0"/>
+ *         &lt;element name="PopulationEstimates" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}PopulationEstimatesType" minOccurs="0"/>
+ *         &lt;element name="PrecisionPopulationEstimates" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}PrecisionPopulationEstimatesType" minOccurs="0"/>
+ *         &lt;element name="IndividualEstimates" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}IndividualEstimatesType" minOccurs="0"/>
+ *         &lt;element name="PrecisionIndividualEstimates" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}PrecisionIndividualEstimatesType" minOccurs="0"/>
+ *         &lt;element name="Residuals" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}ResidualType" minOccurs="0"/>
+ *         &lt;element name="Predictions" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+ *         &lt;element name="OFMeasures" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}OFMeasuresType" minOccurs="0"/>
+ *         &lt;element name="TargetToolMessages" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}TargetToolMessagesType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -65,11 +64,10 @@ import eu.ddmore.libpharmml.util.ChainedList;
     "populationEstimates",
     "precisionPopulationEstimates",
     "individualEstimates",
-//    "precisionIndividualEstimates_old",
     "precisionIndividualEstimates",
     "residuals",
     "predictions",
-    "likelihood",
+    "ofMeasures",
     "targetToolMessages"
 })
 public class Estimation
@@ -82,18 +80,14 @@ public class Estimation
     protected PrecisionPopulationEstimates precisionPopulationEstimates;
     @XmlElement(name = "IndividualEstimates")
     protected IndividualEstimates individualEstimates;
-    
-//    @XmlElement(name = "PrecisionIndividualEstimates")
-//    protected PrecisionIndividualEstimates precisionIndividualEstimates_old; // SO 0.0
     @XmlElement(name = "PrecisionIndividualEstimates")
-    protected SOTableDistrib precisionIndividualEstimates;
-    
+    protected PrecisionIndividualEstimates precisionIndividualEstimates;
     @XmlElement(name = "Residuals")
     protected Residual residuals;
     @XmlElement(name = "Predictions")
     protected DataSet predictions;
-    @XmlElement(name = "Likelihood")
-    protected Likelihood likelihood;
+    @XmlElement(name = "OFMeasures")
+    protected OFMeasures ofMeasures;
     @XmlElement(name = "TargetToolMessages")
     protected TargetToolMessages targetToolMessages;
 
@@ -174,10 +168,10 @@ public class Estimation
      * 
      * @return
      *     possible object is
-     *     {@link SOTableDistrib }
+     *     {@link PrecisionIndividualEstimates }
      *     
      */
-    public SOTableDistrib getPrecisionIndividualEstimates() {
+    public PrecisionIndividualEstimates getPrecisionIndividualEstimates() {
         return precisionIndividualEstimates;
     }
 
@@ -186,10 +180,10 @@ public class Estimation
      * 
      * @param value
      *     allowed object is
-     *     {@link SOTableDistrib }
+     *     {@link PrecisionIndividualEstimates }
      *     
      */
-    public void setPrecisionIndividualEstimates(SOTableDistrib value) {
+    public void setPrecisionIndividualEstimates(PrecisionIndividualEstimates value) {
         this.precisionIndividualEstimates = value;
     }
 
@@ -198,7 +192,7 @@ public class Estimation
      * 
      * @return
      *     possible object is
-     *     {@link Residuals }
+     *     {@link Residual }
      *     
      */
     public Residual getResiduals() {
@@ -210,7 +204,7 @@ public class Estimation
      * 
      * @param value
      *     allowed object is
-     *     {@link Residuals }
+     *     {@link Residual }
      *     
      */
     public void setResiduals(Residual value) {
@@ -242,27 +236,27 @@ public class Estimation
     }
 
     /**
-     * Gets the value of the likelihood property.
+     * Gets the value of the ofMeasures property.
      * 
      * @return
      *     possible object is
-     *     {@link Likelihood }
+     *     {@link OFMeasures }
      *     
      */
-    public Likelihood getLikelihood() {
-        return likelihood;
+    public OFMeasures getOFMeasures() {
+        return ofMeasures;
     }
 
     /**
-     * Sets the value of the likelihood property.
+     * Sets the value of the ofMeasures property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Likelihood }
+     *     {@link OFMeasures }
      *     
      */
-    public void setLikelihood(Likelihood value) {
-        this.likelihood = value;
+    public void setOFMeasures(OFMeasures value) {
+        this.ofMeasures = value;
     }
 
     /**
@@ -320,17 +314,17 @@ public class Estimation
     }
 
     /**
-     * Creates a new empty {@link SOTableDistrib} precisionIndividualEstimates element, adds it to the current object and returns it.
-     * @return The created {@link SOTableDistrib} object.
+     * Creates a new empty {@link PrecisionIndividualEstimates} precisionIndividualEstimates element, adds it to the current object and returns it.
+     * @return The created {@link PrecisionIndividualEstimates} object.
      */
-    public SOTableDistrib createPrecisionIndividualEstimates(){
-    	SOTableDistrib el = new SOTableDistrib();
+    public PrecisionIndividualEstimates createPrecisionIndividualEstimates(){
+    	PrecisionIndividualEstimates el = new PrecisionIndividualEstimates();
     	this.precisionIndividualEstimates = el;
     	return el;
     }
 
     /**
-     * Creates a new empty {@link Residual} residual element, adds it to the current object and returns it.
+     * Creates a new empty {@link Residual} residuals element, adds it to the current object and returns it.
      * @return The created {@link Residual} object.
      */
     public Residual createResiduals(){
@@ -350,12 +344,12 @@ public class Estimation
     }
 
     /**
-     * Creates a new empty {@link Likelihood} likelihood element, adds it to the current object and returns it.
-     * @return The created {@link Likelihood} object.
+     * Creates a new empty {@link OFMeasures} ofMeasures element, adds it to the current object and returns it.
+     * @return The created {@link OFMeasures} object.
      */
-    public Likelihood createLikelihood(){
-    	Likelihood el = new Likelihood();
-    	this.likelihood = el;
+    public OFMeasures createOFMeasures(){
+    	OFMeasures el = new OFMeasures();
+    	this.ofMeasures = el;
     	return el;
     }
 
@@ -368,6 +362,7 @@ public class Estimation
     	this.targetToolMessages = el;
     	return el;
     }
+
     
     @Override
     protected List<TreeNode> listChildren() {
@@ -378,8 +373,8 @@ public class Estimation
     			.addIfNotNull(precisionIndividualEstimates)
     			.addIfNotNull(residuals)
     			.addIfNotNull(predictions)
-    			.addIfNotNull(likelihood)
+    			.addIfNotNull(ofMeasures)
     			.addIfNotNull(targetToolMessages);
     }
-    
+
 }

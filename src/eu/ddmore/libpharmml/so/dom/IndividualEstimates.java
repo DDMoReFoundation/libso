@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
-
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
 import java.util.ArrayList;
@@ -33,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.dataset.DataSet;
-import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
+import static eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO;
 
 
 /**
@@ -47,18 +46,17 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="IndividualEstimatesType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
  *         &lt;element name="Estimates" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *                 &lt;choice maxOccurs="unbounded">
  *                   &lt;sequence>
- *                     &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                     &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                     &lt;element name="Mode" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                     &lt;element name="Samples" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="Mode" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
  *                   &lt;/sequence>
  *                 &lt;/choice>
  *               &lt;/extension>
@@ -68,20 +66,19 @@ import eu.ddmore.libpharmml.util.ChainedList;
  *         &lt;element name="RandomEffects" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *                 &lt;choice maxOccurs="unbounded">
  *                   &lt;sequence>
- *                     &lt;element name="EffectMean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                     &lt;element name="EffectMedian" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                     &lt;element name="EffectMode" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                     &lt;element name="Samples" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="EffectMean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="EffectMedian" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+ *                     &lt;element name="EffectMode" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
  *                   &lt;/sequence>
  *                 &lt;/choice>
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="EtaShrinkage" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *         &lt;element name="EtaShrinkage" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -188,13 +185,14 @@ public class IndividualEstimates
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
-     *       &lt;sequence>
-     *         &lt;element name="Mean" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="Median" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="Mode" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="Samples" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *       &lt;/sequence>
+     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+     *       &lt;choice maxOccurs="unbounded">
+     *         &lt;sequence>
+     *           &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+     *           &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+     *           &lt;element name="Mode" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;/sequence>
+     *       &lt;/choice>
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -211,10 +209,9 @@ public class IndividualEstimates
     {
 
         @XmlElementRefs({
-            @XmlElementRef(name = "Mode", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Median", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Mean", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Samples", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
+            @XmlElementRef(name = "Median", namespace = NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Mean", namespace = NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "Mode", namespace = NS_SO, type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<DataSet>> content;
         
@@ -239,7 +236,6 @@ public class IndividualEstimates
          * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
-         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * 
          * 
          */
@@ -252,26 +248,20 @@ public class IndividualEstimates
         
         public DataSet createMode(){
         	DataSet mode = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesMode(mode));
+        	getContent().add(ObjectFactory.getInstance().createIndividualEstimatesEstimatesMode(mode));
         	return mode;
         }
         
         public DataSet createMedian(){
         	DataSet median = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesMedian(median));
+        	getContent().add(ObjectFactory.getInstance().createIndividualEstimatesEstimatesMedian(median));
         	return median;
         }
 
         public DataSet createMean(){
         	DataSet mean = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesMean(mean));
+        	getContent().add(ObjectFactory.getInstance().createIndividualEstimatesEstimatesMean(mean));
         	return mean;
-        }
-
-        public DataSet createSamples(){
-        	DataSet samples = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesEstimatesSamples(samples));
-        	return samples;
         }
 
         @Override
@@ -294,13 +284,14 @@ public class IndividualEstimates
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;extension base="{http://www.pharmml.org/2013/03/CommonTypes}PharmMLRootType">
-     *       &lt;sequence>
-     *         &lt;element name="EffectMean" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="EffectMedian" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="EffectMode" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="Samples" type="{http://www.pharmml.org/2013/08/Dataset}DataSetType" minOccurs="0"/>
-     *       &lt;/sequence>
+     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
+     *       &lt;choice maxOccurs="unbounded">
+     *         &lt;sequence>
+     *           &lt;element name="EffectMean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+     *           &lt;element name="EffectMedian" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+     *           &lt;element name="EffectMode" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;/sequence>
+     *       &lt;/choice>
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -317,10 +308,9 @@ public class IndividualEstimates
     {
 
         @XmlElementRefs({
-            @XmlElementRef(name = "EffectMedian", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "Samples", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "EffectMode", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "EffectMean", namespace = SOXMLFilter.NS_SO, type = JAXBElement.class, required = false)
+            @XmlElementRef(name = "EffectMode", namespace = NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "EffectMedian", namespace = NS_SO, type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "EffectMean", namespace = NS_SO, type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<DataSet>> content;
 
@@ -345,7 +335,6 @@ public class IndividualEstimates
          * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
-         * {@link JAXBElement }{@code <}{@link DataSet }{@code >}
          * 
          * 
          */
@@ -362,7 +351,7 @@ public class IndividualEstimates
          */
         public DataSet createEffectMean(){
         	DataSet el = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsEffectMean(el));
+        	getContent().add(ObjectFactory.getInstance().createIndividualEstimatesRandomEffectsEffectMean(el));
         	return el;
         }
 
@@ -372,7 +361,7 @@ public class IndividualEstimates
          */
         public DataSet createEffectMedian(){
         	DataSet el = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsEffectMedian(el));
+        	getContent().add(ObjectFactory.getInstance().createIndividualEstimatesRandomEffectsEffectMedian(el));
         	return el;
         }
 
@@ -382,17 +371,7 @@ public class IndividualEstimates
          */
         public DataSet createEffectMode(){
         	DataSet el = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsEffectMode(el));
-        	return el;
-        }
-
-        /**
-         * Creates a new empty {@link DataSet} samples element, adds it to the current object and returns it.
-         * @return The created {@link DataSet} object.
-         */
-        public DataSet createSamples(){
-        	DataSet el = new DataSet();
-        	getContent().add(new ObjectFactory().createIndividualEstimatesRandomEffectsSamples(el));
+        	getContent().add(ObjectFactory.getInstance().createIndividualEstimatesRandomEffectsEffectMode(el));
         	return el;
         }
         

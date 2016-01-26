@@ -24,31 +24,35 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DesignTypeType.
+ * <p>Java class for OtherMethodName.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="DesignTypeType">
+ * &lt;simpleType name="OtherMethodName">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="evaluation"/>
- *     &lt;enumeration value="optimization"/>
+ *     &lt;enumeration value="Bootstrap"/>
+ *     &lt;enumeration value="LLP"/>
+ *     &lt;enumeration value="SIR"/>
+ *     &lt;enumeration value="MultiDimLLP"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "DesignTypeType")
+@XmlType(name = "OtherMethodName")
 @XmlEnum
-public enum DesignType {
+public enum OtherMethodName {
 
-    @XmlEnumValue("evaluation")
-    EVALUATION("evaluation"),
-    @XmlEnumValue("optimization")
-    OPTIMIZATION("optimization");
+    @XmlEnumValue("Bootstrap")
+    BOOTSTRAP("Bootstrap"),
+    LLP("LLP"),
+    SIR("SIR"),
+    @XmlEnumValue("MultiDimLLP")
+    MULTI_DIM_LLP("MultiDimLLP");
     private final String value;
 
-    DesignType(String v) {
+    OtherMethodName(String v) {
         value = v;
     }
 
@@ -56,8 +60,8 @@ public enum DesignType {
         return value;
     }
 
-    public static DesignType fromValue(String v) {
-        for (DesignType c: DesignType.values()) {
+    public static OtherMethodName fromValue(String v) {
+        for (OtherMethodName c: OtherMethodName.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

@@ -1,29 +1,30 @@
 /*******************************************************************************
- * Copyright (c) 2014,2015 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of
  * the License at
- *
- * 		http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ *  		http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, 
  * software distributed under the License is distributed on 
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY 
  * KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations 
  * under the License.
- *******************************************************************************/
-
+ ******************************************************************************/
 package eu.ddmore.libpharmml.so.dom;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -42,30 +43,31 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * <pre>
  * &lt;complexType name="PopulationEstimatesType">
  *   &lt;complexContent>
- *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *       &lt;sequence>
- *         &lt;element name="MLE" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *         &lt;element name="MLE" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
  *         &lt;element name="Bayesian" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *                 &lt;sequence>
- *                   &lt;element name="PosteriorMean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="PosteriorMode" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="PosteriorMean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+ *                   &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+ *                   &lt;element name="PosteriorMode" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="Bootstrap" minOccurs="0">
+ *         &lt;element name="OtherMethod" maxOccurs="unbounded" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+ *               &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
  *                 &lt;sequence>
- *                   &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
- *                   &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+ *                   &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+ *                   &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
  *                 &lt;/sequence>
+ *                 &lt;attribute name="method" use="required" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}OtherMethodName" />
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -82,7 +84,7 @@ import eu.ddmore.libpharmml.util.ChainedList;
 @XmlType(name = "PopulationEstimatesType", propOrder = {
     "mle",
     "bayesian",
-    "bootstrap"
+    "otherMethod"
 })
 public class PopulationEstimates
     extends PharmMLRootType
@@ -92,8 +94,8 @@ public class PopulationEstimates
     protected DataSet mle;
     @XmlElement(name = "Bayesian")
     protected PopulationEstimates.Bayesian bayesian;
-    @XmlElement(name = "Bootstrap")
-    protected PopulationEstimates.Bootstrap bootstrap;
+    @XmlElement(name = "OtherMethod")
+    protected List<PopulationEstimates.OtherMethod> otherMethod;
 
     /**
      * Gets the value of the mle property.
@@ -144,27 +146,32 @@ public class PopulationEstimates
     }
 
     /**
-     * Gets the value of the bootstrap property.
+     * Gets the value of the otherMethod property.
      * 
-     * @return
-     *     possible object is
-     *     {@link PopulationEstimates.Bootstrap }
-     *     
-     */
-    public PopulationEstimates.Bootstrap getBootstrap() {
-        return bootstrap;
-    }
-
-    /**
-     * Sets the value of the bootstrap property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the otherMethod property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link PopulationEstimates.Bootstrap }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getOtherMethod().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link PopulationEstimates.OtherMethod }
+     * 
+     * 
      */
-    public void setBootstrap(PopulationEstimates.Bootstrap value) {
-        this.bootstrap = value;
+    public List<PopulationEstimates.OtherMethod> getOtherMethod() {
+        if (otherMethod == null) {
+            otherMethod = new ArrayList<PopulationEstimates.OtherMethod>();
+        }
+        return this.otherMethod;
     }
 
 
@@ -176,11 +183,11 @@ public class PopulationEstimates
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
      *       &lt;sequence>
-     *         &lt;element name="PosteriorMean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="PosteriorMode" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="PosteriorMean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+     *         &lt;element name="PosteriorMedian" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+     *         &lt;element name="PosteriorMode" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -338,9 +345,9 @@ public class PopulationEstimates
     	return el;
     }
     
-    public PopulationEstimates.Bootstrap createBootstrap(){
-    	PopulationEstimates.Bootstrap el = new PopulationEstimates.Bootstrap();
-    	this.bootstrap = el;
+    public PopulationEstimates.OtherMethod createOtherMethod(){
+    	PopulationEstimates.OtherMethod el = new PopulationEstimates.OtherMethod();
+    	getOtherMethod().add(el);
     	return el;
     }
     
@@ -352,11 +359,12 @@ public class PopulationEstimates
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.6/CommonTypes}PharmMLRootType">
+     *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
      *       &lt;sequence>
-     *         &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
-     *         &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.6/Dataset}DataSetType" minOccurs="0"/>
+     *         &lt;element name="Mean" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
+     *         &lt;element name="Median" type="{http://www.pharmml.org/pharmml/0.8/Dataset}DataSet" minOccurs="0"/>
      *       &lt;/sequence>
+     *       &lt;attribute name="method" use="required" type="{http://www.pharmml.org/so/0.3/StandardisedOutput}OtherMethodName" />
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -369,7 +377,7 @@ public class PopulationEstimates
         "mean",
         "median"
     })
-    public static class Bootstrap
+    public static class OtherMethod
         extends PharmMLRootType
     {
 
@@ -377,6 +385,8 @@ public class PopulationEstimates
         protected DataSet mean;
         @XmlElement(name = "Median")
         protected DataSet median;
+        @XmlAttribute(name = "method", required = true)
+        protected OtherMethodName method;
 
         /**
          * Gets the value of the mean property.
@@ -425,7 +435,31 @@ public class PopulationEstimates
         public void setMedian(DataSet value) {
             this.median = value;
         }
-        
+
+        /**
+         * Gets the value of the method property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link OtherMethodName }
+         *     
+         */
+        public OtherMethodName getMethod() {
+            return method;
+        }
+
+        /**
+         * Sets the value of the method property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link OtherMethodName }
+         *     
+         */
+        public void setMethod(OtherMethodName value) {
+            this.method = value;
+        }
+
         @Override
         protected List<TreeNode> listChildren() {
         	return new ChainedList<TreeNode>(super.listChildren())
@@ -440,7 +474,7 @@ public class PopulationEstimates
     	return new ChainedList<TreeNode>(super.listChildren())
     			.addIfNotNull(mle)
     			.addIfNotNull(bayesian)
-    			.addIfNotNull(bootstrap);
+    			.addIfNotNull(otherMethod);
     }
 
 }

@@ -26,25 +26,26 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.dom.probonto.DistributionName;
+import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
 import eu.ddmore.libpharmml.util.ChainedList;
-
+import static eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO;
 
 /**
- * Type defining the natrix with estimation results.
+ * Type defining a distribution using ProbOnto.
  * 
- * <p>Java class for SOMatrix complex type.
+ * <p>Java class for DistributionType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SOMatrix">
+ * &lt;complexType name="DistributionType">
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.pharmml.org/pharmml/0.8/CommonTypes}PharmMLRootType">
- *       &lt;sequence>
- *         &lt;element ref="{http://www.pharmml.org/pharmml/0.8/CommonTypes}Matrix"/>
- *       &lt;/sequence>
+ *       &lt;choice>
+ *         &lt;element ref="{http://www.pharmml.org/probonto/ProbOnto}ProbOnto"/>
+ *       &lt;/choice>
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -53,56 +54,57 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SOMatrix", propOrder = {
-    "matrix"
+@XmlType(name = "DistributionType", propOrder = {
+    "probOnto"
 })
-public class SOMatrix
+public class Distribution
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "Matrix", namespace = NS_DEFAULT_CT, required = true)
-    protected Matrix matrix;
+    @XmlElement(name = "ProbOnto", namespace = NS_SO)
+    protected ProbOnto probOnto;
+
+    /**
+     * Gets the value of the probOnto property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ProbOnto }
+     *     
+     */
+    public ProbOnto getProbOnto() {
+        return probOnto;
+    }
+
+    /**
+     * Sets the value of the probOnto property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ProbOnto }
+     *     
+     */
+    public void setProbOnto(ProbOnto value) {
+        this.probOnto = value;
+    }
+    
+    public ProbOnto createProbOnto(){
+    	ProbOnto po = new ProbOnto();
+    	this.probOnto = po;
+    	return po;
+    }
+    
+    public ProbOnto createProbOnto(DistributionName name){
+    	ProbOnto po = new ProbOnto();
+    	po.setName(name);
+    	this.probOnto = po;
+    	return po;
+    }
     
     @Override
     protected List<TreeNode> listChildren() {
     	return new ChainedList<TreeNode>(super.listChildren())
-    			.addIfNotNull(matrix);
-    }
-
-    /**
-     * Matrix for results storage.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Matrix }
-     *     
-     */
-    public Matrix getMatrix() {
-        return matrix;
-    }
-
-    /**
-     * Sets the value of the matrix property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Matrix }
-     *     
-     */
-    public void setMatrix(Matrix value) {
-        this.matrix = value;
-    }
-    
-    /**
-     * Creates a new {@link Matrix} object, addis it the current SOMatrix and returns it.
-     * @param type Type of the matrix. See {@link Matrix} documentation.
-     * @return The {@link Matrix} object.
-     */
-    public Matrix createMatrix(Matrix.Type type){
-    	Matrix matrix = new Matrix();
-    	matrix.setMatrixType(type);
-    	this.matrix = matrix;
-    	return matrix;
+    			.addIfNotNull(probOnto);
     }
 
 }
