@@ -349,8 +349,10 @@ public class SOXMLFilter extends XMLFilter {
 	 */
 	public static String getSONamespace(SOVersion version){
 		switch (version) {
-		case v0_2:
+		case v0_3:
 			return NS_SO;
+		case v0_2:
+			return "http://www.pharmml.org/so/0.2/StandardisedOutput";
 		case v0_1:
 			return "http://www.pharmml.org/so/0.1/StandardisedOutput";
 		case v0_0:
