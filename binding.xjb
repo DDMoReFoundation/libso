@@ -1,7 +1,7 @@
 <jxb:bindings version="1.0"
                xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
 			   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-               xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths"
+               xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths"
                xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <jxb:bindings schemaLocation="./definitions/standardisedOutput.xsd" node="/xs:schema">
 	<jxb:globalBindings choiceContentProperty="false">
@@ -16,6 +16,96 @@
 		</jxb:javadoc>
       </jxb:package>
 	</jxb:schemaBindings>
+	<jxb:bindings node="//xs:simpleType[@name='DesignTypeType']">                    
+		<jxb:typesafeEnumClass name="DesignType"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='DiagnosticIndividualParamsType']">                    
+		<jxb:class name="DiagnosticIndividualParams"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='DiagnosticStructuralModelType']">                    
+		<jxb:class name="DiagnosticStructuralModel"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='DistributionType']">                    
+		<jxb:class name="Distribution"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='EstimationType']">                    
+		<jxb:class name="Estimation"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='IndividualEstimatesType']">                    
+		<jxb:class name="IndividualEstimates"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='InformationCriteriaType']">                    
+		<jxb:class name="InformationCriteria"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='MessageType']">                    
+		<jxb:class name="Message"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='ModelDiagnosticType']">                    
+		<jxb:class name="ModelDiagnostic"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='OFMeasuresType']">                    
+		<jxb:class name="OFMeasures"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='OptimalDesignBlockType']">                    
+		<jxb:class name="OptimalDesignBlock"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='OptimalDesignType']">                    
+		<jxb:class name="OptimalDesign"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='PharmMLRefType']">                    
+		<jxb:class name="PharmMLRef"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='PopulationEstimatesType']">                    
+		<jxb:class name="PopulationEstimates"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='PrecisionEstimatesPercentileType']">                    
+		<jxb:class name="PrecisionEstimatesPercentile"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='PrecisionIndividualEstimatesType']">                    
+		<jxb:class name="PrecisionIndividualEstimates"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='PrecisionPopulationEstimatesType']">                    
+		<jxb:class name="PrecisionPopulationEstimates"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='RawResultsType']">                    
+		<jxb:class name="RawResults"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='ResidualType']">                    
+		<jxb:class name="Residual"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SimulationBlockType']">                    
+		<jxb:class name="SimulationBlock"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SimulationSubType']">                    
+		<jxb:class name="SimulationItem"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SimulationType']">                    
+		<jxb:class name="Simulation"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SOBlockType']">                    
+		<jxb:class name="SOBlock"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SOMatrixType']">                    
+		<jxb:class name="SOMatrix"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SOTableDistribType']">                    
+		<jxb:class name="SOTableDistrib"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='SOType']">                    
+		<jxb:class name="StandardisedOutput"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='TargetToolMessagesType']">                    
+		<jxb:class name="TargetToolMessages"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='TaskInformationType']">                    
+		<jxb:class name="TaskInformation"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='ToolObjFunctionType']">                    
+		<jxb:class name="ToolObjFunction"/>                                           
+	 </jxb:bindings>
+	<jxb:bindings node="//xs:complexType[@name='ToolSettingsType']">                    
+		<jxb:class name="ToolSettings"/>                                           
+	 </jxb:bindings>
   </jxb:bindings>
   <!--<jxb:bindings schemaLocation="http://www.pharmml.org/so/0.2/StandardisedOutput" node="/xs:schema">
     <jxb:schemaBindings>
@@ -25,7 +115,7 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>-->
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.6/CommonTypes" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/CommonTypes" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.commontypes">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -33,7 +123,7 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.6/Dataset" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/Dataset" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.dataset">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -41,7 +131,7 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.6/Maths" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/Maths" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.maths">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -84,7 +174,7 @@
 	  </jxb:bindings>
 	</jxb:bindings-->
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.6/ModelDefinition" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/ModelDefinition" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.modeldefn">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -92,7 +182,7 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <!--<jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.6/TrialDesign" node="/xs:schema">
+  <!--<jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/TrialDesign" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.trialdesign">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
@@ -100,7 +190,7 @@
       </jxb:package>
 	</jxb:schemaBindings>
   </jxb:bindings>
-  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.6/ModellingSteps" node="/xs:schema">
+  <jxb:bindings schemaLocation="http://www.pharmml.org/pharmml/0.8/ModellingSteps" node="/xs:schema">
     <jxb:schemaBindings>
       <jxb:package name="eu.ddmore.libpharmml.dom.modellingsteps">
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package primer.myPo.</body>]]>
