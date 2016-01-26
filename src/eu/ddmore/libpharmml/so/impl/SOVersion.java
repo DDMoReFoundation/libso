@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 European Molecular Biology Laboratory,
+ * Copyright (c) 2014-2016 European Molecular Biology Laboratory,
  * Heidelberg, Germany.
  *
  * Licensed under the Apache License, Version 2.0 (the
@@ -27,7 +27,7 @@ public enum SOVersion {
 	v0_2("0.2","SOMarshaller.xmlCatalogLocation.0.2",PharmMLVersion.V0_6_1),
 	v0_3("0.3","SOMarshaller.xmlCatalogLocation.0.3",PharmMLVersion.V0_8);
 	
-	public static final SOVersion DEFAULT = v0_2;
+	public static final SOVersion DEFAULT = v0_3;
 	
 	private String version;
 	private String catalogLocation;
