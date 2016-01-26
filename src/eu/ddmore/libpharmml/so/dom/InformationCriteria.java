@@ -59,7 +59,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformationCriteriaType", propOrder = {
-    "aicAndBICAndDIC"
+    "content"
 })
 public class InformationCriteria
     extends PharmMLRootType
