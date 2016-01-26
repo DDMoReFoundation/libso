@@ -85,7 +85,7 @@ public class RawResults
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDataFileAndGraphicsFile().add(newItem);
+     *    getDataFilesAndGraphicsFiles().add(newItem);
      * </pre>
      * 
      * 
@@ -96,7 +96,7 @@ public class RawResults
      * 
      * 
      */
-    public List<PharmMLRootType> getDataFileAndGraphicsFile() {
+    public List<PharmMLRootType> getDataFilesAndGraphicsFiles() {
         if (dataFileAndGraphicsFile == null) {
             dataFileAndGraphicsFile = new ArrayList<PharmMLRootType>();
         }
@@ -111,19 +111,19 @@ public class RawResults
     
     public DataSet createDataFile(){
     	DataSet ds = MasterObjectFactory.DATASET_OF.createDataSetType();
-    	getDataFileAndGraphicsFile().add(ds);
+    	getDataFilesAndGraphicsFiles().add(ds);
     	return ds;
     }
     
     public ExternalFile createGraphicsFile(){
     	ExternalFile ef = new ExternalFile();
-    	getDataFileAndGraphicsFile().add(ef);
+    	getDataFilesAndGraphicsFiles().add(ef);
     	return ef;
     }
     
     public ExternalFile createGraphicsFile(String oid,String path,String format,String delimiter){
     	ExternalFile ef = new ExternalFile(oid, path, format, delimiter);
-    	getDataFileAndGraphicsFile().add(ef);
+    	getDataFilesAndGraphicsFiles().add(ef);
     	return ef;
     }
 
