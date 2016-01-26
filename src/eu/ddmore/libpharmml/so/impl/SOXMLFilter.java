@@ -39,7 +39,7 @@ import eu.ddmore.libpharmml.impl.XMLFilter;
 
 public class SOXMLFilter extends XMLFilter {
 	
-	public final static String NS_SO = "http://www.pharmml.org/so/0.2/StandardisedOutput";
+	public final static String NS_SO = "http://www.pharmml.org/so/0.3/StandardisedOutput";
 	
 	protected PharmMLVersion pharmml_version;
 	protected SOVersion so_version;
