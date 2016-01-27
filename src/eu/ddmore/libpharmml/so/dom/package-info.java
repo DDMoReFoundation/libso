@@ -16,5 +16,9 @@
  * specific language governing permissions and limitations 
  * under the License.
  ******************************************************************************/
-@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, 
+xmlns = {@javax.xml.bind.annotation.XmlNs(
+		namespaceURI = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, 
+		prefix = "po")},
+elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.so.dom;
