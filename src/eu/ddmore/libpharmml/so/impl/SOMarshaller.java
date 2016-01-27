@@ -28,6 +28,7 @@ import java.util.Enumeration;
 import javax.swing.tree.TreeNode;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.JAXBIntrospector;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.Unmarshaller.Listener;
@@ -42,8 +43,8 @@ import javax.xml.validation.Schema;
 import eu.ddmore.libpharmml.IErrorHandler;
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLElement;
 import eu.ddmore.libpharmml.impl.LoggerWrapper; //
-import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.impl.PharmMLSchemaFactory.NamespaceType;
+import eu.ddmore.libpharmml.impl.PharmMLVersion;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 
 public class SOMarshaller {
@@ -140,14 +141,16 @@ public class SOMarshaller {
 			
 			u.setListener(uListener);
 			
-			StandardisedOutput doc;
+			Object umarshalledObj;
 			if(!(currentDocVersion.equals(SOVersion.DEFAULT) 
 					&& currentDocVersion.getCorrespondingPharmMLVersion().equals(PharmMLVersion.DEFAULT))){
 				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getXMLStreamReader(is);
-				doc = (StandardisedOutput)u.unmarshal(xmlsr);
+				umarshalledObj = u.unmarshal(xmlsr);
 			} else {
-				doc = (StandardisedOutput)u.unmarshal(is);
+				umarshalledObj = u.unmarshal(is);
 			}
+			//TODO: figure out why the unmarshalling can return a JAXBElement (despite @XmlRootElement)
+			StandardisedOutput doc = (StandardisedOutput) JAXBIntrospector.getValue(umarshalledObj);
 			
 //			// Not calling the full validator, as the validation is performed but the
 //			// UnmarshalListener.
