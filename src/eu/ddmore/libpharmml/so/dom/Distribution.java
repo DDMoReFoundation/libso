@@ -30,7 +30,6 @@ import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
 import eu.ddmore.libpharmml.dom.probonto.DistributionName;
 import eu.ddmore.libpharmml.dom.probonto.ProbOnto;
 import eu.ddmore.libpharmml.util.ChainedList;
-import static eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO;
 
 /**
  * Type defining a distribution using ProbOnto.
@@ -61,7 +60,7 @@ public class Distribution
     extends PharmMLRootType
 {
 
-    @XmlElement(name = "ProbOnto", namespace = NS_SO)
+    @XmlElement(name = "ProbOnto", namespace = NS_DEFAULT_PROBONTO)
     protected ProbOnto probOnto;
 
     /**
