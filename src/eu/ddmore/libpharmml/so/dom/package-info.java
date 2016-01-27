@@ -19,6 +19,6 @@
 @javax.xml.bind.annotation.XmlSchema(namespace = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, 
 xmlns = {@javax.xml.bind.annotation.XmlNs(
 		namespaceURI = eu.ddmore.libpharmml.so.impl.SOXMLFilter.NS_SO, 
-		prefix = "po")},
+		prefix = "so")},
 elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.ddmore.libpharmml.so.dom;
