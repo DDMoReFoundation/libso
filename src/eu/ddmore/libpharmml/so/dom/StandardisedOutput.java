@@ -26,9 +26,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import eu.ddmore.libpharmml.dom.commontypes.PharmMLRootType;
+import eu.ddmore.libpharmml.so.impl.SOXMLFilter;
 import eu.ddmore.libpharmml.util.ChainedList;
 
 
@@ -60,7 +62,8 @@ import eu.ddmore.libpharmml.util.ChainedList;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SOType", propOrder = {
+@XmlRootElement(name = "SO", namespace = SOXMLFilter.NS_SO)
+@XmlType(propOrder = {
     "pharmMLRef",
     "soBlock"
 })
