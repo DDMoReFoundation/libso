@@ -4,18 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.List;
-
-import javax.xml.bind.JAXBElement;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import eu.ddmore.libpharmml.IValidationReport;
-import eu.ddmore.libpharmml.PharmMlFactory;
 import eu.ddmore.libpharmml.dom.commontypes.Matrix;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixColumnRowNames;
 import eu.ddmore.libpharmml.dom.commontypes.MatrixRow;
@@ -23,6 +19,7 @@ import eu.ddmore.libpharmml.dom.commontypes.RealValue;
 import eu.ddmore.libpharmml.dom.commontypes.SymbolType;
 import eu.ddmore.libpharmml.dom.dataset.ColumnDefinition;
 import eu.ddmore.libpharmml.dom.dataset.ColumnType;
+import eu.ddmore.libpharmml.dom.dataset.DataSet;
 import eu.ddmore.libpharmml.dom.dataset.ExternalFile;
 import eu.ddmore.libpharmml.so.SOFactory;
 import eu.ddmore.libpharmml.so.StandardisedOutputResource;
@@ -42,8 +39,8 @@ import eu.ddmore.libpharmml.so.impl.SOValidator;
 
 public class ReadTest {
 	
-	final static private String validExample = "examples/0_2/valid.xml";
-	final static private String invalidExample = "examples/0_2/invalid.xml";
+	final static private String validExample = "examples/0_3/valid.xml";
+	final static private String invalidExample = "examples/0_3/invalid.xml";
 	private SOFactory soFactory;
 	private LibSO libSO;
 	
@@ -89,7 +86,7 @@ public class ReadTest {
 		
 		// SO Root element
 		StandardisedOutput so = sor.getDom();
-		assertEquals("0.2", so.getWrittenVersion());
+		assertEquals("0.3", so.getWrittenVersion());
 		assertEquals("warfarin_PK_ODE_SO_FULL.rdf", so.getMetadataFile());
 		assertEquals("i1", so.getId());
 		
@@ -103,19 +100,19 @@ public class ReadTest {
 		ExternalFile file2 = toolSettings.getListOfFile().get(1);
 		ExternalFile file3 = toolSettings.getListOfFile().get(2);
 		
-		testFile(file1, "ts1", "Algorithm settings", "algorithms.xmlx");
-		testFile(file2, "ts2", "Solver settings", "solver.xmlx");
+		testFile(file1, "ts1", null, "algorithms.xmlx");
+		testFile(file2, "ts2", null, "solver.xmlx");
 		testFile(file3, "ts3", null, "andNowForSomethingCompletelyDifferent.xmlx");
 		
 		// Rawresults
 		RawResults rawResults = so1.getRawResults();
-		JAXBElement<ExternalFile> d1 = rawResults.getDataFilesAndGraphicsFiles().get(0);
-		JAXBElement<ExternalFile> g1 = rawResults.getDataFilesAndGraphicsFiles().get(1);
-		assertEquals("DataFile", d1.getName().getLocalPart());
-		assertEquals("GraphicsFile", g1.getName().getLocalPart());
+		DataSet d1 = (DataSet) rawResults.getDataFilesAndGraphicsFiles().get(0);
+		ExternalFile g1 = (ExternalFile) rawResults.getDataFilesAndGraphicsFiles().get(1);
+//		assertEquals("DataFile", d1.getName().getLocalPart());
+//		assertEquals("GraphicsFile", g1.getName().getLocalPart());
 		
-		testFile(d1.getValue(), "d1", "Original output wth population data", "dataFolder/estimates.txt");
-		testFile(g1.getValue(), "g1", "Observation VS prediction plot", "graphicsFolder/ObservationVSprediction.png");
+//		testFile(d1.getValue(), "d1", "Original output wth population data", "dataFolder/estimates.txt");
+		testFile(g1, "g1", null, "graphicsFolder/ObservationVSprediction.png");
 		
 		// Simulation
 		Simulation simu = so1.getSimulation();
@@ -132,7 +129,7 @@ public class ReadTest {
 		// OptimalDesign
 		OptimalDesign od = so1.getOptimalDesign();
 		assertEquals(DesignType.EVALUATION, od.getType());
-		OptimalDesignBlock odb = od.getOptimalDesignBlock().get(0);
+		OptimalDesignBlock odb = od.getListOfOptimalDesignBlock().get(0);
 		assertEquals(Integer.valueOf(1), odb.getBlockNumber());
 		
 		// FIM
@@ -160,6 +157,7 @@ public class ReadTest {
 	private static void testFile(ExternalFile file, String expectedOid, String expectedDescription, String expectedPath){
 		assertEquals(expectedOid, file.getOid());
 		if(expectedDescription != null){
+			assertNotNull(file.getDescription());
 			assertEquals(expectedDescription, file.getDescription().getValue());
 		}
 		assertEquals(expectedPath, file.getPath());
