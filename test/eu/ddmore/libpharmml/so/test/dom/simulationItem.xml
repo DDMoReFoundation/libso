@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<so:SO xmlns:msteps="http://www.pharmml.org/pharmml/0.6/ModellingSteps" 
+<so:SO xmlns:msteps="http://www.pharmml.org/pharmml/0.8/ModellingSteps" 
 	xmlns:po="http://www.pharmml.org/probonto/ProbOnto" 
-	xmlns:td="http://www.pharmml.org/pharmml/0.6/TrialDesign" 
+	xmlns:td="http://www.pharmml.org/pharmml/0.8/TrialDesign" 
 	xmlns:uncert="http://www.uncertml.org/3.0" 
-	xmlns:ds="http://www.pharmml.org/pharmml/0.6/Dataset" 
-	xmlns:mdef="http://www.pharmml.org/pharmml/0.6/ModelDefinition" 
-	xmlns:so="http://www.pharmml.org/so/0.2/StandardisedOutput" 
-	xmlns:ct="http://www.pharmml.org/pharmml/0.6/CommonTypes" 
-	xmlns:mml="http://www.pharmml.org/pharmml/0.6/PharmML" 
-	xmlns:math="http://www.pharmml.org/pharmml/0.6/Maths" writtenVersion="0.2">
+	xmlns:ds="http://www.pharmml.org/pharmml/0.8/Dataset" 
+	xmlns:mdef="http://www.pharmml.org/pharmml/0.8/ModelDefinition" 
+	xmlns:so="http://www.pharmml.org/so/0.3/StandardisedOutput" 
+	xmlns:ct="http://www.pharmml.org/pharmml/0.8/CommonTypes" 
+	xmlns:mml="http://www.pharmml.org/pharmml/0.8/PharmML" 
+	xmlns:math="http://www.pharmml.org/pharmml/0.8/Maths" writtenVersion="0.3">
     <so:PharmMLRef name="pharmml.xml"/>
     <so:SOBlock blkId="block1">
         <so:ToolSettings>
@@ -19,17 +19,19 @@
             </so:File>
         </so:ToolSettings>
         <so:Simulation>
-            <so:Dosing>
-                <ds:Definition>
-                    <ds:Column columnId="c1" columnType="id" valueType="id" columnNum="1"/>
-                    <ds:Column columnId="c2" columnType="cmt" valueType="int" columnNum="2"/>
-                </ds:Definition>
-                <ds:ExternalFile oid="e1">
-                    <ds:path>/extFile.csv</ds:path>
-                    <ds:format>CSV</ds:format>
-                    <ds:delimiter>COMMA</ds:delimiter>
-                </ds:ExternalFile>
-            </so:Dosing>
+        	<so:SimulationBlock>
+	            <so:Dosing>
+	                <ds:Definition>
+	                    <ds:Column columnId="c1" columnType="id" valueType="id" columnNum="1"/>
+	                    <ds:Column columnId="c2" columnType="cmt" valueType="int" columnNum="2"/>
+	                </ds:Definition>
+	                <ds:ExternalFile oid="e1">
+	                    <ds:path>/extFile.csv</ds:path>
+	                    <ds:format>CSV</ds:format>
+	                    <ds:delimiter>COMMA</ds:delimiter>
+	                </ds:ExternalFile>
+	            </so:Dosing>
+            </so:SimulationBlock>
         </so:Simulation>
     </so:SOBlock>
 </so:SO>

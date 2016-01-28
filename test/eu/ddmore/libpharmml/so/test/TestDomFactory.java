@@ -12,7 +12,7 @@ public class TestDomFactory {
 		StandardisedOutput so = new StandardisedOutput();
 		
 		so.createPharmMLRef("pharmml.xml");
-		so.setWrittenVersion(SOVersion.v0_2.toString());
+		so.setWrittenVersion(SOVersion.DEFAULT.toString());
 		
 		SOBlock block = so.createSoBlock();
 		block.setBlkId("block1");

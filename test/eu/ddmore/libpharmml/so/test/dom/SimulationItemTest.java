@@ -18,6 +18,7 @@ import eu.ddmore.libpharmml.so.SOFactory;
 import eu.ddmore.libpharmml.so.StandardisedOutputResource;
 import eu.ddmore.libpharmml.so.dom.SOBlock;
 import eu.ddmore.libpharmml.so.dom.Simulation;
+import eu.ddmore.libpharmml.so.dom.SimulationBlock;
 import eu.ddmore.libpharmml.so.dom.SimulationItem;
 import eu.ddmore.libpharmml.so.dom.StandardisedOutput;
 import eu.ddmore.libpharmml.so.impl.LibSO;
@@ -50,7 +51,8 @@ public class SimulationItemTest {
 		SOBlock soBlock = sor.getDom().getListOfSOBlock().get(0);
 		
 		Simulation simul = soBlock.createSimulation();
-		SimulationItem item = simul.createDosing();
+		SimulationBlock simBlock = simul.createSimulationBlock();
+		SimulationItem item = simBlock.createDosing();
 		
 		item.createExternalFile("/extFile.csv", "CSV", ExternalFile.Delimiter.COMMA, "e1");
 		HeaderColumnsDefinition def = item.createDefinition();
@@ -69,7 +71,7 @@ public class SimulationItemTest {
 		
 		StandardisedOutput so = sor.getDom();
 		SOBlock soblock = so.getListOfSOBlock().get(0);
-		Simulation simul = soblock.getSimulation();
+		SimulationBlock simul = soblock.getSimulation().getListOfSimulationBlocks().get(0);
 		assertEquals(1, simul.getListOfDosing().size());
 		SimulationItem dosing = simul.getListOfDosing().get(0);
 		HeaderColumnsDefinition def = dosing.getDefinition();
