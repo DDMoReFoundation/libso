@@ -108,8 +108,6 @@ public class OFMeasures
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * {@link JAXBElement }{@code <}{@link RealValue }{@code >}
      * 
-     * @see {@link #createDeviance(Double)}, {@link #createIndividualContribToLL()}, {@link #createInformationCriteria()}, {@link #createLikelihood(Double)},
-     * {@link #createLogLikelihood(Double)}, {@link #createToolObjFunction()}.
      * 
      */
     public List<JAXBElement<?>> getContent() {
