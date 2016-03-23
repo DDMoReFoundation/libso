@@ -13,7 +13,7 @@
 	<property name="libpharmml.vendor" value="EMBL-EBI"/>
 	<property name="libpharmml.name" value="libPharmML-SO"/>
 	<property name="libpharmml.version" value="0.4.1"/>
-	<property name="libpharmml.build" value="beta"/>
+	<property name="libpharmml.build" value="1"/>
 	<property name="libpharmml.fullname" value="${libpharmml.name}-${libpharmml.version}-${libpharmml.build}"/>
 	
 	<property name="src.bin.dir" location="${build.dir}/src"/>
@@ -41,6 +41,7 @@
 
 	<path id="src.path">
 		<fileset dir="${ivy.lib.dir}/src-build"/>
+		<fileset dir="${lib.dir}"/>
 		<pathelement location="${src.dir}"/>
 		<pathelement location="${lib.dir}/jaxb-ri-2.2.7/lib/jaxb-api.jar"/>
 		<pathelement location="${lib.dir}/jaxb-ri-2.2.7/lib/jaxb-core.jar"/>
