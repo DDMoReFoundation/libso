@@ -349,6 +349,8 @@ public class SOXMLFilter extends XMLFilter {
 	 */
 	public static String getSONamespace(SOVersion version){
 		switch (version) {
+		case v0_3_1:
+			return NS_SO;
 		case v0_3:
 			return NS_SO;
 		case v0_2:

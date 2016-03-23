@@ -26,7 +26,7 @@ public enum SOVersion {
 	v0_1("0.1","SOMarshaller.xmlCatalogLocation.0.1",PharmMLVersion.V0_6),
 	v0_2("0.2","SOMarshaller.xmlCatalogLocation.0.2",PharmMLVersion.V0_6_1),
 	v0_3("0.3","SOMarshaller.xmlCatalogLocation.0.3",PharmMLVersion.V0_8),
-	v0_3_1("0.3","SOMarshaller.xmlCatalogLocation.0.3.1",PharmMLVersion.V0_8_1);
+	v0_3_1("0.3.1","SOMarshaller.xmlCatalogLocation.0.3.1",PharmMLVersion.V0_8_1);
 	
 	public static final SOVersion DEFAULT = v0_3_1;
 	
@@ -46,12 +46,16 @@ public enum SOVersion {
 	}
 
 	public static SOVersion getEnum(String version) {
+		if(version.equals("0.3")){
+			version = "0.3.1";
+		}
+		SOVersion returned_version = null;
 		for(SOVersion soVersion : values()){
 			if(version.equals(soVersion.toString())){
-				return soVersion;
+				returned_version = soVersion;
 			}
 		}
-		return null;
+		return returned_version;
 	}
 
 	public String getCatalogLocation() {
