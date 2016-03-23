@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.FileInputStream;
-import java.math.BigInteger;
 import java.util.List;
 
 import org.junit.After;
@@ -122,9 +121,9 @@ public class ReadTest {
 		List<ColumnDefinition> colDefs = simProfiles.getDefinition().getListOfColumn();
 		ColumnDefinition col1 = colDefs.get(0);
 		assertEquals("ID", col1.getColumnId());
-		assertEquals(ColumnType.ID, col1.getColumnType());
+		assertEquals(ColumnType.ID, col1.getListOfColumnType().get(0));
 		assertEquals(SymbolType.STRING, col1.getValueType());
-		assertEquals(BigInteger.valueOf(1), col1.getColumnNum());
+		assertEquals(Integer.valueOf(1), col1.getColumnNum());
 		
 		// OptimalDesign
 		OptimalDesign od = so1.getOptimalDesign();
