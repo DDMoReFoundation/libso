@@ -25,9 +25,10 @@ public enum SOVersion {
 	v0_0("0.0","SOMarshaller.xmlCatalogLocation.0.0",PharmMLVersion.V0_4),
 	v0_1("0.1","SOMarshaller.xmlCatalogLocation.0.1",PharmMLVersion.V0_6),
 	v0_2("0.2","SOMarshaller.xmlCatalogLocation.0.2",PharmMLVersion.V0_6_1),
-	v0_3("0.3","SOMarshaller.xmlCatalogLocation.0.3",PharmMLVersion.V0_8);
+	v0_3("0.3","SOMarshaller.xmlCatalogLocation.0.3",PharmMLVersion.V0_8),
+	v0_3_1("0.3","SOMarshaller.xmlCatalogLocation.0.3.1",PharmMLVersion.V0_8_1);
 	
-	public static final SOVersion DEFAULT = v0_3;
+	public static final SOVersion DEFAULT = v0_3_1;
 	
 	private String version;
 	private String catalogLocation;
