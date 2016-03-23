@@ -46,9 +46,6 @@ public enum SOVersion {
 	}
 
 	public static SOVersion getEnum(String version) {
-		if(version.equals("0.3")){
-			version = "0.3.1";
-		}
 		SOVersion returned_version = null;
 		for(SOVersion soVersion : values()){
 			if(version.equals(soVersion.toString())){

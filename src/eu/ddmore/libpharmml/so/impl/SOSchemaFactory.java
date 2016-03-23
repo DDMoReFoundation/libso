@@ -61,7 +61,7 @@ public class SOSchemaFactory {
 			String systemURI = locationData[1];
 
 			String[] pharmmlLocationData;
-			if(version.getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.DEFAULT)){
+			if(version.getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_8)){
 				pharmmlLocationData = PharmMLSchemaFactory.getInstance().resolveCatalogLocation(
 						version.getCorrespondingPharmMLVersion(), NamespaceType.DEFAULT);
 			} else {
@@ -105,7 +105,7 @@ public class SOSchemaFactory {
 	public String[] resolveCatalogLocation(SOVersion version, NamespaceType type){
 		String catalogLocation;
 		String systemURI;
-		if(version.equals(SOVersion.DEFAULT)){
+		if(version.equals(SOVersion.DEFAULT) || version.equals(SOVersion.v0_3)){
 			catalogLocation = version.getCatalogLocation();
 			systemURI = SOXMLFilter.NS_SO;
 		} else {

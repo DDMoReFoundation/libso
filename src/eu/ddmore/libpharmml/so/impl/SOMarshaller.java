@@ -68,11 +68,11 @@ public class SOMarshaller {
 			setMarshalVersion(dom, version.getCorrespondingPharmMLVersion());
 			m.setListener(mListener);
 			
-			if(!version.equals(SOVersion.DEFAULT)){
+			if(!(version.equals(SOVersion.DEFAULT) || version.equals(SOVersion.v0_3))){
 				LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+version);
 			}
 			
-			if(!SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_6)){
+			if(!SOVersion.getEnum(dom.getWrittenVersion()).getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_8)){
 				// Marshalling into a XMLStreamWriter with filter for namespaces.
 				// Into a ByteArray so it can be inputstreamed again.
 				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
@@ -108,7 +108,7 @@ public class SOMarshaller {
 	}
 
 	public StandardisedOutput unmarshall(InputStream is,final SOVersion currentDocVersion,Listener uListener) {
-		if(!currentDocVersion.equals(SOVersion.DEFAULT)){
+		if(!(currentDocVersion.equals(SOVersion.DEFAULT) || currentDocVersion.equals(SOVersion.v0_3))){
 			LoggerWrapper.getLogger().severe("This version of libSO is not compatible with SO version "+currentDocVersion);
 		}
 		try {
@@ -143,7 +143,7 @@ public class SOMarshaller {
 			
 			Object umarshalledObj;
 			if(!(currentDocVersion.equals(SOVersion.DEFAULT) 
-					&& currentDocVersion.getCorrespondingPharmMLVersion().equals(PharmMLVersion.DEFAULT))){
+					&& currentDocVersion.getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_8))){
 				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getXMLStreamReader(is);
 				umarshalledObj = u.unmarshal(xmlsr);
 			} else {

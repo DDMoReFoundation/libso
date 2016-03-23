@@ -39,7 +39,7 @@ import eu.ddmore.libpharmml.so.impl.SOValidator;
 public class ReadTest {
 	
 	final static private String validExample = "examples/0_3/valid.xml";
-	final static private String invalidExample = "examples/0_3/invalid.xml";
+	final static private String invalidExample = "examples/0_3_1/invalid.xml";
 	private SOFactory soFactory;
 	private LibSO libSO;
 	
@@ -65,7 +65,7 @@ public class ReadTest {
 	public void ValidateFile() throws Exception{
 		StandardisedOutputResource sor = libSO.createDomFromResource(new FileInputStream(validExample));
 		SOValidator validator = libSO.getValidator();
-		libSO.save(System.out, sor);
+//		libSO.save(System.out, sor);
 		AssertUtil.assertValid(validator.createValidationReport(sor));
 	}
 	
