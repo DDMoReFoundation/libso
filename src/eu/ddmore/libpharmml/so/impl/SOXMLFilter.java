@@ -34,10 +34,10 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import eu.ddmore.libpharmml.impl.LoggerWrapper;
+import eu.ddmore.libpharmml.impl.NamespaceFilter;
 import eu.ddmore.libpharmml.impl.PharmMLVersion;
-import eu.ddmore.libpharmml.impl.XMLFilter;
 
-public class SOXMLFilter extends XMLFilter {
+public class SOXMLFilter extends NamespaceFilter {
 	
 	public final static String NS_SO = "http://www.pharmml.org/so/0.3/StandardisedOutput";
 	
@@ -68,8 +68,7 @@ public class SOXMLFilter extends XMLFilter {
     	osw.close();
     }
 	
-	@Override
-	public XMLStreamReader getXMLStreamReader(final InputStream is) throws XMLStreamException{
+	public XMLStreamReader getSOXMLStreamReader(final InputStream is) throws XMLStreamException{
     	
     	XMLStreamReader filterReader = new XMLStreamReader(){
     		
@@ -87,7 +86,7 @@ public class SOXMLFilter extends XMLFilter {
 
 			@Override
 			public void require(int type, String namespaceURI, String localName) throws XMLStreamException {
-				reader.require(type, filterInputNamespace(namespaceURI), localName);
+				reader.require(type, filterInputSONamespace(namespaceURI), localName);
 			}
 
 			@Override
@@ -112,7 +111,7 @@ public class SOXMLFilter extends XMLFilter {
 
 			@Override
 			public String getNamespaceURI(String prefix) {
-				return filterInputNamespace(reader.getNamespaceURI(prefix));
+				return filterInputSONamespace(reader.getNamespaceURI(prefix));
 			}
 
 			@Override
@@ -137,7 +136,7 @@ public class SOXMLFilter extends XMLFilter {
 
 			@Override
 			public String getAttributeValue(String namespaceURI, String localName) {
-				return reader.getAttributeValue(filterInputNamespace(namespaceURI), localName);
+				return reader.getAttributeValue(filterInputSONamespace(namespaceURI), localName);
 			}
 
 			@Override
@@ -152,7 +151,7 @@ public class SOXMLFilter extends XMLFilter {
 
 			@Override
 			public String getAttributeNamespace(int index) {
-				return filterInputNamespace(reader.getAttributeNamespace(index));
+				return filterInputSONamespace(reader.getAttributeNamespace(index));
 			}
 
 			@Override
@@ -192,7 +191,7 @@ public class SOXMLFilter extends XMLFilter {
 
 			@Override
 			public String getNamespaceURI(int index) {
-				return filterInputNamespace(reader.getNamespaceURI(index));
+				return filterInputSONamespace(reader.getNamespaceURI(index));
 			}
 
 			@Override
@@ -212,7 +211,7 @@ public class SOXMLFilter extends XMLFilter {
 					
 					@Override
 					public String getNamespaceURI(String prefix) {
-						return filterInputNamespace(context.getNamespaceURI(prefix));
+						return filterInputSONamespace(context.getNamespaceURI(prefix));
 					}
 				};
 			}
@@ -266,7 +265,7 @@ public class SOXMLFilter extends XMLFilter {
 			@Override
 			public QName getName() {
 				QName qname = reader.getName();
-				QName newQname = new QName(filterInputNamespace(qname.getNamespaceURI()), 
+				QName newQname = new QName(filterInputSONamespace(qname.getNamespaceURI()), 
 						qname.getLocalPart(), 
 						qname.getPrefix());
 				return newQname;
@@ -284,7 +283,7 @@ public class SOXMLFilter extends XMLFilter {
 
 			@Override
 			public String getNamespaceURI() {
-				return filterInputNamespace(reader.getNamespaceURI());
+				return filterInputSONamespace(reader.getNamespaceURI());
 			}
 
 			@Override
@@ -329,17 +328,30 @@ public class SOXMLFilter extends XMLFilter {
     	return filterReader;
     }
 	
-	@Override
-	protected String filterInputNamespace(String ns) {
+	
+	protected String filterInputSONamespace(String ns) {
 		if(ns == null){
-			return null;
-		} else {
-			if(ns.equals(NS_DOC_SO)){
-				return NS_SO;
-			} else {
-				return super.filterInputNamespace(ns);
-			}
-		}
+    		return null;
+    	}
+    	if(ns.equals(NS_DOC_CT)){
+    		return NS_DEFAULT_CT;
+    	} else if(ns.equals(NS_DOC_DS)){
+        	return NS_DEFAULT_DS;
+    	} else if(ns.equals(NS_DOC_MATH)){
+        	return NS_DEFAULT_MATH;
+    	} else if(ns.equals(NS_DOC_MDEF)){
+        	return NS_DEFAULT_MDEF;
+    	} else if(ns.equals(NS_DOC_MSTEPS)){
+        	return NS_DEFAULT_MSTEPS;
+    	} else if(ns.equals(NS_DOC_TD)){
+        	return NS_DEFAULT_TD;
+    	} else if(ns.equals(NS_DOC_MML)){
+        	return NS_DEFAULT_MML;
+    	} else if(ns.equals(NS_DOC_SO)){
+			return NS_SO;
+    	} else {
+    		return ns;
+    	}
 	}
 	
 	/**

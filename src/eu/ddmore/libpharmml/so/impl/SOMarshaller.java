@@ -144,7 +144,7 @@ public class SOMarshaller {
 			Object umarshalledObj;
 			if(!(currentDocVersion.equals(SOVersion.DEFAULT) 
 					&& currentDocVersion.getCorrespondingPharmMLVersion().isEqualOrLaterThan(PharmMLVersion.V0_8))){
-				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getXMLStreamReader(is);
+				XMLStreamReader xmlsr = new SOXMLFilter(currentDocVersion).getSOXMLStreamReader(is);
 				umarshalledObj = u.unmarshal(xmlsr);
 			} else {
 				umarshalledObj = u.unmarshal(is);
