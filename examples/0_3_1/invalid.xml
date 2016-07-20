@@ -73,13 +73,13 @@
                         <Column columnId="POP_TLAG" columnType="popParameter" valueType="real" columnNum="4"/>
                         <Column columnId="BETA_CL_WT" columnType="popParameter" valueType="real" columnNum="5"/>
                         <Column columnId="BETA_V_WT" columnType="popParameter" valueType="real" columnNum="6"/>
-                        <Column columnId="PPV_CL" columnType="varParameter_var" valueType="real" columnNum="7"/>
-                        <Column columnId="PPV_V" columnType="varParameter_var" valueType="real" columnNum="8"/>
-                        <Column columnId="PPV_KA" columnType="varParameter_var" valueType="real" columnNum="9"/>
-                        <Column columnId="PPV_TLAG" columnType="varParameter_var" valueType="real" columnNum="10"/>
+                        <Column columnId="PPV_CL" columnType="varParameter" valueType="real" columnNum="7"/>
+                        <Column columnId="PPV_V" columnType="varParameter" valueType="real" columnNum="8"/>
+                        <Column columnId="PPV_KA" columnType="varParameter" valueType="real" columnNum="9"/>
+                        <Column columnId="PPV_TLAG" columnType="varParameter" valueType="real" columnNum="10"/>
                         <Column columnId="RUV_PROP" columnType="popParameter" valueType="real" columnNum="11"/>
                         <Column columnId="RUV_ADD" columnType="popParameter" valueType="real" columnNum="12"/>
-                        <Column columnId="CORR_PPV_CL_V" columnType="varParameter_corr" valueType="real" columnNum="13"/>
+                        <Column columnId="CORR_PPV_CL_V" columnType="varParameter" valueType="real" columnNum="13"/>
                     </Definition>
                     <Table xmlns="http://www.pharmml.org/pharmml/0.8/Dataset">
                         <Row><ct:Real>0.93882</ct:Real><ct:Real>1.63219</ct:Real><ct:Real>8.10703</ct:Real>
@@ -104,13 +104,13 @@
                             <Column columnId="POP_TLAG" columnType="popParameter" valueType="real" columnNum="4"/>
                             <Column columnId="BETA_CL_WT" columnType="popParameter" valueType="real" columnNum="5"/>
                             <Column columnId="BETA_V_WT" columnType="popParameter" valueType="real" columnNum="6"/>
-                            <Column columnId="PPV_CL" columnType="varParameter_var" valueType="real" columnNum="7"/>
-                            <Column columnId="PPV_V" columnType="varParameter_var" valueType="real" columnNum="8"/>
-                            <Column columnId="PPV_KA" columnType="varParameter_var" valueType="real" columnNum="9"/>
-                            <Column columnId="PPV_TLAG" columnType="varParameter_var" valueType="real" columnNum="10"/>
+                            <Column columnId="PPV_CL" columnType="varParameter" valueType="real" columnNum="7"/>
+                            <Column columnId="PPV_V" columnType="varParameter" valueType="real" columnNum="8"/>
+                            <Column columnId="PPV_KA" columnType="varParameter" valueType="real" columnNum="9"/>
+                            <Column columnId="PPV_TLAG" columnType="varParameter" valueType="real" columnNum="10"/>
                             <Column columnId="RUV_PROP" columnType="popParameter" valueType="real" columnNum="11"/>
                             <Column columnId="RUV_ADD" columnType="popParameter" valueType="real" columnNum="12"/>
-                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter_corr" valueType="real" columnNum="13"/>
+                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter" valueType="real" columnNum="13"/>
                         </Definition>
                         <Table xmlns="http://www.pharmml.org/pharmml/0.8/Dataset">
                             <Row><ct:Real>0.93882</ct:Real><ct:Real>1.63219</ct:Real><ct:Real>8.10703</ct:Real>
@@ -130,13 +130,13 @@
                             <Column columnId="POP_TLAG" columnType="popParameter" valueType="real" columnNum="4"/>
                             <Column columnId="BETA_CL_WT" columnType="popParameter" valueType="real" columnNum="5"/>
                             <Column columnId="BETA_V_WT" columnType="popParameter" valueType="real" columnNum="6"/>
-                            <Column columnId="PPV_CL" columnType="varParameter_var" valueType="real" columnNum="7"/>
-                            <Column columnId="PPV_V" columnType="varParameter_var" valueType="real" columnNum="8"/>
-                            <Column columnId="PPV_KA" columnType="varParameter_var" valueType="real" columnNum="9"/>
-                            <Column columnId="PPV_TLAG" columnType="varParameter_var" valueType="real" columnNum="10"/>
+                            <Column columnId="PPV_CL" columnType="varParameter" valueType="real" columnNum="7"/>
+                            <Column columnId="PPV_V" columnType="varParameter" valueType="real" columnNum="8"/>
+                            <Column columnId="PPV_KA" columnType="varParameter" valueType="real" columnNum="9"/>
+                            <Column columnId="PPV_TLAG" columnType="varParameter" valueType="real" columnNum="10"/>
                             <Column columnId="RUV_PROP" columnType="popParameter" valueType="real" columnNum="11"/>
                             <Column columnId="RUV_ADD" columnType="popParameter" valueType="real" columnNum="12"/>
-                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter_corr" valueType="real" columnNum="13"/>
+                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter" valueType="real" columnNum="13"/>
                         </Definition>
                         <Table xmlns="http://www.pharmml.org/pharmml/0.8/Dataset">
                             <Row>
@@ -159,13 +159,13 @@
                             <Column columnId="POP_TLAG" columnType="popParameter" valueType="real" columnNum="4"/>
                             <Column columnId="BETA_CL_WT" columnType="popParameter" valueType="real" columnNum="5"/>
                             <Column columnId="BETA_V_WT" columnType="popParameter" valueType="real" columnNum="6"/>
-                            <Column columnId="PPV_CL" columnType="varParameter_var" valueType="real" columnNum="7"/>
-                            <Column columnId="PPV_V" columnType="varParameter_var" valueType="real" columnNum="8"/>
-                            <Column columnId="PPV_KA" columnType="varParameter_var" valueType="real" columnNum="9"/>
-                            <Column columnId="PPV_TLAG" columnType="varParameter_var" valueType="real" columnNum="10"/>
+                            <Column columnId="PPV_CL" columnType="varParameter" valueType="real" columnNum="7"/>
+                            <Column columnId="PPV_V" columnType="varParameter" valueType="real" columnNum="8"/>
+                            <Column columnId="PPV_KA" columnType="varParameter" valueType="real" columnNum="9"/>
+                            <Column columnId="PPV_TLAG" columnType="varParameter" valueType="real" columnNum="10"/>
                             <Column columnId="RUV_PROP" columnType="popParameter" valueType="real" columnNum="11"/>
                             <Column columnId="RUV_ADD" columnType="popParameter" valueType="real" columnNum="12"/>
-                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter_corr" valueType="real" columnNum="13"/>
+                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter" valueType="real" columnNum="13"/>
                         </Definition>
                         <Table xmlns="http://www.pharmml.org/pharmml/0.8/Dataset">
                             <Row><ct:Real>0.93882</ct:Real><ct:Real>1.63219</ct:Real><ct:Real>8.10703</ct:Real>
@@ -185,13 +185,13 @@
                             <Column columnId="POP_TLAG" columnType="popParameter" valueType="real" columnNum="4"/>
                             <Column columnId="BETA_CL_WT" columnType="popParameter" valueType="real" columnNum="5"/>
                             <Column columnId="BETA_V_WT" columnType="popParameter" valueType="real" columnNum="6"/>
-                            <Column columnId="PPV_CL" columnType="varParameter_var" valueType="real" columnNum="7"/>
-                            <Column columnId="PPV_V" columnType="varParameter_var" valueType="real" columnNum="8"/>
-                            <Column columnId="PPV_KA" columnType="varParameter_var" valueType="real" columnNum="9"/>
-                            <Column columnId="PPV_TLAG" columnType="varParameter_var" valueType="real" columnNum="10"/>
+                            <Column columnId="PPV_CL" columnType="varParameter" valueType="real" columnNum="7"/>
+                            <Column columnId="PPV_V" columnType="varParameter" valueType="real" columnNum="8"/>
+                            <Column columnId="PPV_KA" columnType="varParameter" valueType="real" columnNum="9"/>
+                            <Column columnId="PPV_TLAG" columnType="varParameter" valueType="real" columnNum="10"/>
                             <Column columnId="RUV_PROP" columnType="popParameter" valueType="real" columnNum="11"/>
                             <Column columnId="RUV_ADD" columnType="popParameter" valueType="real" columnNum="12"/>
-                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter_corr" valueType="real" columnNum="13"/>
+                            <Column columnId="CORR_PPV_CL_V" columnType="varParameter" valueType="real" columnNum="13"/>
                         </Definition>
                         <Table xmlns="http://www.pharmml.org/pharmml/0.8/Dataset">
                             <Row>
